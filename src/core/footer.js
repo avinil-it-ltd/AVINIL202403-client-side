@@ -30,6 +30,7 @@ const Footer = () => {
               </Col>
 
 
+
               <Col md={4} className="mb-4 mb-md-0">
                 <div className="">
                   <label htmlFor="subscriberEmail callNow_font">Subscribe to our newsletter </label>

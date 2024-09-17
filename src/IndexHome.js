@@ -205,6 +205,7 @@ const IndexHome = (props) => {
           <div className="col-12 col-md-3 text-center p-2">
             <div className=" mx-auto  row align-items-center" style={{ height: "150px", width: "150px" }}><img src={meeting} alt="" /></div>
             <div className="h2  text-center" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Meet & Agree</div>
+            
 
           </div>
           <div className="col-12 col-md-3 text-center p-2">

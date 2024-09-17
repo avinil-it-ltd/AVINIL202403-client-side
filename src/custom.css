@@ -603,3 +603,233 @@ brown #F9DEBE
   /* border: 2px solid gray ; */
   box-shadow: 2px 5px 8px gray;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Full-page background image */
+.login-container {  /* background: url('path/to/your/background-image.jpg') no-repeat center center fixed; */
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 50px;
+}
+
+/* Style for the login form */
+.login-form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-form .form-control {
+  height: 45px;
+}
+
+.login-form button {
+  height: 45px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* dashboard code  */
+.dashboard {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.cards-row .card {
+  margin-bottom: 20px;
+}
+
+.charts-row .card {
+  margin-bottom: 20px;
+}
+
+.content {
+  padding-left: 20px; /* Adjust based on the sidebar width */
+}
+
+.dashboard .charts-row .card {
+  height: 400px; /* Set fixed height */
+}
+
+
+
+.dashboard .charts-row .card {
+  height: 500px; /* Set a fixed height for the chart containers */
+}
+
+.dashboard .charts-row {
+  margin-top: 20px; /* Add some spacing between rows */
+}
+
+.dashboard .content {
+  padding-left: 20px; /* Adjust based on sidebar width */
+  /* padding-top: 20px; */
+  padding-right: 20px;
+  padding-bottom: 100px;
+}
+
+
+
+
+.sidebar {
+  width: 250px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  height: 100vh;
+  position: fixed;
+  padding-top: 100px;
+  top: 0;
+  left: 0;
+}
+
+.sidebar .nav-link {
+  padding: 10px 15px;
+  color: #333;
+  font-size: 16px;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #e9ecef;
+  color: #007bff;
+}
+
+
+
+
+.dashboard {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.cards-row .card {
+  margin-bottom: 20px;
+}
+
+.charts-row .card {
+  margin-bottom: 20px;
+}
+
+
+
+/* updating the email pass ui code */
+
+
+.change-credentials {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.change-credentials .form-label {
+  font-weight: bold;
+}
+
+.change-credentials .alert {
+  margin-top: 15px;
+}
+
+
+
+
+/* image updating ui code  */
+.change-image {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.change-image h2 {
+  margin-bottom: 20px;
+}
+
+.change-image .form-group {
+  margin-bottom: 20px;
+}
+
+.change-image .form-label {
+  font-weight: bold;
+}
+
+.change-image .form-control {
+  margin-top: 5px;
+}
+
+.change-image .btn {
+  margin-top: 20px;
+}
+
+.previous-images {
+  margin-top: 40px;
+}
+
+.previous-images h3 {
+  margin-bottom: 20px;
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.image-item {
+  position: relative;
+  width: 150px;
+}
+
+.image-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.image-item .btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+}
