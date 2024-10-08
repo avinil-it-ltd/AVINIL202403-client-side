@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from "react"
-import TopMenu from "../core/TopMenu"
-import Footer from "../core/footer"
-import Data from "../projects.json"
+import TopMenu from "../../core/TopMenu"
+import Footer from "../../core/footer"
+import Data from "../../projects.json"
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { zoomIn } from 'react-animations';
 import styled, { keyframes } from 'styled-components';
-import profile from '../assets/images/about/ceo.png'
-import projectComplete from '../assets/images/project.png'
-import award from '../assets/images/award.png'
-import client from '../assets/images/happyClient.png'
-import servicespic from '../assets/images/customer-service.png'
-import centralPic from '../assets/images/about/central.jpg'
+import profile from '../../assets/images/about/ceo.png'
+import projectComplete from '../../assets/images/project.png'
+import award from '../../assets/images/award.png'
+import client from '../../assets/images/happyClient.png'
+import servicespic from '../../assets/images/customer-service.png'
+import centralPic from '../../assets/images/about/central.jpg'
 
 
 const AboutUs = (props) => {

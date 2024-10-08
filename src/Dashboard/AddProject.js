@@ -23,37 +23,60 @@ const AddProject = () => {
     };
 
     return (
-        <div>
-            <h2>Add New Project</h2>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="formTitle">
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Enter project title" 
-                        value={title} onChange={(e) => setTitle(e.target.value)} required />
-                </Form.Group>
-                <Form.Group controlId="formDescription">
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control as="textarea" rows={3} placeholder="Enter project description" 
-                        value={description} onChange={(e) => setDescription(e.target.value)} required />
-                </Form.Group>
-                <Form.Group controlId="formImageUrl">
-                    <Form.Label>Image URL</Form.Label>
-                    <Form.Control type="text" placeholder="Enter image URL" 
-                        value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
-                </Form.Group>
-                <Form.Group controlId="formStartDate">
-                    <Form.Label>Start Date</Form.Label>
-                    <Form.Control type="date" 
-                        value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-                </Form.Group>
-                <Form.Group controlId="formEndDate">
-                    <Form.Label>End Date</Form.Label>
-                    <Form.Control type="date" 
-                        value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-                </Form.Group>
+        <div className="container my-4">
+        <h2 className="text-center mb-4">Add New Project</h2>
+        <Form onSubmit={handleSubmit} className="p-4 border border-light rounded shadow">
+            <Form.Group controlId="formTitle" className="mb-3">
+                <Form.Label>Title</Form.Label>
+                <Form.Control 
+                    type="text" 
+                    placeholder="Enter project title" 
+                    value={title} 
+                    onChange={(e) => setTitle(e.target.value)} 
+                    required 
+                />
+            </Form.Group>
+            <Form.Group controlId="formDescription" className="mb-3">
+                <Form.Label>Description</Form.Label>
+                <Form.Control 
+                    as="textarea" 
+                    rows={3} 
+                    placeholder="Enter project description" 
+                    value={description} 
+                    onChange={(e) => setDescription(e.target.value)} 
+                    required 
+                />
+            </Form.Group>
+            <Form.Group controlId="formImageUrl" className="mb-3">
+                <Form.Label>Image URL</Form.Label>
+                <Form.Control 
+                    type="text" 
+                    placeholder="Enter image URL" 
+                    value={imageUrl} 
+                    onChange={(e) => setImageUrl(e.target.value)} 
+                />
+            </Form.Group>
+            <Form.Group controlId="formStartDate" className="mb-3">
+                <Form.Label>Start Date</Form.Label>
+                <Form.Control 
+                    type="date" 
+                    value={startDate} 
+                    onChange={(e) => setStartDate(e.target.value)} 
+                />
+            </Form.Group>
+            <Form.Group controlId="formEndDate" className="mb-3">
+                <Form.Label>End Date</Form.Label>
+                <Form.Control 
+                    type="date" 
+                    value={endDate} 
+                    onChange={(e) => setEndDate(e.target.value)} 
+                />
+            </Form.Group>
+            <div className="text-center">
                 <Button variant="primary" type="submit">Add Project</Button>
-            </Form>
-        </div>
+            </div>
+        </Form>
+    </div>
     );
 };
 

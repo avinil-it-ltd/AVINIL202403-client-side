@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAllCareers, deleteCareer } from '../services/careerService';
 import { Link } from 'react-router-dom';
+import { Table, Button } from 'react-bootstrap';
 
 const CareerList = () => {
     const [careers, setCareers] = useState([]);
@@ -38,19 +39,48 @@ const CareerList = () => {
     if (error) return <div>{error}</div>;
 
     return (
-        <div>
-            <h2>Career List</h2>
-            <Link to="/dashboard/addCareer" className="btn btn-primary">Add Career</Link>
-            <ul>
-                {careers.map(career => (
-                    <li key={career._id}>
-                        <h4>{career.title}</h4>
-                        <p>{career.description}</p>
-                        <button className="btn btn-warning" onClick={() => handleDelete(career._id)}>Delete</button>
-                        <Link to={`/dashboard/updateCareer/${career._id}`} className="btn btn-info">Update</Link>
-                    </li>
-                ))}
-            </ul>
+        <div className="container my-4">
+            <h2 className="text-center mb-4">Career List</h2>
+            <div className="text-end mb-3">
+                <Link to="/dashboard/addCareer" className="btn btn-primary">
+                    Add Career
+                </Link>
+            </div>
+            {careers.length > 0 ? (
+                <Table striped bordered hover responsive>
+                    <thead className="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {careers.map((career, index) => (
+                            <tr key={career._id}>
+                                <td>{index + 1}</td>
+                                <td>{career.title}</td>
+                                <td>{career.description}</td>
+                                <td>
+                                    <Link to={`/dashboard/updateCareer/${career._id}`} className="btn btn-info btn-sm me-2">
+                                        Update
+                                    </Link>
+                                    <Button
+                                        variant="warning"
+                                        size="sm"
+                                        onClick={() => handleDelete(career._id)}
+                                    >
+                                        Delete
+                                    </Button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            ) : (
+                <p className="text-center">No careers available. Please add some career opportunities.</p>
+            )}
         </div>
     );
 };

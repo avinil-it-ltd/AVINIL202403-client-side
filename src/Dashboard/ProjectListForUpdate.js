@@ -27,21 +27,41 @@ const ProjectListForUpdate = () => {
 
     return (
         <div className="container mt-5">
-            <h2 className="text-center mb-4">Select a Project to Update</h2>
-            <ul className="list-group">
+        <h2 className="text-center mb-4">Select a Project to Update</h2>
+        <div className="card ">
+            <div className="card-header bg-primary text-white text-center">
+                <h4 className="mb-0">Project List</h4>
+            </div>
+            <div className="card-body">
                 {projects.length > 0 ? (
-                    projects.map((project) => (
-                        <li key={project._id} className="list-group-item">
-                            <Link to={`/dashboard/updateProject/${project._id}`} className="text-decoration-none">
+                    <ul className="list-group">
+                        {projects.map((project) => (
+                            <li key={project._id} className="list-group-item d-flex justify-content-between align-items-center">
                                 {project.title}
-                            </Link>
-                        </li>
-                    ))
+                                <Link 
+                                    to={`/dashboard/updateProject/${project._id}`} 
+                                    className="text-decoration-none text-dark fw-bold"
+                                >
+                                    <span className="badge bg-secondary rounded-pill">Update</span>
+                                    
+                                </Link>
+                                
+                            </li>
+                        ))}
+                    </ul>
                 ) : (
-                    <li className="list-group-item">No projects available.</li>
+                    <div className="text-center">
+                        <p className="mb-0">No projects available.</p>
+                    </div>
                 )}
-            </ul>
+            </div>
+            <div className="card-footer text-center">
+                <Link to="/dashboard/addProject" className="btn btn-success">
+                    Add New Project
+                </Link>
+            </div>
         </div>
+    </div>
     );
 };
 

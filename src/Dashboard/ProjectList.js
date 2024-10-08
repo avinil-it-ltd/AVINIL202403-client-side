@@ -53,6 +53,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Table, Button } from 'react-bootstrap';
 
 const ProjectList = () => {
     const [projects, setProjects] = useState([]);
@@ -92,21 +93,59 @@ const ProjectList = () => {
         return <div>{error}</div>;
     }
     return (
-        <div>
-            <h2>Project List</h2>
+        // <div>
+        //     <h2>Project List</h2>
+        //     {projects.length > 0 ? (
+        //         <ul>
+        //         {projects.map((project) => (
+        //             <li key={project._id}>
+        //                 <h4>{project.title}</h4>
+        //                 <p>{project.description}</p>
+        //                 <Link to={`/dashboard/updateProject/${project._id}`}>Edit</Link>
+        //                 <button onClick={() => handleDelete(project._id)}>Delete</button>
+        //             </li>
+        //         ))}
+        //     </ul>
+        //     ) : (
+        //         <p>No projects available. Please add some projects.</p>
+        //     )}
+        // </div>
+        <div className="container my-4">
+            <h2 className="text-center mb-4">Project List</h2>
             {projects.length > 0 ? (
-                <ul>
-                {projects.map((project) => (
-                    <li key={project._id}>
-                        <h4>{project.title}</h4>
-                        <p>{project.description}</p>
-                        <Link to={`/dashboard/updateProject/${project._id}`}>Edit</Link>
-                        <button onClick={() => handleDelete(project._id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+                <Table striped bordered hover responsive>
+                    <thead className="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {projects.map((project, index) => (
+                            <tr key={project._id}>
+                                <td>{index + 1}</td>
+                                <td>{project.title}</td>
+                                <td>{project.description}</td>
+                                <td>
+                                    <Link to={`/dashboard/updateProject/${project._id}`} className="btn btn-primary btn-sm me-2">
+                                        Edit
+                                    </Link>
+                                    <Button
+                                        variant="danger"
+                                        size="sm"
+                                        onClick={() => handleDelete(project._id)}
+                                    >
+                                        Delete
+                                    </Button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
             ) : (
-                <p>No projects available. Please add some projects.</p>
+                <p className="text-center">No projects available. Please add some projects.</p>
             )}
         </div>
     );
