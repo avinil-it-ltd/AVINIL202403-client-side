@@ -34,9 +34,9 @@ const Interiror = (props) => {
     listAllProjects();
   }, [props]);
 
-  const handleMoreDetails = (id) => {
+  const handleMoreDetails = (id, project) => {
     // Navigate to the project details page
-    navigate(`/projects/${id}`);
+    navigate(`/details/${id}`);
   };
 
   const BioSection = () => (
@@ -68,7 +68,7 @@ const Interiror = (props) => {
 
               <div className="overlay">
                 <div className="overlay-text">
-                  <button onClick={() => handleMoreDetails(project.id)} className="more-details-btn">
+                  <button onClick={() => handleMoreDetails(project.id, project)} className="more-details-btn">
                     More Details
                   </button>
                 </div>

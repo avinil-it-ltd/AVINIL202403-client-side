@@ -67,6 +67,15 @@
 }
 
 
+/* Details page css start */
+.detailsPageReview{
+    background-color: rgb(226 232 240);
+}
+.detailsTitle{
+    background-color: #42556E;
+    color: white;
+}
+
 .more-details-btn {
     background-color: #42556E;
     /* background-color: #ff6600; */
