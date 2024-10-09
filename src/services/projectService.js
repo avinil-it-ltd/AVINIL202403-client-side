@@ -1,7 +1,7 @@
 // src/services/projectService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/projects'; // Update with your actual backend URL
+const API_URL = 'https://3pcommunicationsserver.vercel.app/api/projects'; // Update with your actual backend URL
 
 // Get all projects
 export const getAllProjects = async () => {

@@ -9,7 +9,7 @@
 //     useEffect(() => {
 //         const fetchProjects = async () => {
 //             try {
-//                 const response = await axios.get('http://localhost:5000/api/projects');
+//                 const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects');
 //                 console.log('Response data:', response.data); // Log the data received
 //                 setProjects(response.data);
 //             } catch (error) {
@@ -62,7 +62,7 @@ const ProjectList = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/projects');
+                const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects');
                 setProjects(response.data);
                 console.log(response.data);
                 
@@ -78,7 +78,7 @@ const ProjectList = () => {
     }, []);
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/projects/${id}`);
+            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/projects/${id}`);
             setProjects(projects.filter(project => project._id !== id)); // Remove deleted project from state
         } catch (error) {
             setError('Error deleting project.');
