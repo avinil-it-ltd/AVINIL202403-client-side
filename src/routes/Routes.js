@@ -22,14 +22,15 @@ import CareerList from '../Dashboard/CareerList';
 import AddCareer from '../Dashboard/AddCareer';
 import UpdateCareer from '../Dashboard/UpdateCareer';
 import CareerApplicationForm from '../pages/Career/CareerApplicationForm';
-import Architecture from '../Architecture';
-import Interior from '../Interior';
+import Architecture from '../Exterior/Architecture';
+import Interior from '../Interior/Interior';
 import FAQ from '../pages/FAQ/FAQ';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import AboutUs from '../pages/AboutUs/AboutUs';
 import CareerPage from '../pages/Career/CareerPage';
 import Login from '../Auth/Login/Login';
 import ApplicationList from '../Dashboard/ApplicationList';
+import ProjectsDetails from '../ProjectsDetails/ProjectsDetails';
 
 const AppRoutes = () => {
     return (
@@ -44,6 +45,7 @@ const AppRoutes = () => {
             <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
             <Route path="/faq" element={<FAQ/>} />
           
+            <Route path="/details/:id" element={<ProjectsDetails />} />
 
             <Route path="/dashboard" element={<Dashboard />}>
                 {/* <Route index element={<DashboardMain />} /> Default content for /dashboard */}

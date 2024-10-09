@@ -32,7 +32,7 @@ const Footer = () => {
 
 
               <Col md={4} className="mb-4 mb-md-0">
-                <div className="">
+                <div className="w-75">
                   <label htmlFor="subscriberEmail callNow_font">Subscribe to our newsletter </label>
                   <div className="input-group mt-2">
                     <input
@@ -42,7 +42,7 @@ const Footer = () => {
                       className="form-control p-3"
                       placeholder="Enter your email"
                     />
-                    <button className="btn subscribeButton " type="button">Subscribe</button>
+                    <button className="btn subscribeButton  " type="button">Subscribe</button>
                   </div>
                 </div>
 

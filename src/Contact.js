@@ -3,6 +3,7 @@ import TopMenu from "./core/TopMenu";
 import Footer from "./core/footer";
 import axios from 'axios'; // Import Axios for making HTTP requests
 
+
 const Contact = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ const Contact = () => {
 
     const clickSubmit = async (event) => {
         event.preventDefault();
-        
+
         try {
             const response = await axios.post('http://localhost:5000/api/contacts', {
                 name,
@@ -54,8 +55,54 @@ const Contact = () => {
             <div>
                 <div className="col-11 col-md-9 mx-auto p-5 my-5" style={{ opacity: "0.9" }}>
                     <div className="row">
-                        <div className="col-12 col-md-6 my-auto p-3">
-                            {/* Contact Details */}
+
+
+
+
+                        <div className="col-12 col-md-6 p-4  ">
+                            <div className="mb-4">
+                                <p className="h5 heading_color">
+                                    <i className="fas fa-map-marker-alt me-3"></i> Address:
+                                </p>
+                                <p>1 / 2 Asad Avenue Road, Block-A, Mohammadpur, Dhaka</p>
+                            </div>
+                            <hr className="my-4 text-white" />
+
+                            <div className="mb-4">
+                                <p className="h5 heading_color">
+                                    <i className="fas fa-phone me-3"></i>Phone:
+                                </p>
+                                <p>+8801819139975</p>
+                            </div>
+                            <hr className="my-4 text-white" />
+
+                            <div className="mb-4">
+                                <p className="h5 heading_color">
+                                    <i className="fas fa-envelope me-3"></i>Email:
+                                </p>
+                                <p>3pcommunication@gmail.com</p>
+                            </div>
+                            <hr className="my-4 text-white" />
+
+                            <div className="mb-4">
+                                    <p className="h5 mb-3">Connect with Us:</p>
+                                    <a href="https://www.facebook.com/3PCommunication" target="_blank"  rel="noopener noreferrer">
+                                        <i className="fab fa-facebook heading_color" style={{ fontSize: '30px', marginRight: '10px' }}></i>
+                                    </a>
+                                    <a href="https://wa.me/yourwhatsappnumber" target="_blank" rel="noopener noreferrer">
+                                        <i className="fab fa-whatsapp heading_color" style={{ fontSize: '30px', marginRight: '10px' }}></i>
+                                    </a>
+                                    <a href="https://www.youtube.com/@3pcommunication569" target="_blank" rel="noopener noreferrer">
+                                        <i className="fab fa-youtube heading_color" style={{ fontSize: '30px' }}></i>
+                                    </a>
+                                </div>
+
+                                
+                            <hr className="text-white d-md-none" />
+                           
+
+
+
                         </div>
                         <div className="col-12 col-md-6 ContactDesign px-5">
                             <p className="h2 heading_color mt-3 text-center" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Contact Us</p>
