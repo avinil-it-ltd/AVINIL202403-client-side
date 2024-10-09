@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getAllCareers } from '../../services/careerService';
 
 // import '../Career/CSS/CareerPage.css'; // Assuming you have a CSS file to style the page
-import '../Career/CSS/careerPage.css'; // Correct the casing here
+import '../Career/CSS/CareerPage.css'; // Correct the casing here
 
 import TopMenu from '../../core/TopMenu';
 import Footer from '../../core/footer';
