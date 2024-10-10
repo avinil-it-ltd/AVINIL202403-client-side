@@ -37,7 +37,7 @@ const Exterior = (props) => {
 
   const handleMoreDetails = (id) => {
     // Navigate to the project details page
-    navigate(`/projects/${id}`);
+    navigate(`/details/${id}`);
   };
 
   const BioSection = () => (
