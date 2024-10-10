@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import TopMenu from "../core/TopMenu";
-import Footer from "../../src/core/footer";
-import Data from "../projects.json";
+import TopMenu from "../../core/TopMenu";
+import Footer from "../../core/footer";
+import Data from "../../../src/projects.json";
 import { Container, Col, Row } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom'; // To navigate between pages
-import '../App.css';
-import '../../src/Exterior/Architecture.css'
-import bioImg from "../../src/assets/images/Exterior/bioImg.jpg";
-import img1 from "../../src/assets/images/Exterior/Cantonment School Gate.jpg";
-import img2 from "../../src/assets/images/Exterior/Navana Pipe plactics Factory Gate.jpg";
-import img3 from "../../src/assets/images/Exterior/Rajarbahg Gate.jpg";
-import img4 from "../../src/assets/images/Exterior/Soinik Club Gate.jpg";
+import '../../App.css';
 
-const Interiror = (props) => {
+import './Architecture.css'
+import bioImg from "../../../src/assets/images/Exterior/bioImg.jpg";
+import img1 from "../../../src/assets/images/Exterior/Cantonment School Gate.jpg";
+import img2 from "../../../src/assets/images/Exterior/Navana Pipe plactics Factory Gate.jpg";
+import img3 from "../../../src/assets/images/Exterior/Rajarbahg Gate.jpg";
+import img4 from "../../../src/assets/images/Exterior/Soinik Club Gate.jpg";
+
+const Exterior = (props) => {
   const [projects, setProjects] = useState([]);
   const navigate = useNavigate(); // For navigation
 
@@ -58,7 +59,7 @@ const Interiror = (props) => {
 
   const ProjectSection = () => (
     <div className="container mb-5 pb-5">
-      <h1 className="my-5 py-5"><span className="bigText">Interior</span> <span className="smallText">Projects</span></h1>
+      <h1 className="my-5 py-5"><span className="bigText">Exterior</span> <span className="smallText">Projects</span></h1>
 
       <div className="row g-4">
         {projectData.map((project) => (
@@ -97,4 +98,4 @@ const Interiror = (props) => {
   );
 };
 
-export default Interiror;
+export default Exterior;

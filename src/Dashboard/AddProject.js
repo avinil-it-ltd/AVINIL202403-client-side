@@ -15,7 +15,8 @@ const AddProject = () => {
         e.preventDefault();
         try {
             const newProject = { title, description, imageUrl, startDate, endDate };
-            await axios.post('https://3pcommunicationsserver.vercel.app/api/projects', newProject);
+            // await axios.post('http://localhost:5000/api/projects', newProject);
+            await axios.post('http://localhost:5000/api/projects', newProject);
             history.push('/dashboard/projects'); // Redirect to project list
         } catch (error) {
             console.error("There was an error creating the project!", error);

@@ -12,7 +12,8 @@ const UpdateProject = () => {
     useEffect(() => {
         const fetchProject = async () => {
             try {
-                const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/projects/${id}`);
+                // const response = await axios.get(`http://localhost:5000/api/projects/${id}`);
+                const response = await axios.get(`http://localhost:5000/api/projects/${id}`);
                 setProject(response.data);
             } catch (error) {
                 setError('Error fetching project details.');
@@ -30,7 +31,7 @@ const UpdateProject = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`https://3pcommunicationsserver.vercel.app/api/projects/${id}`, project);
+            await axios.put(`http://localhost:5000/api/projects/${id}`, project);
             navigate('/dashboard/projects'); // Redirect to project list after update
         } catch (error) {
             setError('Error updating project.');

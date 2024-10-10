@@ -15,7 +15,8 @@ const Contact = () => {
         event.preventDefault();
         
         try {
-            const response = await axios.post('https://3pcommunicationsserver.vercel.app/api/contacts', {
+            const response = await axios.post('http://localhost:5000/api/contacts', {
+            // const response = await axios.post('http://localhost:5000/api/contacts', {
                 name,
                 email,
                 phoneNo,

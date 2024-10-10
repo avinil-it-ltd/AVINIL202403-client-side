@@ -17,13 +17,11 @@ import ProjectList from '../Dashboard/ProjectList'; // Import your ProjectList c
 import AddProject from '../Dashboard/AddProject';
 import ProjectListForUpdate from '../Dashboard/ProjectListForUpdate';
 import IndexHome from '../IndexHome';
-import Contact from '../Contact';
+import Contact from '../../src/pages/';
 import CareerList from '../Dashboard/CareerList';
 import AddCareer from '../Dashboard/AddCareer';
 import UpdateCareer from '../Dashboard/UpdateCareer';
 import CareerApplicationForm from '../pages/Career/CareerApplicationForm';
-import Architecture from '../Exterior/Architecture';
-import Interior from '../Interior/Interior';
 import FAQ from '../pages/FAQ/FAQ';
 import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import AboutUs from '../pages/AboutUs/AboutUs';
@@ -31,14 +29,17 @@ import CareerPage from '../pages/Career/CareerPage';
 import Login from '../Auth/Login/Login';
 import ApplicationList from '../Dashboard/ApplicationList';
 import ProjectsDetails from '../ProjectsDetails/ProjectsDetails';
+// import Interiror from '../pages/Interior/Interior';
+import Exterior from '../pages/Exterior/Exterior';
+import Interiror from '../pages/Interior/Interior';
 
 const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<IndexHome />} />
-            <Route path="/exterior" element={<Architecture />} />
+            <Route path="/exterior" element={<Exterior />} />
             {/* <Route path="/event" element={<Design />} /> */}
-            <Route path="/interior" element={<Interior />} />
+            <Route path="/interior" element={<Interiror />} />
             <Route path="/aboutus" element={<AboutUs />} />
             {/* <Route path="/projects/search/:searchkey" element={<SearchResult />} /> */}
             <Route path="/contactus" element={<Contact />} />

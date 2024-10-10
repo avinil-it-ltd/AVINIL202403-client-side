@@ -187,7 +187,7 @@
    */
 
 
-   .block-gallery {
+.block-gallery {
     /* display: flex; */
     flex-wrap: wrap;
     justify-content: center;
