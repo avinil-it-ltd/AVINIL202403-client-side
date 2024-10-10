@@ -17,7 +17,7 @@ import ProjectList from '../Dashboard/ProjectList'; // Import your ProjectList c
 import AddProject from '../Dashboard/AddProject';
 import ProjectListForUpdate from '../Dashboard/ProjectListForUpdate';
 import IndexHome from '../IndexHome';
-import Contact from '../../src/pages/';
+import Contact from '../../src/pages/Contact/Contact.js';
 import CareerList from '../Dashboard/CareerList';
 import AddCareer from '../Dashboard/AddCareer';
 import UpdateCareer from '../Dashboard/UpdateCareer';
@@ -28,7 +28,7 @@ import AboutUs from '../pages/AboutUs/AboutUs';
 import CareerPage from '../pages/Career/CareerPage';
 import Login from '../Auth/Login/Login';
 import ApplicationList from '../Dashboard/ApplicationList';
-import ProjectsDetails from '../ProjectsDetails/ProjectsDetails';
+import ProjectsDetails from '../pages/ProjectsDetails/ProjectsDetails';
 // import Interiror from '../pages/Interior/Interior';
 import Exterior from '../pages/Exterior/Exterior';
 import Interiror from '../pages/Interior/Interior';

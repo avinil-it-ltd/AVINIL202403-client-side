@@ -38,7 +38,7 @@ import picture11 from '../src/assets/images/clients/Picture11.jpg'
 import picture12 from '../src/assets/images/clients/Picture12.png'
 
 import './App.css';
-import ContactModal from "./ContactModal";
+import ContactModal from "./pages/Contact/ContactModal";
 import left from "../src/assets/images/interiorPage/left.jpg"
 import center from "../src/assets/images/interiorPage/center.jpg"
 import right from "../src/assets/images/interiorPage/right.jpg"

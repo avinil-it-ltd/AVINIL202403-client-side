@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import TopMenu from "./core/TopMenu";
-import Footer from "./core/footer";
+import TopMenu from "../../core/TopMenu";
+import Footer from "../../core/footer";
 import axios from 'axios'; // Import Axios for making HTTP requests
-import '../src/custom.css'
+import '../../custom.css'
 
 const Contact = () => {
     const [name, setName] = useState("");

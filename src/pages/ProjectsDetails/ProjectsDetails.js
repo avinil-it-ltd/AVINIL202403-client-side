@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
-import Footer from '../core/footer';
-import TopMenu from '../core/TopMenu';
-import '../../src/Exterior/Architecture.css'
+import Footer from '../../core/footer';
+import TopMenu from '../../core/TopMenu';
+import '../../pages/Exterior/Architecture.css'
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 

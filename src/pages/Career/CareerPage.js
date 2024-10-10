@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllCareers } from '../../services/careerService';
-
-// import '../Career/CSS/CareerPage.css'; // Assuming you have a CSS file to style the page
-// import '../../../src/pages/Career/CSS/CareerPage.css'; // Correct the casing here
-
 import TopMenu from '../../core/TopMenu';
 import Footer from '../../core/footer';
 
@@ -27,31 +23,50 @@ const CareerPage = () => {
     );
 
     return (
-        <div className="career-page">
+        <div className="container-fluid d-flex flex-column min-vh-100 p-0">
             {/* Top Menu */}
             <TopMenu />
 
-            <div className="career-content">
-                <h2 className="career-heading">Job Openings</h2>
-                <input
-                    type="text"
-                    placeholder="Search for a job..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="career-search-input"
-                />
-                <div className="career-list">
+            <div className="container my-5">
+                <h2 className="text-center mb-4">Job Openings</h2>
+
+                {/* Search Input */}
+                <div className="input-group mb-4 w-50 mx-auto">
+                    <input
+                        type="text"
+                        placeholder="Search for a job..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="form-control"
+                        aria-label="Search for a job"
+                    />
+                    <button className="btn btn-primary" type="button">Search</button>
+                </div>
+
+                {/* Career List */}
+                <div className="row row-cols-1 row-cols-md-2 g-4">
                     {filteredCareers.map((career) => (
-                        <div key={career._id} className="career-item">
-                            <h3 className="career-title">{career.title}</h3>
-                            <p className="career-description">{career.description}</p>
-                            <p className="career-location"><strong>Location:</strong> {career.location}</p>
-                            <Link to={`/applyCareer/${career._id}`} className="apply-button">
-                                Apply Now
-                            </Link>
+                        <div key={career._id} className="col">
+                            <div className="card h-100 shadow-sm">
+                                <div className="card-body">
+                                    <h5 className="card-title">{career.title}</h5>
+                                    <p className="card-text">{career.description}</p>
+                                    <p className="card-text"><strong>Location:</strong> {career.location}</p>
+                                    <Link to={`/applyCareer/${career._id}`} className="btn btn-primary w-100 mt-2">
+                                        Apply Now
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
+
+                {/* Message if no jobs are found */}
+                {filteredCareers.length === 0 && (
+                    <div className="text-center mt-5">
+                        <h5>No job openings found. Please check back later!</h5>
+                    </div>
+                )}
             </div>
 
             {/* Footer */}
