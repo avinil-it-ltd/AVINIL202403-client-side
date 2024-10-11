@@ -30,6 +30,7 @@ const Exterior = (props) => {
   const listAllProjects = () => {
     setProjects(Data);
   };
+console.log(projects);
 
   useEffect(() => {
     listAllProjects();

@@ -11,6 +11,8 @@ const CareerPage = () => {
     useEffect(() => {
         getAllCareers()
             .then((data) => {
+                console.log(data);
+                
                 setCareers(data);
             })
             .catch((error) => {
@@ -18,10 +20,15 @@ const CareerPage = () => {
             });
     }, []);
 
-    const filteredCareers = careers.filter((career) =>
-        career.title.toLowerCase().includes(searchTerm.toLowerCase())
+    // const filteredCareers = careers.filter((career) =>
+    //     career.title.toLowerCase().includes(searchTerm.toLowerCase())
+    // );
+    const filteredCareers = careers.filter(
+        (career) =>
+            career.status && // Check if the career is active
+            career.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
+    
     return (
         <div className="container-fluid d-flex flex-column min-vh-100 p-0">
             {/* Top Menu */}
@@ -40,29 +47,38 @@ const CareerPage = () => {
                         className="form-control"
                         aria-label="Search for a job"
                     />
-                    <button className="btn btn-primary" type="button">Search</button>
+                    <button className="btn btn-primary" type="button">
+                        Search
+                    </button>
                 </div>
 
-                {/* Career List */}
-                <div className="row row-cols-1 row-cols-md-2 g-4">
-                    {filteredCareers.map((career) => (
-                        <div key={career._id} className="col">
-                            <div className="card h-100 shadow-sm">
-                                <div className="card-body">
-                                    <h5 className="card-title">{career.title}</h5>
-                                    <p className="card-text">{career.description}</p>
-                                    <p className="card-text"><strong>Location:</strong> {career.location}</p>
-                                    <Link to={`/applyCareer/${career._id}`} className="btn btn-primary w-100 mt-2">
-                                        Apply Now
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Message if no jobs are found */}
-                {filteredCareers.length === 0 && (
+                {/* Career Table */}
+                {filteredCareers.length > 0 ? (
+                    <table className="table table-striped table-bordered text-center">
+                        <thead className="table-primary">
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Description</th>
+                                <th>Location</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredCareers.map((career) => (
+                                <tr key={career._id}>
+                                    <td>{career.title}</td>
+                                    <td>{career.description}</td>
+                                    <td>{career.location}</td>
+                                    <td>
+                                        <Link to={`/applyCareer/${career._id}`} className="btn btn-success">
+                                            Apply Now
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                ) : (
                     <div className="text-center mt-5">
                         <h5>No job openings found. Please check back later!</h5>
                     </div>

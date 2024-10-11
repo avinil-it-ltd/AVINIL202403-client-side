@@ -27,11 +27,17 @@ import PrivacyPolicy from '../pages/PrivacyPolicy/PrivacyPolicy';
 import AboutUs from '../pages/AboutUs/AboutUs';
 import CareerPage from '../pages/Career/CareerPage';
 import Login from '../Auth/Login/Login';
-import ApplicationList from '../Dashboard/ApplicationList';
+
 import ProjectsDetails from '../pages/ProjectsDetails/ProjectsDetails';
 // import Interiror from '../pages/Interior/Interior';
 import Exterior from '../pages/Exterior/Exterior';
 import Interiror from '../pages/Interior/Interior';
+import ApplicationList from '../Dashboard/ApplicationList.js';
+import AppList from '../Dashboard/AppList.js';
+
+
+
+
 
 const AppRoutes = () => {
     return (
@@ -44,8 +50,8 @@ const AppRoutes = () => {
             {/* <Route path="/projects/search/:searchkey" element={<SearchResult />} /> */}
             <Route path="/contactus" element={<Contact />} />
             <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
-            <Route path="/faq" element={<FAQ/>} />
-          
+            <Route path="/faq" element={<FAQ />} />
+
             <Route path="/details/:id" element={<ProjectsDetails />} />
 
             <Route path="/dashboard" element={<Dashboard />}>
@@ -62,11 +68,15 @@ const AppRoutes = () => {
                 <Route path="careers" element={<CareerList />} /> {/* List all careers */}
                 <Route path="addCareer" element={<AddCareer />} /> {/* Add a new career */}
                 <Route path="updateCareer/:id" element={<UpdateCareer />} /> {/* Update an existing career */}
-                <Route path="applications" component={ApplicationList} />
+                <Route path="applications" element={<AppList/>} />
             </Route>
-            <Route path="careers" element={<CareerPage/>} /> {/* List all careers */}
+            <Route path="careers" element={<CareerPage />} /> {/* List all careers */}
             <Route path="applyCareer/:id" element={<CareerApplicationForm />} /> {/* Career application form */}
-              <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            
+            {/* <Route path="newpage" element={NewPage} /> */}
+          
+
         </Routes>
     );
 };

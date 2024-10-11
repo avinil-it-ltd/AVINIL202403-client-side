@@ -3,23 +3,24 @@ import React, { useEffect, useState } from 'react';
 import { getAllCareers, deleteCareer } from '../services/careerService';
 import { Link } from 'react-router-dom';
 import { Table, Button } from 'react-bootstrap';
+import axios from 'axios';
 
 const CareerList = () => {
     const [careers, setCareers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const fetchCareers = async () => {
+        try {
+            const response = await getAllCareers();
+            setCareers(response);
+        } catch (error) {
+            setError('Error fetching careers');
+        } finally {
+            setLoading(false);
+        }
+    };
     useEffect(() => {
-        const fetchCareers = async () => {
-            try {
-                const response = await getAllCareers();
-                setCareers(response);
-            } catch (error) {
-                setError('Error fetching careers');
-            } finally {
-                setLoading(false);
-            }
-        };
+
 
         fetchCareers();
     }, []);
@@ -32,6 +33,17 @@ const CareerList = () => {
             } catch (error) {
                 setError('Error deleting career');
             }
+        }
+    };
+    const activeCareers = careers.filter(career => career.status);
+
+    const handleStatusChange = async (id, status) => {
+        try {
+            await axios.put(`http://localhost:5000/api/careers/status/${id}`, { status });
+            fetchCareers(); // Refresh the list after status update
+        } catch (error) {
+            console.error('Error updating career status:', error);
+            setError('Failed to update career status.');
         }
     };
 
@@ -62,6 +74,17 @@ const CareerList = () => {
                                 <td>{index + 1}</td>
                                 <td>{career.title}</td>
                                 <td>{career.description}</td>
+                                <td>
+                                    <button
+                                        className={`btn ${career.status ? 'btn-danger' : 'btn-success'}`}
+                                        onClick={() => handleStatusChange(career._id, !career.status)}
+                                    >
+                                        {career.status ? 'Deactivate' : 'Activate'}
+                                    </button>
+                                </td>
+
+                              
+
                                 <td>
                                     <Link to={`/dashboard/updateCareer/${career._id}`} className="btn btn-info btn-sm me-2">
                                         Update

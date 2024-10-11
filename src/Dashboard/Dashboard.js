@@ -1,4 +1,3 @@
-import Footer from "../core/footer";
 import TopMenu from "../core/TopMenu";
 import React from 'react';
 import Sidebar from './Sidebar';
@@ -14,7 +13,7 @@ const Dashboard = () => {
                     <Outlet /> {/* This will render the child routes here */}
                 </div>
             </div>
-            {/* <div id="contact"><Footer /></div> */}
+            
         </div>
     );
 }
