@@ -34,6 +34,7 @@ import Exterior from '../pages/Exterior/Exterior';
 import Interiror from '../pages/Interior/Interior';
 import ApplicationList from '../Dashboard/ApplicationList.js';
 import AppList from '../Dashboard/AppList.js';
+import CategoryManagement from '../Dashboard/CategoryManagement.js';
 
 
 
@@ -57,7 +58,7 @@ const AppRoutes = () => {
             <Route path="/dashboard" element={<Dashboard />}>
                 {/* <Route index element={<DashboardMain />} /> Default content for /dashboard */}
                 <Route path="updateProject" element={<ProjectListForUpdate />} />
-                <Route path="updateProject/:id" element={<UpdateProject />} />
+                <Route path="updateproject/:id" element={<UpdateProject />} />
 
                 <Route path="changeImage" element={<ChangeImage />} />
                 {/* <Route path="changeCredentials" element={<ChangeCredentials />} /> */}
@@ -69,6 +70,7 @@ const AppRoutes = () => {
                 <Route path="addCareer" element={<AddCareer />} /> {/* Add a new career */}
                 <Route path="updateCareer/:id" element={<UpdateCareer />} /> {/* Update an existing career */}
                 <Route path="applications" element={<AppList/>} />
+                <Route path="categories" element={<CategoryManagement/>} />
             </Route>
             <Route path="careers" element={<CareerPage />} /> {/* List all careers */}
             <Route path="applyCareer/:id" element={<CareerApplicationForm />} /> {/* Career application form */}

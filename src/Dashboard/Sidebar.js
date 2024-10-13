@@ -11,6 +11,9 @@ const Sidebar = () => {
                 <Nav.Link as={Link} to="/dashboard" className="mb-2">
                     <FaTachometerAlt /> Overall Dashboard
                 </Nav.Link>
+                <Nav.Link as={Link} to="/dashboard/categories" className="mb-2">
+                    <FaPlusCircle /> Categories
+                </Nav.Link>
                 <Nav.Link as={Link} to="/dashboard/addProject" className="mb-2">
                     <FaPlusCircle /> Add New Project
                 </Nav.Link>
