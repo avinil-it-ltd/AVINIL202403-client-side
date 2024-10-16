@@ -8,6 +8,7 @@ const AddCareer = () => {
         title: '',
         description: '',
         requirements: '',
+        salary: '',
         location: ''
     });
 
@@ -28,10 +29,11 @@ const AddCareer = () => {
     };
 
     return (
-        <div className="container my-4">
+        <div className="container my-4 w-75 mx-auto ">
             <form onSubmit={handleSubmit} className="p-4 border border-light rounded shadow">
                 <h2 className="text-center mb-4">Add Career</h2>
                 <div className="mb-3">
+                    <label className='fw-bold pb-2'>Title</label>
                     <input
                         type="text"
                         name="title"
@@ -43,6 +45,7 @@ const AddCareer = () => {
                     />
                 </div>
                 <div className="mb-3">
+                <label className='fw-bold pb-2'>Description</label>
                     <textarea
                         name="description"
                         value={career.description}
@@ -54,6 +57,7 @@ const AddCareer = () => {
                     />
                 </div>
                 <div className="mb-3">
+                <label className='fw-bold pb-2'>Requirements</label>
                     <input
                         type="text"
                         name="requirements"
@@ -64,7 +68,21 @@ const AddCareer = () => {
                         required
                     />
                 </div>
+                {/* salary */}
                 <div className="mb-3">
+                <label className='fw-bold pb-2'>Salary</label>
+                    <input
+                        type="text"
+                        name="salary"
+                        value={career.salary}
+                        onChange={handleChange}
+                        placeholder="Salary"
+                        className="form-control"
+                        required
+                    />
+                </div>
+                <div className="mb-3">
+                <label className='fw-bold pb-2'>Location</label>
                     <input
                         type="text"
                         name="location"

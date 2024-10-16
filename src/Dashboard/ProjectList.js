@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { FaEye, FaEdit, FaTrash } from 'react-icons/fa'; // Import icons
+import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const ProjectList = () => {
     const navigate = useNavigate();
     const [projects, setProjects] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); // Loading state
     const [error, setError] = useState(null);
     const [selectedProject, setSelectedProject] = useState(null);
     const [showDetailsModal, setShowDetailsModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-
 
     // New state variables for filtering
     const [searchText, setSearchText] = useState('');
@@ -26,12 +25,12 @@ const ProjectList = () => {
                 const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects');
                 if (isMounted) {
                     setProjects(response.data.projects || response.data);
-                    setLoading(false);
+                    setLoading(false); // Set loading to false after fetching data
                 }
             } catch (err) {
                 if (isMounted) {
                     setError('Failed to fetch projects');
-                    setLoading(false);
+                    setLoading(false); // Set loading to false even on error
                 }
             }
         };
@@ -44,7 +43,6 @@ const ProjectList = () => {
     }, []);
 
     const handleShowDetails = (project) => {
-        console.log("Project Data: ", project);
         setSelectedProject(project);
         setShowDetailsModal(true);
     };
@@ -74,10 +72,8 @@ const ProjectList = () => {
         }
     };
 
-
-
     const handleNavigateToUpdate = (project) => {
-        navigate(`/dashboard/updateproject/${project._id}`); // Navigate to the update page with project ID
+        navigate(`/dashboard/updateproject/${project._id}`);
     };
 
     // Filtering projects
@@ -88,8 +84,15 @@ const ProjectList = () => {
         return matchesCategory && matchesSearch;
     });
 
+    // Custom Loader Component
+    const Loader = () => (
+        <div className="loader-container text-center mt-5">
+            <div className="custom-loader"></div>
+        </div>
+    );
+
     if (loading) {
-        return <div className="text-center mt-5">Loading projects...</div>;
+        return <Loader />; // Use custom loader here
     }
 
     if (error) {
@@ -97,22 +100,22 @@ const ProjectList = () => {
     }
 
     return (
-        <div className="container mt-5">
-            <h2 className="text-center mb-4">Project List</h2>
+        <div className="container mt-5 p-4 mx-auto card w-75">
+            <h2 className="text-center mb-4">Projects List</h2>
 
             {/* Search and Filter Section */}
             <div className="mb-4">
                 <Form inline className="w-100">
                     <div className="d-flex justify-content-between w-100">
-                        <Form.Group controlId="searchText" className="mr-2" style={{ width: '50%' }}>
+                        <Form.Group controlId="searchText" className="me-4" style={{ width: '50%' }}>
                             <div className="position-relative">
                                 <Form.Control
                                     type="text"
                                     placeholder="Search projects..."
                                     value={searchText}
                                     onChange={(e) => setSearchText(e.target.value)}
-                                    className="rounded-pill border border-dark shadow-sm pr-5" // Updated border class
-                                    style={{ borderColor: '#003366' }} // Dark blue color
+                                    className="rounded-pill border border-dark shadow-sm pr-5"
+                                    style={{ borderColor: '#003366' }}
                                     aria-label="Search projects"
                                 />
                                 <i className="fas fa-search position-absolute" style={{ right: '10px', top: '50%', transform: 'translateY(-50%)', color: '#888' }}></i>
@@ -124,8 +127,8 @@ const ProjectList = () => {
                                 as="select"
                                 value={selectedCategory}
                                 onChange={(e) => setSelectedCategory(e.target.value)}
-                                className="rounded-pill border border-dark shadow-sm" // Updated border class
-                                style={{ borderColor: '#003366' }} // Dark blue color
+                                className="rounded-pill border border-dark shadow-sm"
+                                style={{ borderColor: '#003366' }}
                             >
                                 <option value="">All Categories</option>
                                 {Array.from(new Set(projects.map(project => project.category))).map((category, index) => (
@@ -143,7 +146,7 @@ const ProjectList = () => {
                 <table className="table table-striped">
                     <thead className="thead-dark">
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">Serial</th>
                             <th scope="col">Title</th>
                             <th scope="col">Category</th>
                             <th scope="col">Start Date</th>
@@ -158,13 +161,13 @@ const ProjectList = () => {
                                 <td>{project.category || 'N/A'}</td>
                                 <td>{new Date(project.startDate).toLocaleDateString()}</td>
                                 <td>
-                                    <Button variant="info" onClick={() => handleShowDetails(project)}>
+                                    <Button className='mx-2' variant="info" onClick={() => handleShowDetails(project)}>
                                         <FaEye />
                                     </Button>
-                                    <Button variant="warning" onClick={() => handleNavigateToUpdate(project)}>
+                                    <Button className='mx-2' variant="warning" onClick={() => handleNavigateToUpdate(project)}>
                                         <FaEdit />
                                     </Button>
-                                    <Button variant="danger" onClick={() => handleShowDelete(project)}>
+                                    <Button className='mx-2' variant="danger" onClick={() => handleShowDelete(project)}>
                                         <FaTrash />
                                     </Button>
                                 </td>
@@ -267,6 +270,9 @@ const ProjectList = () => {
 
         </div>
     );
-
 };
+
 export default ProjectList;
+
+
+

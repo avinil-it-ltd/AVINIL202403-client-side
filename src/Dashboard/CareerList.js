@@ -9,6 +9,7 @@ const CareerList = () => {
     const [careers, setCareers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
     const fetchCareers = async () => {
         try {
             const response = await getAllCareers();
@@ -19,9 +20,8 @@ const CareerList = () => {
             setLoading(false);
         }
     };
+
     useEffect(() => {
-
-
         fetchCareers();
     }, []);
 
@@ -35,7 +35,6 @@ const CareerList = () => {
             }
         }
     };
-    const activeCareers = careers.filter(career => career.status);
 
     const handleStatusChange = async (id, status) => {
         try {
@@ -47,8 +46,20 @@ const CareerList = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
+    // Custom Loader JSX
+    const Loader = () => (
+        <div className="loader-container">
+            <div className="custom-loader"></div>
+        </div>
+    );
+
+    if (loading) {
+        return <Loader />; // Use your custom loader here
+    }
+
+    if (error) {
+        return <div>{error}</div>;
+    }
 
     return (
         <div className="container my-4">
@@ -62,7 +73,7 @@ const CareerList = () => {
                 <Table striped bordered hover responsive>
                     <thead className="thead-dark">
                         <tr>
-                            <th>#</th>
+                            <th>Serial</th>
                             <th>Title</th>
                             <th>Description</th>
                             <th>Actions</th>
@@ -82,9 +93,6 @@ const CareerList = () => {
                                         {career.status ? 'Deactivate' : 'Activate'}
                                     </button>
                                 </td>
-
-                              
-
                                 <td>
                                     <Link to={`/dashboard/updateCareer/${career._id}`} className="btn btn-info btn-sm me-2">
                                         Update

@@ -42,8 +42,8 @@ const UpdateCareer = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-3">
-            <h2>Update Career</h2>
+        <form onSubmit={handleSubmit} className="p-3 w-75 card mx-auto p-5 ">
+            <h2 className='my-4'>Update Career</h2>
             <input type="text" name="title" value={career.title} onChange={handleChange} placeholder="Title" className="form-control mb-3" />
             <textarea name="description" value={career.description} onChange={handleChange} placeholder="Description" className="form-control mb-3" />
             <input type="text" name="requirements" value={career.requirements} onChange={handleChange} placeholder="Requirements" className="form-control mb-3" />

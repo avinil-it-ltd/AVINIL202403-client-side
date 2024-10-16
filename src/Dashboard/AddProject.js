@@ -171,7 +171,7 @@ const AddProject = () => {
     };
 
     return (
-        <div className="container mt-5">
+        <div className="container card p-5 w-75 mx-auto shadow-lg m-5 ">
             <h2 className="text-center">Add New Project</h2>
             {message && <div className="alert alert-info">{message}</div>}
             {error && (
@@ -180,8 +180,9 @@ const AddProject = () => {
                 </div>
             )}
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Project Title</label>
+                <h3 className='mt-5 mb-3'>Project Details</h3>
+                <div className="form-group  dashboard_form_desing">
+                    <label className='fw-bold' >Project Title</label>
                     <input
                         type="text"
                         name="title"
@@ -191,8 +192,8 @@ const AddProject = () => {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label>Main Image</label>
+                <div className="form-group  dashboard_form_desing">
+                    <label className='fw-bold' >Main Image</label>
                     <input
                         type="file"
                         name="mainImage"
@@ -202,8 +203,8 @@ const AddProject = () => {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label>Additional Images</label>
+                <div className="form-group  dashboard_form_desing">
+                    <label className='fw-bold' >Additional Images</label>
                     <input
                         type="file"
                         name="additionalImages"
@@ -213,8 +214,8 @@ const AddProject = () => {
                         multiple
                     />
                 </div>
-                <div className="form-group">
-                    <label>Category</label>
+                <div className="form-group dashboard_form_desing">
+                    <label className='fw-bold' >Category</label>
                     <select
                         name="category"
                         value={projectData.category}
@@ -230,8 +231,8 @@ const AddProject = () => {
                         ))}
                     </select>
                 </div>
-                <div className="form-group">
-                    <label>Subcategory</label>
+                <div className="form-group dashboard_form_desing">
+                    <label className='fw-bold' >Subcategory</label>
                     <select
                         name="subcategory"
                         value={projectData.subcategory}
@@ -247,8 +248,8 @@ const AddProject = () => {
                         ))}
                     </select>
                 </div>
-                <div className="form-group">
-                    <label>Description</label>
+                <div className="form-group dashboard_form_desing">
+                    <label className='fw-bold' >Description</label>
                     <textarea
                         name="description"
                         value={projectData.description}
@@ -258,9 +259,12 @@ const AddProject = () => {
                         required
                     />
                 </div>
-                <h3 className="mt-4">Client Details</h3>
-                <div className="form-group">
-                    <label>Client Name</label>
+
+
+
+                <h3 className="mt-5  pt-5">Client Details</h3>
+                <div className="form-group dashboard_form_desing">
+                    <label className='fw-bold' >Client Name</label>
                     <input
                         type="text"
                         name="client.name"
@@ -270,8 +274,8 @@ const AddProject = () => {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label>Client Email</label>
+                <div className="form-group dashboard_form_desing">
+                    <label className='fw-bold' >Client Email</label>
                     <input
                         type="email"
                         name="client.email"
@@ -281,8 +285,8 @@ const AddProject = () => {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label>Client Phone</label>
+                <div className="form-group dashboard_form_desing">
+                    <label className='fw-bold' >Client Phone</label>
                     <input
                         type="text"
                         name="client.phone"
@@ -293,9 +297,9 @@ const AddProject = () => {
                     />
                 </div>
 
-                <h3 className="mt-4">Client Review</h3>
-                <div className="form-group">
-                    <label>Rating</label>
+                <h3 className="mt-5 pt-5 ">Client Review</h3>
+                <div className="form-group dashboard_form_desing">
+                    <label className='fw-bold' >Rating</label>
                     <input
                         type="number"
                         name="review.rating"
@@ -307,8 +311,8 @@ const AddProject = () => {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label>Comment</label>
+                <div className="form-group dashboard_form_desing">
+                    <label className='fw-bold' >Comment</label>
                     <textarea
                         name="review.comment"
                         value={projectData.review.comment}
@@ -319,8 +323,8 @@ const AddProject = () => {
                     />
                 </div>
 
-                <div className="form-group">
-                    <label>Start Date</label>
+                <div className="form-group dashboard_form_desing">
+                    <label className='fw-bold'  >Start Date</label>
                     <input
                         type="date"
                         name="startDate"
@@ -330,8 +334,8 @@ const AddProject = () => {
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label>End Date</label>
+                <div className="form-group dashboard_form_desing">
+                    <label className='fw-bold'>End Date</label>
                     <input
                         type="date"
                         name="endDate"
@@ -342,7 +346,10 @@ const AddProject = () => {
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary mt-3">Add Project</button>
+                <div className='d-flex mt-4 justify-content-center align-items-center'>
+                    <button type="submit" className="btn py-2 fw-bold btn-primary w-50 fs-5 mt-3">Add Project</button>
+                </div>
+
             </form>
         </div>
     );

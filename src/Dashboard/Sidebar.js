@@ -37,9 +37,9 @@ const Sidebar = () => {
                 <Nav.Link as={Link} to="/dashboard/careers" className="mb-2">
                     <FaBriefcase /> View Careers
                 </Nav.Link>
-                <Nav.Link as={Link} to="/dashboard/addCareer" className="mb-2">
+                {/* <Nav.Link as={Link} to="/dashboard/addCareer" className="mb-2">
                     <FaPlusCircle /> Add New Career
-                </Nav.Link>
+                </Nav.Link> */}
 
                 <h5 className="mt-4">Applications Management</h5>
                 <Nav.Link as={Link} to="/dashboard/applications" className="mb-2">

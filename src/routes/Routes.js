@@ -57,6 +57,9 @@ const AppRoutes = () => {
 
             <Route path="/details/:id" element={<ProjectsDetails />} />
 
+
+
+
             <Route path="/dashboard" element={<Dashboard />}>
                 <Route index element={<DashboardMain />} /> 
                 <Route path="updateProject" element={<ProjectListForUpdate />} />

@@ -16,6 +16,8 @@ const CategoryManagement = () => {
     const [editingCategoryId, setEditingCategoryId] = useState(null);
 
 
+
+    
     useEffect(() => {
         fetchCategories();
     }, []);
