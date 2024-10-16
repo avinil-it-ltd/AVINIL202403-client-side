@@ -39,7 +39,7 @@ const CareerList = () => {
 
     const handleStatusChange = async (id, status) => {
         try {
-            await axios.put(`http://localhost:5000/api/careers/status/${id}`, { status });
+            await axios.put(`https://3pcommunicationsserver.vercel.app/api/careers/status/${id}`, { status });
             fetchCareers(); // Refresh the list after status update
         } catch (error) {
             console.error('Error updating career status:', error);

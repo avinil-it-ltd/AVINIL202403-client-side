@@ -133,7 +133,7 @@ const Exterior = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/projects'); // Assuming your API route is '/api/projects'
+        const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects'); // Assuming your API route is '/api/projects'
         const exteriorProjects = response.data.projects.filter(project => project.category.toLowerCase() === 'exterior design')
 
         setProjects(exteriorProjects);

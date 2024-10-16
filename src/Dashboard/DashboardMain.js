@@ -18,7 +18,7 @@ const DashboardMain = () => {
         const fetchData = async () => {
             // Fetch project data and counts
             try {
-                const projectResponse = await axios.get('http://localhost:5000/api/projects');
+                const projectResponse = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects');
                 const projects = projectResponse.data;
                 setProjectData(projects.projects);
                 console.log(projects.projects);
@@ -41,7 +41,7 @@ const DashboardMain = () => {
 
             for (const { endpoint, setter } of counts) {
                 try {
-                    const response = await axios.get(`http://localhost:5000/api/${endpoint}`);
+                    const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/${endpoint}`);
                     setter(response.data.length);
                 } catch (error) {
                     console.error(`Error fetching ${endpoint}:`, error);

@@ -31,7 +31,7 @@ const AddProject = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/categories');
+                const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/categories');
                 setCategories(response.data);
             } catch (error) {
                 console.error('Error fetching categories:', error);
@@ -142,7 +142,7 @@ const AddProject = () => {
                 additionalImages: additionalImageUrls // Ensure we're sending the URLs
             };
 
-            const response = await axios.post('http://localhost:5000/api/projects', dataToSubmit);
+            const response = await axios.post('https://3pcommunicationsserver.vercel.app/api/projects', dataToSubmit);
             setMessage('Project added successfully!');
             setProjectData({
                 title: '',

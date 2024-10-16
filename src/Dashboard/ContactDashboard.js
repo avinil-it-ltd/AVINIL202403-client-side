@@ -10,7 +10,7 @@ const ContactDashboard = () => {
 
     const fetchContacts = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/contacts');
+            const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/contacts');
             setContacts(response.data);
         } catch (err) {
             console.error("Error fetching contacts:", err);
@@ -20,7 +20,7 @@ const ContactDashboard = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/api/contacts/${id}`);
+            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/contacts/${id}`);
             fetchContacts(); // Refresh contacts after deletion
         } catch (err) {
             console.error("Error deleting contact:", err);
@@ -39,7 +39,7 @@ const ContactDashboard = () => {
                 shortlisted: !contact.shortlisted, // Toggle shortlisted status
             };
 
-            await axios.put(`http://localhost:5000/api/contacts/${contact._id}/shortlisted`, {
+            await axios.put(`https://3pcommunicationsserver.vercel.app/api/contacts/${contact._id}/shortlisted`, {
                 shortlisted: updatedContact.shortlisted,
             });
 

@@ -16,7 +16,7 @@ const Contact = () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:5000/api/contacts', { // Changed to /contact
+            const response = await axios.post('https://3pcommunicationsserver.vercel.app/api/contacts', { // Changed to /contact
                 name,
                 email,
                 phoneNumber, // Ensure this matches your model

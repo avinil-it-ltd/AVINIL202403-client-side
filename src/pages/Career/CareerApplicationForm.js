@@ -18,7 +18,7 @@ const CareerApplicationForm = () => {
     useEffect(() => {
         const fetchCareers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/careers');
+                const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/careers');
                 setCareers(response.data);
             } catch (error) {
                 console.error('Error fetching careers:', error);
@@ -86,7 +86,7 @@ const CareerApplicationForm = () => {
                 formData.append('photo', photoUrl);
             }
 
-            const response = await axios.post('http://localhost:5000/api/applications', formData, {
+            const response = await axios.post('https://3pcommunicationsserver.vercel.app/api/applications', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

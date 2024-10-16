@@ -38,7 +38,7 @@ const UpdateProject = () => {
     useEffect(() => {
         const fetchProject = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/projects/${id}`);
+                const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/projects/${id}`);
                 const fetchedProject = response.data.project;
 
                 // Format startDate and endDate
@@ -56,7 +56,7 @@ const UpdateProject = () => {
 
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/categories');
+                const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/categories');
                 setCategories(response.data);
             } catch (error) {
                 setError('Failed to load categories. Please try again later.');
@@ -182,7 +182,7 @@ const UpdateProject = () => {
                 deleteMainImage,
             };
 
-            await axios.put(`http://localhost:5000/api/projects/${id}`, dataToSubmit);
+            await axios.put(`https://3pcommunicationsserver.vercel.app/api/projects/${id}`, dataToSubmit);
             navigate('/dashboard/projects');
         } catch (error) {
             setError('Error updating project. Please try again.');
