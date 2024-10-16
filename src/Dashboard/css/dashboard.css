@@ -1,0 +1,82 @@
+.sidebar {
+    width: 270px; /* Set a fixed width for the sidebar */
+    background-color: #f8f9fa; /* Background color */
+    transition: width 0.3s; /* Smooth transition for width changes */
+    position: fixed; /* Fixed position to prevent scrolling with the content */
+    top: 40px; /* Adjust this according to your top menu height */
+    height: calc(100vh - 40px); /* Full height minus the top menu */
+    overflow-y: auto; /* Enable vertical scrolling */
+    z-index: 1000; /* Ensure it stays above other elements */
+    padding-top: 50px;
+}
+
+.sidebar .nav-link {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center items vertically */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+.sidebar .nav-link svg {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.sidebar h5 {
+    margin-left: 15px; /* Space for heading */
+}
+
+/* Optional: Add padding to body to prevent content being hidden behind the sidebar */
+
+
+
+
+.dashboard-container {
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.cards-row {
+    margin-bottom: 20px; /* Space between card rows */
+}
+
+.quote-section {
+    background-color: #e9ecef; /* Slightly darker background for quote */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for quote card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.quote-card {
+    border-left: 5px solid #007bff; /* Highlight quote card */
+}
+
+blockquote {
+    font-style: italic; /* Italic style for the quote */
+}
+
+
+.dashboard-container {
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.cards-row {
+    margin-bottom: 20px; /* Space between card rows */
+}
+
+.quote-section {
+    border-radius: 10px; /* Rounded corners for quote card */
+}
+
+.quote-card {
+    border-left: 5px solid #007bff; /* Highlight quote card */
+}
+
+blockquote {
+    font-style: italic; /* Italic style for the quote */
+}

@@ -32,9 +32,11 @@ import ProjectsDetails from '../pages/ProjectsDetails/ProjectsDetails';
 // import Interiror from '../pages/Interior/Interior';
 import Exterior from '../pages/Exterior/Exterior';
 import Interiror from '../pages/Interior/Interior';
-import ApplicationList from '../Dashboard/ApplicationList.js';
+
 import AppList from '../Dashboard/AppList.js';
 import CategoryManagement from '../Dashboard/CategoryManagement.js';
+import ContactDashboard from '../Dashboard/ContactDashboard.js';
+import DashboardMain from '../Dashboard/DashboardMain.js';
 
 
 
@@ -56,7 +58,7 @@ const AppRoutes = () => {
             <Route path="/details/:id" element={<ProjectsDetails />} />
 
             <Route path="/dashboard" element={<Dashboard />}>
-                {/* <Route index element={<DashboardMain />} /> Default content for /dashboard */}
+                <Route index element={<DashboardMain />} /> 
                 <Route path="updateProject" element={<ProjectListForUpdate />} />
                 <Route path="updateproject/:id" element={<UpdateProject />} />
 
@@ -64,6 +66,9 @@ const AppRoutes = () => {
                 {/* <Route path="changeCredentials" element={<ChangeCredentials />} /> */}
                 <Route path="projects" element={<ProjectList />} /> {/* Add this line */}
                 <Route path="addProject" element={<AddProject />} /> {/* Add this line */}
+
+
+                <Route path="contactDashboard" element={<ContactDashboard />} /> {/* Add this line */}
 
                 {/* Career-related routes */}
                 <Route path="careers" element={<CareerList />} /> {/* List all careers */}
