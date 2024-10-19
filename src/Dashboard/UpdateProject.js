@@ -121,6 +121,7 @@ const UpdateProject = () => {
         }
     };
 
+
     // Handle additional images change
     const handleAdditionalImagesChange = (e) => {
         setAdditionalImages([...e.target.files]);
@@ -136,7 +137,7 @@ const UpdateProject = () => {
     const uploadImageToCloudinary = async (file) => {
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('upload_preset', '3pcommunications');
+        formData.append('upload_preset', process.env.CLOUDINARY_CLOUD_NAME);
 
         try {
             const response = await axios.post(`https://api.cloudinary.com/v1_1/avinilit/image/upload`, formData);

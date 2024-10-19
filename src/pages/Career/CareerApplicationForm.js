@@ -56,6 +56,8 @@ const CareerApplicationForm = () => {
 
         try {
             const response = await axios.post(`https://api.cloudinary.com/v1_1/avinilit/image/upload`, formData);
+            console.log(response.data.secure_url);
+            
             return response.data.secure_url; // Return the uploaded image URL
         } catch (error) {
             console.error('Error uploading image to Cloudinary:', error);
