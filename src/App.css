@@ -41,6 +41,10 @@ body{
   height: 90vh;
 }
 
+.servicebg{
+  background-color:#3a5b9e34
+}
+
 .contact-modal .modal-content {
   background-color: #ffc720;
   /* opacity: 0.7; */

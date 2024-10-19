@@ -58,11 +58,27 @@ if (loading) {
           <img src={bioImg} alt="Example" className="img-fluid" />
         </Col>
         <Col className="ps-5 pt-5" md={6}>
-          <h2 className="heading_color" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Example Heading</h2>
-          <p className="my-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet consectetur dolor in elementum. Nulla vehicula lorem nec neque scelerisque, a malesuada risus aliquet.
+          <h2
+            className="heading_color"
+            style={{ fontFamily: "'Aref Ruqaa', serif" }}
+          >
+            {" "}
+            Our Interior Projects
+          </h2>
+          <p style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+            Transforming Spaces into Homes
           </p>
-          <button className="BioButton mt-5 pt-5">Read More ...</button>
+          <p className="my-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+            At{" "}
+            <span style={{ color: "#FFB300", fontWeight: "bold" }}>
+              3P Communication
+            </span>
+            , we believe that every space tells a story. Our interior design
+            projects are meticulously crafted to enhance the beauty and
+            functionality of your home or office. From contemporary designs to
+            timeless classics, our team of expert designers works closely with
+            clients to bring their visions to life.
+          </p>
         </Col>
       </Row>
     </Container>

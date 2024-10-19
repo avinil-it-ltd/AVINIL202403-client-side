@@ -219,37 +219,73 @@ const IndexHome = (props) => {
   )
 
   const ourServices = () => (
-    <div className="ourServiceDesign ">
+    <div className="servicebg">
       {/* style={{ backgroundImage: "url('/images/bg-5.jpg')", }} */}
       <div className=" py-5 " style={{ opacity: "0.9" }}>
         {/* body_background */}
-        <div className="text-center h2 heading_color py-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}><h2>Our Services</h2></div>
+        <div
+          className="text-center h2 heading_color py-5"
+          style={{ fontFamily: "'Aref Ruqaa', serif" }}
+        >
+          <h2>Explore Our Services </h2>
+        </div>
+
         <div className="row p-4 pb-5">
           <div className="col">
-
-            <div className="text-center "><img src={eventImage} className="imageBorder" width="350px" height="250px"></img></div>
-            <div className="text-center  h4 text-danger p-2 " style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " " }}>
+            <div className="text-center ">
+              <img
+                src={eventImage}
+                className="imageBorder"
+                width="350px"
+                height="250px"
+              ></img>
+            </div>
+            <div
+              className="text-center  h4 text-danger p-2 "
+              style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " " }}
+            >
               Event
             </div>
-
           </div>
           <div className="col">
-
-            <div className="text-center "><img src={exteriorImage} className="imageBorder" width="350px" height="250px"></img></div>
-            <div className="text-center h4 text-danger p-2" style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " #ffc107" }}>
+            <div className="text-center ">
+              <img
+                src={exteriorImage}
+                className="imageBorder"
+                width="350px"
+                height="250px"
+              ></img>
+            </div>
+            <div
+              className="text-center h4 text-danger p-2"
+              style={{
+                fontFamily: "'Aref Ruqaa', serif",
+                textDecoration: " #ffc107",
+              }}
+            >
               Exterior
             </div>
           </div>
           <div className="col">
-
-            <div className="text-center "><img src={InteriordesignPic} className="imageBorder" width="350px" height="250px"></img></div>
-            <div className="text-center h4 text-danger p-2" style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " " }}>
-              Interior</div>
+            <div className="text-center ">
+              <img
+                src={InteriordesignPic}
+                className="imageBorder"
+                width="350px"
+                height="250px"
+              ></img>
+            </div>
+            <div
+              className="text-center h4 text-danger p-2"
+              style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " " }}
+            >
+              Interior
+            </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 
 
 

@@ -57,11 +57,28 @@ if (loading) {
           <img src={bioImg} alt="Example" className="img-fluid" />
         </Col>
         <Col className="ps-5 pt-5" md={6}>
-          <h2 className="heading_color" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Example Heading</h2>
-          <p className="my-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet consectetur dolor in elementum. Nulla vehicula lorem nec neque scelerisque, a malesuada risus aliquet.
+          <h2
+            className="heading_color"
+            style={{ fontFamily: "'Aref Ruqaa', serif" }}
+          >
+            Exterior Projects
+          </h2>
+          <p style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+            Transforming Your Outdoor Spaces
           </p>
-          <button className="BioButton mt-5 pt-5">Read More ...</button>
+          <p className="my-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+            At{" "}
+            <span style={{ color: "#FFB300", fontWeight: "bold" }}>
+              3P Communication
+            </span>
+            , we understand that the exterior of your property is just as
+            important as the interior. Our exterior design projects are focused
+            on enhancing curb appeal, functionality, and outdoor living
+            experiences. Whether it's a residential garden, commercial facade,
+            or a complete landscape overhaul, we are dedicated to bringing your
+            vision to life.
+          </p>
+         
         </Col>
       </Row>
     </Container>
