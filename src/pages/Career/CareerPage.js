@@ -59,7 +59,7 @@ const CareerPage = () => {
                             className="form-control py-0 my-0 "
                             aria-label="Search for a job"
                         />
-                        <button className="btn btn-info text-white fw-bold px-4 ms-2" type="button">
+                        <button className="btn btn-secondary text-white fw-bold px-4 ms-2" type="button">
                             Search
                         </button>
                     </div>
@@ -92,7 +92,7 @@ const CareerPage = () => {
 
                                                 {/* right Column: Location and Experience */}
                                                 <div className="col-md-4 mb-2 text-center">
-                                                    <Link to={`/applyCareer/${career._id}`} className="btn btn-info text-white  px-4">
+                                                    <Link to={`/applyCareer/${career._id}`} className="btn btn-warning text-white  px-4">
                                                         View Details
                                                     </Link>
                                                 </div>
