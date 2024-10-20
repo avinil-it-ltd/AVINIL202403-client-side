@@ -37,6 +37,8 @@ import AppList from '../Dashboard/AppList.js';
 import CategoryManagement from '../Dashboard/CategoryManagement.js';
 import ContactDashboard from '../Dashboard/ContactDashboard.js';
 import DashboardMain from '../Dashboard/DashboardMain.js';
+import ChangeAboutDetails from '../Dashboard/ChangeAboutDetails.js';
+import UpdateContactDetails from '../Dashboard/UpdateContactDetails.js';
 
 
 
@@ -79,7 +81,12 @@ const AppRoutes = () => {
                 <Route path="updateCareer/:id" element={<UpdateCareer />} /> {/* Update an existing career */}
                 <Route path="applications" element={<AppList/>} />
                 <Route path="categories" element={<CategoryManagement/>} />
+                <Route path="UpdateAboutDetails" element={<ChangeAboutDetails/>} />
+                <Route path="UpdateContactDetails" element={<UpdateContactDetails/>} />
             </Route>
+
+
+
             <Route path="careers" element={<CareerPage />} /> {/* List all careers */}
             <Route path="applyCareer/:id" element={<CareerApplicationForm />} /> {/* Career application form */}
             <Route path="/login" element={<Login />} />

@@ -27,10 +27,16 @@ const Sidebar = () => {
                 <Nav.Link as={Link} to="/dashboard/changeCredentials" className="mb-2">
                     <FaUserEdit /> Change Email/Password
                 </Nav.Link>
+                <Nav.Link as={Link} to="/dashboard/UpdateAboutDetails" className="mb-2">
+                    <FaUserEdit /> Change About Details
+                </Nav.Link>
 
                 <h5 className="mt-4">Contact Management</h5>
                 <Nav.Link as={Link} to="/dashboard/contactDashboard" className="mb-2">
                     <FaBriefcase /> View Contact Leads
+                </Nav.Link>
+                <Nav.Link as={Link} to="/dashboard/UpdateContactDetails" className="mb-2">
+                    <FaBriefcase /> Change Contact Details
                 </Nav.Link>
 
                 <h5 className="mt-4">Career Management</h5>

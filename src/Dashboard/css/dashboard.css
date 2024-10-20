@@ -80,3 +80,82 @@ blockquote {
 blockquote {
     font-style: italic; /* Italic style for the quote */
 }
+
+
+
+
+/* about update modal css */
+
+
+.custom-modal .modal-content {
+    background-color: #f8f9fa; /* Light grey background */
+    border-radius: 10px;       /* Rounded corners */
+    padding: 20px;             /* Inner padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    border: 2px solid #007bff; /* Border with primary color */
+    transition: transform 0.3s ease-in-out; /* Smooth open animation */
+}
+
+.custom-modal .modal-header {
+    background-color: #007bff; /* Primary color background */
+    color: #fff;               /* White text */
+    border-bottom: none;       /* Remove default border */
+    padding: 1rem;             /* Custom padding */
+}
+
+.custom-modal .modal-footer {
+    border-top: none;          /* Remove default border */
+    justify-content: center;   /* Center-align buttons */
+}
+
+.custom-modal .modal-footer .btn {
+    padding: 0.5rem 1.5rem;    /* Custom button padding */
+    border-radius: 50px;       /* Rounded buttons */
+}
+
+.custom-modal .modal-content:hover {
+    transform: scale(1.03);    /* Slight zoom effect on hover */
+}
+
+.custom-modal .modal-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+/* Modal backdrop customization */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5); /* Darken the backdrop */
+}
+
+/* Animations for smooth modal appearance */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.custom-modal .modal-content {
+    animation: modalFadeIn 0.5s ease-in-out; /* Fade-in animation */
+}
+
+
+
+
+
+.custom-modal p {
+    white-space: nowrap; /* Prevent the text from wrapping */
+    overflow: hidden;    /* Hide the overflowed part */
+    text-overflow: ellipsis; /* Add an ellipsis for long text */
+  }
+  
+  .custom-modal p:hover {
+    white-space: normal; /* On hover, show the full content */
+    overflow: visible;
+  }
+  

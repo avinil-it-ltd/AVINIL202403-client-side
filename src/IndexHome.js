@@ -6,6 +6,8 @@ import styled, { keyframes } from 'styled-components';
 import TopMenu from "./core/TopMenu"
 import Footer from "./core/footer"
 import Data from "./projects.json"
+import { Accordion, Card, Button } from 'react-bootstrap';
+
 
 import {  Container, Row, Col } from "react-bootstrap"
 import eventImage from '../src/assets/images/event'
@@ -140,6 +142,52 @@ const IndexHome = (props) => {
     autoSlideInterval.current = setInterval(nextSlide, 3000);
     return () => clearInterval(autoSlideInterval.current);
   }, [currentIndex]);
+
+
+
+
+
+
+
+  // Faq section functionality code 
+
+  const [activeKey, setActiveKey] = useState(null);
+
+  const toggleActiveKey = (key) => {
+    setActiveKey(activeKey === key ? null : key);
+  };
+
+
+  const faqs = [
+    {
+      question: 'What services do you offer?',
+      answer: 'We offer interior and exterior design, event management, and full renovation services. Our team works to turn your ideas into reality with custom designs and professional execution.',
+    },
+    {
+      question: 'How long does a typical project take?',
+      answer: 'The timeline varies based on the project size and scope. For smaller projects, it might take 4-6 weeks, while larger renovations could take several months. We always provide an estimated timeline at the start.',
+    },
+    {
+      question: 'What is your pricing structure?',
+      answer: 'Our pricing is based on the scope of work, materials, and custom designs. After discussing your requirements, we will provide a detailed quote that aligns with your budget.',
+    },
+    {
+      question: 'Do you offer consultations?',
+      answer: 'Yes, we offer both virtual and in-person consultations. During the consultation, we’ll discuss your vision, ideas, and needs to determine the best design plan for you.',
+    },
+    {
+      question: 'Can I make changes during the design process?',
+      answer: 'Absolutely! We encourage client involvement throughout the design process and are happy to accommodate changes, provided they are within the scope of the project and do not impact deadlines significantly.',
+    },
+    {
+      question: 'Can I make changes during the design process?',
+      answer: 'Absolutely! We encourage client involvement throughout the design process and are happy to accommodate changes, provided they are within the scope of the project and do not impact deadlines significantly.',
+    },
+ 
+  ];
+
+
+
 
 
 
@@ -386,21 +434,73 @@ const IndexHome = (props) => {
           {testimonial.map((t, index) => (
             <div className="slide  " key={index} style={{ flex: `0 0 ${100 / slidesPerView}%` }}>
               <div>
-                <p className="card card_style mx-3 py-4 px-4 ">
+                <p className="card  card_style mx-3 py-4 px-4 ">
                   <span className="fw-bold">{t?.name}</span>
                   <span>" {t?.review} " </span>
                 </p>
               </div>
+              {/* #C39835 */}
             </div>
           ))}
         </div>
         <div className="slider-controls ">
-          <button className="prev special_button" onClick={prevSlide}>Prev</button>
-          <button className="next me-3 special_button" onClick={nextSlide}>Next</button>
+          {/* <button className="prev " onClick={prevSlide}> </button> */}
+          {/* <button className="next me-3 special_button" onClick={nextSlide}>Next</button> */}
         </div>
       </div>
     </div>
   )
+
+
+
+
+  
+  const faq = () => (
+ <Container className="my-5 py-5">
+      <Row className="align-items-center">
+        {/* FAQ Section */}
+        <Col lg={6} className="mb-4">
+          <h2 className=" heading_color mb-4" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Frequently Asked Questions</h2>
+          <Accordion activeKey={activeKey}>
+            {faqs.map((faq, index) => (
+              <Card key={index} className="mb-3">
+                <Card.Header>
+                  <h5 className="mb-0">
+                    <Button
+                      variant="link"
+                      onClick={() => toggleActiveKey(index)}
+                      aria-expanded={activeKey === index}
+                      className={`btn-block text-start  text-decoration-none ${activeKey === index ? 'font-weight-bold' : ''}`}
+                    >
+                      {faq.question}
+                    </Button>
+                  </h5>
+                </Card.Header>
+                <Accordion.Collapse eventKey={index}>
+                  <Card.Body>{faq.answer}</Card.Body>
+                </Accordion.Collapse>
+              </Card>
+            ))}
+          </Accordion>
+        </Col>
+
+        {/* Right Side Image */}
+        <Col lg={6}>
+          <div className="text-center">
+            <img
+              src={right} // Replace with your desired image link
+              alt="FAQ Illustration"
+              className="w-100"
+              style={{ borderRadius: '10px' }}
+            />
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  )
+
+
+
 
   return (
     <div className="g-0" style={{ maxWidth: "100vw" }}>
@@ -415,6 +515,7 @@ const IndexHome = (props) => {
         <div>{OurClients()}</div>
         <div>{ThreeImgSection()}</div>
         <div>{testimonials()}</div>
+        <div>{faq()}</div>
         <br /><br />
         <div id="contact"><Footer /></div>
 
