@@ -2,8 +2,9 @@ import React, { useRef, useState } from "react";
 import TopMenu from "../../core/TopMenu";
 import Footer from "../../core/footer";
 import axios from "axios";
-import "../../custom.css";
+import Swal from "sweetalert2"; // Import SweetAlert2
 import emailjs from "@emailjs/browser";
+import "../../custom.css";
 
 const Contact = () => {
   const form = useRef();
@@ -12,8 +13,6 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [message, setMessage] = useState("");
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,8 +47,15 @@ const Contact = () => {
       );
 
       if (response.status === 201) {
-        setSuccess(true);
-        setError(false);
+        Swal.fire({
+          icon: "success",
+          title: "Message Sent!",
+          text: "Thank you. Our team will contact you soon.",
+          position: "center", // Centered Swal
+          showConfirmButton: true,
+          confirmButtonColor: "#28a745", // Custom green button color
+        });
+
         // Reset form fields
         setName("");
         setEmail("");
@@ -58,28 +64,16 @@ const Contact = () => {
       }
     } catch (err) {
       console.error("Backend error:", err);
-      setError(true);
-      setSuccess(false);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong. Please try again.",
+        position: "center", // Centered Swal
+        showConfirmButton: true,
+        confirmButtonColor: "#d33", // Custom red button color
+      });
     }
   };
-
-  const showSuccess = () => (
-    <div
-      className="alert alert-warning text-dark"
-      style={{ display: success ? "" : "none" }}
-    >
-      Thank you. Our team will contact you soon.
-    </div>
-  );
-
-  const showError = () => (
-    <div
-      className="alert alert-danger text-dark"
-      style={{ display: error ? "" : "none" }}
-    >
-      Something went wrong. Please try again.
-    </div>
-  );
 
   const contactForm = () => (
     <div>
@@ -160,8 +154,6 @@ const Contact = () => {
             >
               Contact Us
             </p>
-            {showSuccess()}
-            {showError()}
             <form ref={form} onSubmit={handleSubmit}>
               <div className="form-group">
                 <label className="text-dark my-1">Name:</label>

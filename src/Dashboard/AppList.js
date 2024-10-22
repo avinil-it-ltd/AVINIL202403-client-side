@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaEye } from 'react-icons/fa';
-
+import Swal from "sweetalert2";
 const AppList = () => {
     const [applications, setApplications] = useState([]);
     const [careers, setCareers] = useState([]);
@@ -71,18 +71,42 @@ const AppList = () => {
         }
     };
     // Example of the delete handler in your React component
-    const handleDelete = async (id) => {
-        if (window.confirm('Are you sure you want to delete this application?')) {
-            try {
-                await axios.delete(`https://3pcommunicationsserver.vercel.app/api/applications/${id}`);
-                fetchApplications(); // Refresh the list after deleting
-            } catch (error) {
-                console.error('Error deleting application:', error);
-                setError('Failed to delete application.');
-            }
-        }
-    };
+     const handleDelete = async (id) => {
+       // Use SweetAlert for delete confirmation
+       const result = await Swal.fire({
+         title: "Are you sure?",
+         text: "You won't be able to revert this!",
+         icon: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#d33",
+         cancelButtonColor: "#3085d6",
+         confirmButtonText: "Yes, delete it!",
+       });
 
+       if (result.isConfirmed) {
+         try {
+           await axios.delete(
+             `https://3pcommunicationsserver.vercel.app/api/applications/${id}`
+           );
+           fetchApplications(); // Refresh the list after deleting
+          Swal.fire({
+            icon: "success",
+            title: "Application deleted successfully!",
+          
+            confirmButtonText: "OK",
+            confirmButtonColor: "#28a745",
+          });
+         } catch (error) {
+           console.error("Error deleting application:", error);
+           setError("Failed to delete application.");
+           Swal.fire(
+             "Error!",
+             "There was a problem deleting the application.",
+             "error"
+           );
+         }
+       }
+     };
     // Filter applications based on selected career and search term
     const filteredApplications = applications.filter((application) => {
         const matchesCareer = selectedCareer ? application.careerId._id === selectedCareer : true;

@@ -186,54 +186,55 @@ const AboutUs = (props) => {
 
   return (
     <div className="container" style={{ maxWidth: "100vw" }}>
-      <div>
-        <TopMenu />
-      </div>
+      <TopMenu />
+
       <div className="row">
-        <div className="col-12 pt-5 mt-5 mt-md-0 overflow-auto d-flex align-items-center">
-          <div className="col-md-4 text-center" style={{ paddingLeft: "50px" }}>
+        <div className="col-12 pt-5 mt-5 mt-md-0 d-flex justify-content-center">
+          <div className="col-md-4 text-center">
             <div
               className="rounded bg-light p-3 shadow mx-auto"
-              style={{ width: "400px", height: "350px" }}
+              style={{ width: "450px", height: "450px" }}
             >
               <img
                 src={profile}
                 alt="Profile"
-                className="img-fluid rounded-circle border border-white"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                className="img-fluid  border border-white mb-3 mt-5"
+                style={{ width: "100%", height: "270px", objectFit: "cover" }}
               />
+              <p
+                className=" heading_color mb-0"
+                style={{ fontFamily: "'Aref Ruqaa', serif" }}
+              >
+                Prokash Banik
+              </p>
+              <p
+                className=" text-black mt-0"
+                style={{ fontFamily: "'Aref Ruqaa', serif" }}
+              >
+                CEO, 3P Communication
+              </p>
             </div>
-            <p
-              className="h4 heading_color mb-0 mt-3"
-              style={{ fontFamily: "'Aref Ruqaa', serif" }}
-            >
-              Prokash Banik
-            </p>
-            <p
-              className="h6 text-black mt-0"
-              style={{ fontFamily: "'Aref Ruqaa', serif" }}
-            >
-              CEO, 3P Communication
-            </p>
           </div>
+        </div>
 
-          <div
-            className="col-md-8"
-            style={{ paddingRight: "30px", paddingLeft: "45px" }}
+        <div className="col-12 text-center mt-4">
+          <h3
+            className="heading_color mt-3 mb-3"
+            style={{ fontFamily: "'Aref Ruqaa', serif" }}
           >
-            <h3
-              className="heading_color mt-3 mb-3"
-              style={{ fontFamily: "'Aref Ruqaa', serif" }}
-            >
-              Get To Know Our Director
-            </h3>
-            <div className="my-auto" style={{ paddingRight: "40px" }}>
+            Get To Know Our Director
+          </h3>
+          <div
+            className="my-auto"
+            style={{ maxWidth: "600px", margin: "0 auto" }}
+          >
+            <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
               fugit quod iure dolores ad aliquam sequi dicta possimus
               asperiores? Quas. Lorem ipsum dolor sit amet consectetur
               adipisicing elit. Distinctio cumque eum earum pariatur dolores
               accusamus similique cum consectetur sunt doloremque!
-            </div>
+            </p>
           </div>
         </div>
       </div>

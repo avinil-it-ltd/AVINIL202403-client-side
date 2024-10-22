@@ -9622,6 +9622,11 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
+sweetalert2@^11.14.3:
+  version "11.14.3"
+  resolved "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.14.3.tgz"
+  integrity sha512-6NuBHWJCv2gtw4y8PUXLB41hty+V6U2mKZMAvydL1IRPcORR0yuyq3cjFD/+ByrCk3muEFggbZX/x6HwmbVfbA==
+
 swiper@^11.1.9:
   version "11.1.9"
   resolved "https://registry.npmjs.org/swiper/-/swiper-11.1.9.tgz"
