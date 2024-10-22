@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaEye } from 'react-icons/fa';
 import Swal from "sweetalert2";
-const AppList = () => {
+const ApplicationList = () => {
     const [applications, setApplications] = useState([]);
     const [careers, setCareers] = useState([]);
     const [selectedCareer, setSelectedCareer] = useState('');
@@ -15,36 +15,7 @@ const AppList = () => {
         fetchCareers();
     }, [selectedCareer, searchTerm, showShortlisted]);
 
-    // const fetchApplications = async () => {
-    //     try {
-    //         const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/applications/filter', {
-    //             params: { careerId: selectedCareer, search: searchTerm, isShortlisted: showShortlisted }
-    //         });
-    //         setApplications(response.data);
-    //     } catch (error) {
-    //         console.error('Error fetching applications:', error);
-    //         setError('Failed to fetch applications. Please try again later.');
-    //     }
-    // };
-
-    // const fetchApplications = async () => {
-    //     try {
-    //         const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/applications', {
-    //             params: {
-    //                 careerId: selectedCareer || undefined, // Handle empty selection
-    //                 search: searchTerm || undefined,
-    //                 isShortlisted: showShortlisted ? showShortlisted : undefined
-    //             }
-    //         });
-    //         console.log('Filtered applications:', response.data);
-    //         setApplications(response.data);
-    //     } catch (error) {
-    //         console.error('Error fetching applications:', error);
-    //         setError('Failed to fetch applications. Please try again later.');
-    //     }
-    // };
-
-
+    
     const fetchCareers = async () => {
         try {
             const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/careers');
@@ -389,4 +360,4 @@ const AppList = () => {
     );
 };
 
-export default AppList;
+export default ApplicationList;

@@ -4,12 +4,13 @@ import './css/loader.css'; // Custom loader CSS
 
 const Loader = () => {
     return (
-        <div className="loader-container">
-            <div className="spinner-border text-primary" role="status">
-                <span className="sr-only">Loading...</span>
-            </div>
+         
+        <div className="loader-container text-center mt-5">
+            <div className="custom-loader"></div>
         </div>
     );
+ 
 };
 
 export default Loader;
+
