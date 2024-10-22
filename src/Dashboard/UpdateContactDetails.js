@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Container, Row, Col } from 'react-bootstrap';
 import './css/dashboard.css'
+import Swal from 'sweetalert2';
 const UpdateContactDetails = () => {
   // State to store form data
   const [contactDetails, setContactDetails] = useState({
@@ -19,6 +20,10 @@ const UpdateContactDetails = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setShowModal(true); // Show the confirmation modal when form is submitted
+
+
+
+
   };
 
   // Confirm submission handler
@@ -26,6 +31,18 @@ const UpdateContactDetails = () => {
     console.log('Contact details updated:', contactDetails);
     setShowModal(false);
     // Add logic here to send updated contact details to the server
+
+
+    // Show success message
+    Swal.fire({
+      icon: "success",
+      title: "Success",
+      text: "Updated successfully!",
+      position: "center",
+      showConfirmButton: true,
+      confirmButtonColor: "#28a745",
+    });
+
   };
 
   // Handle input change
@@ -38,7 +55,7 @@ const UpdateContactDetails = () => {
   };
 
   return (
-    <Container className="my-5">
+    <Container className="my-5 card  p-5 shadow-sm ">
       <h2 className="text-center mb-4">Update Contact Details</h2>
       <Form onSubmit={handleSubmit}>
         <Row>

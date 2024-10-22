@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
 const ChangeAboutDetails = () => {
     const [formData, setFormData] = useState({
@@ -41,6 +42,19 @@ const ChangeAboutDetails = () => {
         // Logic to submit the updated data (e.g., send it to an API)
         console.log("Updated About Us Data: ", formData);
         // alert('About Us Page Updated Successfully!');
+
+
+
+        // Show success message
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Updated successfully!",
+        position: "center",
+        showConfirmButton: true,
+        confirmButtonColor: "#28a745",
+      });
+
     };
 
     return (

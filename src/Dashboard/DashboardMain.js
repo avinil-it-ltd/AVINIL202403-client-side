@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
-import './css/dashboard.css'; // Import custom CSS for additional styling
 
 const DashboardMain = () => {
     const [projectData, setProjectData] = useState([]);
