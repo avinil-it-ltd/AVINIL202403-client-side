@@ -4,10 +4,12 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { zoomIn } from 'react-animations';
 import styled, { keyframes } from 'styled-components';
 import TopMenu from "./core/TopMenu"
-import Footer from "./core/footer"
+import Footer from "./core/Footer"
 import Data from "./projects.json"
+import { Accordion, Card, Button } from 'react-bootstrap';
 
-import {  Container, Row, Col } from "react-bootstrap"
+
+import { Container, Row, Col } from "react-bootstrap"
 import eventImage from '../src/assets/images/event'
 import banner1 from '../src/assets/images/banner1.jpg'
 import banner2 from '../src/assets/images/banner2.jpg'
@@ -143,6 +145,20 @@ const IndexHome = (props) => {
 
 
 
+
+
+
+
+  // Faq section functionality code 
+
+  const [activeKey, setActiveKey] = useState(null);
+
+  const toggleActiveKey = (key) => {
+    setActiveKey(activeKey === key ? null : key);
+  };
+
+
+
   const topCarousel = () => (
     <div className="relative carousel-shadow">
       <img className="img-fluid" src={banner2} alt="Banner" />
@@ -160,9 +176,9 @@ const IndexHome = (props) => {
         <div className="row p-3">
           <div className="col-12 col-md-6 mx-auto ">
 
-            <h1 className=" heading_color my-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>3p communication interior Designer</h1>
-            <p className="">Every 3p communication concept evolves from a close collaboration between our team and our clients – a process predicated upon our having a firm understanding of both our client’s objectives and their unparalleled position within the hospitality industry. talented team listens, researches, synthesizes and ultimately implements a creative vision that is aesthetically compelling, budget and deadline compliant, and above all, speaks strategically to a project’s unique place and program.</p>
-            <Link to="/projects" ><button className="btn btn-md special_button mt-2">View All Projects</button></Link>
+            <h1 className=" heading_color my-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>3P Communication Interior & Exterior Design</h1>
+            <p className="fs-5">At 3P Communication, we prioritize collaboration in every project. Our design concepts emerge from close partnerships with our clients, ensuring a deep understanding of their goals and unique positions within the industry. Our talented team actively listens, conducts thorough research, and brings creative visions to life, crafting spaces that are not only visually stunning but also budget-conscious and practical. We are committed to delivering exceptional design solutions that meet the specific needs of each client.</p>
+            <Link to="/interior" ><button className="btn btn-md special_button mt-2">View Interior Projects</button></Link>
           </div>
           <div className="col-10 col-md-4 mx-auto">
             <img src={banner1} className="rounded mt-5  imageBorder " width="100%"></img>
@@ -176,8 +192,8 @@ const IndexHome = (props) => {
           </div>
           <div className="col-12 col-md-6 mx-auto text-end mt-5">
             <h1 className="text-end mt-5 heading_color " style={{ fontFamily: "'Aref Ruqaa', serif" }}>design as the people it serves</h1>
-            <p className=" ">Provides discriminating clients with a comprehensive range of design services and skills. By focusing-time and energy on development of state-of-the-art systems, exacting specifications and documentation, In creates innovative design solutions for every project. Complementing award-winning design talent is sound technical expertise, as well as a practical approach to project management. During each phase of the project, from initial concept, through design development, to final installation, Seeks to distinguish their work through rigorous attention to detail high standards and meticulous follow-through. Supported by exceptional project management teams, Ensures that each project is completed on time and within budget.</p>
-            <Link to="/projects" ><button className="btn btn-md special_button ">View All Projects</button></Link>
+            <p className="fs-5 ">We offer a full range of interior and exterior design services. Our focus on modern systems and detailed documentation allows us to create tailored solutions for each project. With award-winning design talent and solid project management skills, we ensure that every project is completed on time and within budget, all while maintaining high standards and attention to detail.</p>
+            <Link to="/exterior" ><button className="btn btn-md special_button ">View Exterior Projects</button></Link>
           </div>
 
         </div>
@@ -205,7 +221,7 @@ const IndexHome = (props) => {
           <div className="col-12 col-md-3 text-center p-2">
             <div className=" mx-auto  row align-items-center" style={{ height: "150px", width: "150px" }}><img src={meeting} alt="" /></div>
             <div className="h2  text-center" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Meet & Agree</div>
-            
+
 
           </div>
           <div className="col-12 col-md-3 text-center p-2">
@@ -219,48 +235,84 @@ const IndexHome = (props) => {
   )
 
   const ourServices = () => (
-    <div className="ourServiceDesign ">
+    <div className="servicebg">
       {/* style={{ backgroundImage: "url('/images/bg-5.jpg')", }} */}
       <div className=" py-5 " style={{ opacity: "0.9" }}>
         {/* body_background */}
-        <div className="text-center h2 heading_color py-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}><h2>Our Services</h2></div>
+        <div
+          className="text-center h2 heading_color py-5"
+          style={{ fontFamily: "'Aref Ruqaa', serif" }}
+        >
+          <h2>Explore Our Services </h2>
+        </div>
+
         <div className="row p-4 pb-5">
           <div className="col">
-
-            <div className="text-center "><img src={eventImage} className="imageBorder" width="350px" height="250px"></img></div>
-            <div className="text-center  h4 text-danger p-2 " style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " " }}>
+            <div className="text-center ">
+              <img
+                src={eventImage}
+                className="imageBorder"
+                width="350px"
+                height="250px"
+              ></img>
+            </div>
+            <div
+              className="text-center  h4 text-danger p-2 "
+              style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " " }}
+            >
               Event
             </div>
-
           </div>
           <div className="col">
-
-            <div className="text-center "><img src={exteriorImage} className="imageBorder" width="350px" height="250px"></img></div>
-            <div className="text-center h4 text-danger p-2" style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " #ffc107" }}>
+            <div className="text-center ">
+              <img
+                src={exteriorImage}
+                className="imageBorder"
+                width="350px"
+                height="250px"
+              ></img>
+            </div>
+            <div
+              className="text-center h4 text-danger p-2"
+              style={{
+                fontFamily: "'Aref Ruqaa', serif",
+                textDecoration: " #ffc107",
+              }}
+            >
               Exterior
             </div>
           </div>
           <div className="col">
-
-            <div className="text-center "><img src={InteriordesignPic} className="imageBorder" width="350px" height="250px"></img></div>
-            <div className="text-center h4 text-danger p-2" style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " " }}>
-              Interior</div>
+            <div className="text-center ">
+              <img
+                src={InteriordesignPic}
+                className="imageBorder"
+                width="350px"
+                height="250px"
+              ></img>
+            </div>
+            <div
+              className="text-center h4 text-danger p-2"
+              style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " " }}
+            >
+              Interior
+            </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 
 
 
   const callNow = () => (
     <div className="w-100 nav_bar my-5 py-5">
-        <div className="text-center  text-white fw-bolder px-3 px-md-5 callNow_font mb-3 mb-md-0">
-          <h3 className="moving-text ">CALL NOW FOR YOUR DREAM INTO REALITY</h3>
-        </div>
-        <div className="text-center px-3 px-md-5 callNow_font">
-          <button className="border-0 px-5 btn btn-light p-3">+88015846895</button>
-        </div>
+      <div className="text-center  text-white fw-bolder px-3 px-md-5 callNow_font mb-3 mb-md-0">
+        <h3 className="moving-text ">CALL NOW FOR YOUR DREAM INTO REALITY</h3>
+      </div>
+      <div className="text-center px-3 px-md-5 callNow_font">
+        <button className="border-0 px-5 btn btn-light p-3">+88015846895</button>
+      </div>
     </div>
   );
 
@@ -321,7 +373,7 @@ const IndexHome = (props) => {
   );
 
 
-  
+
 
   const ThreeImgSection = () => (
 
@@ -372,35 +424,125 @@ const IndexHome = (props) => {
 
   )
 
+  const [testimonialsData, setTestimonialsData] = useState([]);
+  // const sliderWrapperRef = useRef(null);
+  // const slidesPerView = 3; // Adjust this based on your layout
 
-
-
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/testimonials'); // Adjust the endpoint as needed
+        const data = await response.json();
+        setTestimonialsData(data);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+      }
+    };
+    fetchTestimonials();
+  }, []);
   const testimonials = () => (
+    <Container className="my-5 py-5">
+    <h2 style={{ fontFamily: "'Aref Ruqaa', serif" }} className="text-center my-5 fs-3 heading_color">Our Clients Say</h2>
 
-    <div>
-      <h2 style={{ fontFamily: "'Aref Ruqaa', serif" }} className="text-center my-5  fs-3  heading_color">Our Clients Say</h2>
-
-      <div className="slider-container container mx-auto">
-        <div className="slider-wrapper d-flex" ref={sliderWrapperRef}>
-
-          {testimonial.map((t, index) => (
-            <div className="slide  " key={index} style={{ flex: `0 0 ${100 / slidesPerView}%` }}>
-              <div>
-                <p className="card card_style mx-3 py-4 px-4 ">
-                  <span className="fw-bold">{t?.name}</span>
-                  <span>" {t?.review} " </span>
-                </p>
+    <div className="slider-container container mx-auto">
+      <div className="slider-wrapper d-flex" ref={sliderWrapperRef}>
+        {testimonialsData.map((t, index) => (
+          <div className="slide" key={index} style={{ flex: `0 0 ${100 / slidesPerView}%` }}>
+            <div className="testimonial-card d-flex flex-column justify-content-between">
+              <div className="text-center">
+              {t.imageUrl && (
+                  <img
+                    src={t.imageUrl}
+                    alt={t.name}
+                    className="testimonial-image"
+                  />
+                )}
               </div>
+              <div className="testimonial-header ">
+                <div className="my-auto py-auto testimonial-content">
+                  <p className="my-0 fw-bold">{t?.name}</p>
+                  <p className="text-muted">{t?.designation}</p>
+                </div>
+               
+              </div>
+              <p className="mt-0 pt-0 card-description text-justify">"{t?.content}"</p>
             </div>
-          ))}
-        </div>
-        <div className="slider-controls ">
-          <button className="prev special_button" onClick={prevSlide}>Prev</button>
-          <button className="next me-3 special_button" onClick={nextSlide}>Next</button>
-        </div>
+          </div>
+        ))}
+      </div>
+      <div className="slider-controls">
+        {/* Uncomment and implement the controls if needed */}
+        {/* <button className="prev" onClick={prevSlide}>Previous</button> */}
+        {/* <button className="next me-3 special_button" onClick={nextSlide}>Next</button> */}
       </div>
     </div>
+  </Container>
   )
+
+  const [faqs, setFaqs] = useState([]);
+
+  useEffect(() => {
+    const fetchFaqs = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/faqs'); // Adjust the endpoint as needed
+        const data = await response.json();
+        setFaqs(data);
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      }
+    };
+    fetchFaqs();
+  }, []);
+
+
+
+
+  const faq = () => (
+    <Container className="my-5 py-5">
+      <Row className="align-items-center">
+        {/* FAQ Section */}
+        <Col lg={6} className="mb-4">
+          <h2 className=" heading_color mb-4" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Frequently Asked Questions</h2>
+          <Accordion activeKey={activeKey}>
+            {faqs.map((faq, index) => (
+              <Card key={index} className="mb-3">
+                <Card.Header>
+                  <h5 className="mb-0">
+                    <Button
+                      variant="link"
+                      onClick={() => toggleActiveKey(index)}
+                      aria-expanded={activeKey === index}
+                      className={`btn-block text-start  text-decoration-none ${activeKey === index ? 'font-weight-bold' : ''}`}
+                    >
+                      {faq.question}
+                    </Button>
+                  </h5>
+                </Card.Header>
+                <Accordion.Collapse eventKey={index}>
+                  <Card.Body>{faq.answer}</Card.Body>
+                </Accordion.Collapse>
+              </Card>
+            ))}
+          </Accordion>
+        </Col>
+
+        {/* Right Side Image */}
+        <Col lg={6}>
+          <div className="text-center">
+            <img
+              src={right} // Replace with your desired image link
+              alt="FAQ Illustration"
+              className="w-100"
+              style={{ borderRadius: '10px' }}
+            />
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  )
+
+
+
 
   return (
     <div className="g-0" style={{ maxWidth: "100vw" }}>
@@ -415,10 +557,11 @@ const IndexHome = (props) => {
         <div>{OurClients()}</div>
         <div>{ThreeImgSection()}</div>
         <div>{testimonials()}</div>
+        <div>{faq()}</div>
         <br /><br />
         <div id="contact"><Footer /></div>
 
-      
+
         {/* <ContactModal
           show={modalShow}
           onHide={() => setModalShow(false)}

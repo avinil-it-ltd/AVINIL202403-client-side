@@ -4,7 +4,7 @@ import {listProjects,getSearchProject} from "./core/apicalls"
 import TopMenu from "./core/TopMenu"
 import ProjectCard from "./core/ProjectCard"
 import {MdTravelExplore,MdLocationOn,MdOutlineCall,MdMarkEmailRead} from "react-icons/md"
-import Footer from "./core/footer"
+import Footer from "./core/Footer"
 
 
 const SearchResult=()=>{

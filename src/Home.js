@@ -10,7 +10,7 @@
 // import {BsSearch} from "react-icons/bs"
 // import {MdTravelExplore,MdLocationOn,MdOutlineCall,MdMarkEmailRead} from "react-icons/md"
 // import TopMenu from "./core/TopMenu"
-// import Footer from "./core/footer"
+// import Footer from "./core/Footer"
 
 // const ani=merge(zoomInRight,flipOutX)
 

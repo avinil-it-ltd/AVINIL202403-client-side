@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import TopMenu from "../core/TopMenu";
-import Footer from "../../src/core/footer";
+import Footer from "../../src/core/Footer";
 import Data from "../projects.json";
 import { Container, Col, Row } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom'; // To navigate between pages

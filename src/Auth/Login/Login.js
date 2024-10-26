@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../../core/footer';
+
 import TopMenu from '../../core/TopMenu';
 import backgroundImage from '../../assets/images/loginbackground/loginbackground.jpg';
+import Footer from '../../core/Footer';
 
 const Login = () => {
     const [email, setEmail] = useState('');

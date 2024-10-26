@@ -6,7 +6,7 @@ import {listProjects,getSearchProject} from "./core/apicalls"
 import { zoomIn} from 'react-animations';
 import styled, { keyframes } from 'styled-components';
 import TopMenu from "./core/TopMenu"
-import Footer from "./core/footer"
+import Footer from "./core/Footer"
 import Data from "./projects.json"
 
 import {Navbar,Container,Form,Nav,NavDropdown,FormControl,Button} from "react-bootstrap"

@@ -323,7 +323,7 @@ brown #F9DEBE
 .card_style {
   height: 150px;
   /* background-color:  #fee2c2; */
-  background-color: #F9DEBE;
+  background-color: #DCDDDB;
   /* background-color: #F6F6F6; */
   box-shadow: 5px 10px 5px gray;
   overflow-y: auto;
@@ -832,4 +832,33 @@ brown #F9DEBE
   font-size: 12px;
   border: none;
   border-radius: 4px;
+}
+
+
+
+.dashboard_form_desing{
+  line-height: 40px;
+}
+
+
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.custom-loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

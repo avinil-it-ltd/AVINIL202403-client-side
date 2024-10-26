@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../core/footer';
+import Footer from '../core/Footer';
 import TopMenu from '../core/TopMenu';
 import backgroundImage from '../../src/assets/images/loginbackground/loginbackground.jpg';
 

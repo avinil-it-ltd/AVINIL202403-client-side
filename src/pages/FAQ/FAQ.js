@@ -1,10 +1,10 @@
 import React from "react";
 // import TopMenu from "../core/TopMenu";
-// import Footer from "../core/footer";
+// import Footer from "../core/Footer";
 import { Container, Row, Col, Accordion } from "react-bootstrap";
 // import "./App.css";
 import TopMenu from "../../core/TopMenu";
-import Footer from "../../core/footer";
+import Footer from "../../core/Footer";
 
 const FAQ = () => {
   // Sample FAQ data

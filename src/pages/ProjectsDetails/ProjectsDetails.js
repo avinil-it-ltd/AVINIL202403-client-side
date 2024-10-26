@@ -1,7 +1,7 @@
 // import { useParams } from 'react-router-dom';
 // import React, { useEffect, useState } from 'react';
 // import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
-// import Footer from '../../core/footer';
+// import Footer from '../../core/Footer';
 // import TopMenu from '../../core/TopMenu';
 // import '../../pages/Exterior/Exterior.css'
 
@@ -186,7 +186,7 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
-import Footer from '../../core/footer';
+import Footer from '../../core/Footer';
 import TopMenu from '../../core/TopMenu';
 import '../../pages/Exterior/Exterior.css';
 import axios from 'axios';
@@ -200,7 +200,7 @@ function ProjectsDetails() {
     useEffect(() => {
         const fetchProjectDetails = async () => {
             try {
-                const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/projects/${id}`); // Replace with your actual API endpoint
+                const response = await axios.get(`http://localhost:5000/api/projects/${id}`); // Replace with your actual API endpoint
                 console.log(response.data.project);
                 setProject(response.data.project);
             } catch (error) {
@@ -290,7 +290,13 @@ function ProjectsDetails() {
                 <Row className="my-5 py-5">
                     <Col>
                         <h4 className="pt-5 heading_color mb-3">Project Description</h4>
-                        <p>{project?.description || "No description available"}</p>
+                        <span
+                            dangerouslySetInnerHTML={{
+                                __html: project?.description || "No description available",
+                            }}
+                        />
+
+                        {/* <p>{project?.description || "No description available"}</p> */}
                     </Col>
                 </Row>
 
