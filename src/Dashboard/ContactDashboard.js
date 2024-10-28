@@ -11,7 +11,7 @@
 //   const fetchContacts = async () => {
 //     try {
 //       const response = await axios.get(
-//         "http://localhost:5000/api/contacts"
+//         "https://3pcommunicationsserver.vercel.app/api/contacts"
 //       );
 //       setContacts(response.data);
 //     } catch (err) {
@@ -36,7 +36,7 @@
 //     if (result.isConfirmed) {
 //       try {
 //         await axios.delete(
-//           `http://localhost:5000/api/contacts/${id}`
+//           `https://3pcommunicationsserver.vercel.app/api/contacts/${id}`
 //         );
 //         fetchContacts(); // Refresh contacts after deletion
 //         Swal.fire({
@@ -70,7 +70,7 @@
 //       };
 
 //       await axios.put(
-//         `http://localhost:5000/api/contacts/${contact._id}/shortlisted`,
+//         `https://3pcommunicationsserver.vercel.app/api/contacts/${contact._id}/shortlisted`,
 //         {
 //           shortlisted: updatedContact.shortlisted,
 //         }
@@ -210,7 +210,7 @@ const ContactDashboard = () => {
   const fetchContacts = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/contacts"
+        "https://3pcommunicationsserver.vercel.app/api/contacts"
       );
       setContacts(response.data);
     } catch (err) {
@@ -236,7 +236,7 @@ const ContactDashboard = () => {
     if (result.isConfirmed) {
       try {
         await axios.delete(
-          `http://localhost:5000/api/contacts/${id}`
+          `https://3pcommunicationsserver.vercel.app/api/contacts/${id}`
         );
         fetchContacts();
         Swal.fire({
@@ -270,7 +270,7 @@ const ContactDashboard = () => {
       };
 
       await axios.put(
-        `http://localhost:5000/api/contacts/${contact._id}/shortlisted`,
+        `https://3pcommunicationsserver.vercel.app/api/contacts/${contact._id}/shortlisted`,
         {
           shortlisted: updatedContact.shortlisted,
         }
@@ -340,7 +340,7 @@ const ContactDashboard = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container card shadow-lg">
       <h2 className="mt-4 text-center mb-4">Contact Messages</h2>
 
       {error && <div className="alert alert-danger">Error loading contacts</div>}
@@ -349,20 +349,20 @@ const ContactDashboard = () => {
         <div className="col-md-8">
           <input
             type="text"
-            className="form-control form-control-lg"
+            className="form-control form-control"
             placeholder="Search by name, email, phone, or message..."
             value={searchTerm}
             onChange={handleSearch}
-            style={{ borderRadius: "0.375rem", border: "1px solid #ced4da" }}
+            style={{ borderRadius: "0.375rem", border: "1px solid #ced4da", outline: "none", boxShadow: "none"}}
           />
         </div>
-        <div className="col-md-4 text-md-end text-center mt-3 mt-md-0">
+        <div className="col-md-4 text-md-end text-center mt-3 mt-md-0 ">
           <button
-            className={`btn btn-lg ${
+            className={`btn  ${
               showShortlistedOnly ? "btn-primary" : "btn-outline-secondary"
             }`}
             onClick={() => setShowShortlistedOnly(!showShortlistedOnly)}
-            style={{ width: "100%" }}
+            style={{ width: "100%", outline: "none", boxShadow: "none" }}
           >
             {showShortlistedOnly
               ? "Show All Contacts"

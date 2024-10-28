@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal, Button, Form } from "react-bootstrap";
 import { FaEye, FaEdit, FaTrash } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2"; // Import SweetAlert2
 
 const ProjectList = () => {
@@ -24,7 +24,7 @@ const ProjectList = () => {
     const fetchProjects = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/projects"
+          "https://3pcommunicationsserver.vercel.app/api/projects"
         );
         if (isMounted) {
           setProjects(response.data.projects || response.data);
@@ -80,7 +80,7 @@ const ProjectList = () => {
   const deleteProject = async (project) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/projects/${project._id}`
+        `https://3pcommunicationsserver.vercel.app/api/projects/${project._id}`
       );
       // Update state after deletion
       setProjects(projects.filter((p) => p._id !== project._id));
@@ -135,8 +135,8 @@ const ProjectList = () => {
   }
 
   return (
-    <div className="container mt-5 p-4 mx-auto card w-75">
-      <h2 className="text-center mb-4">Projects List</h2>
+    <div className="container m-5 p-5 shadow-lg  mx-auto card ">
+      <h2 className="text-center mb-4" style={{ fontFamily: "Times New Roman" }}>Projects List</h2>
 
       {/* Search and Filter Section */}
       <div className="mb-4">
@@ -145,15 +145,15 @@ const ProjectList = () => {
             <Form.Group
               controlId="searchText"
               className="me-4"
-              style={{ width: "50%" }}
+              style={{ width: "30%" }}
             >
-              <div className="position-relative">
+              <div className="position-relative ">
                 <Form.Control
                   type="text"
                   placeholder="Search projects..."
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
-                  className="rounded-pill border border-dark shadow-sm pr-5"
+                  className=" border border-dark shadow-sm pr-5"
                   style={{ borderColor: "#003366" }}
                   aria-label="Search projects"
                 />
@@ -169,12 +169,12 @@ const ProjectList = () => {
               </div>
             </Form.Group>
 
-            <Form.Group controlId="categorySelect" style={{ width: "50%" }}>
+            <Form.Group controlId="categorySelect" style={{ width: "30%" }}>
               <Form.Control
                 as="select"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="rounded-pill border border-dark shadow-sm"
+                className=" border border-dark shadow-sm"
                 style={{ borderColor: "#003366" }}
               >
                 <option value="">All Categories</option>
@@ -187,6 +187,12 @@ const ProjectList = () => {
                 ))}
               </Form.Control>
             </Form.Group>
+
+            <div className="text-end mb-3 ">
+              <Link to="/dashboard/addProject" className="btn dashboard_all_button">
+                Add New Project
+              </Link>
+            </div>
           </div>
         </Form>
       </div>
@@ -194,7 +200,7 @@ const ProjectList = () => {
       {filteredProjects.length === 0 ? (
         <div className="alert alert-info">No projects found.</div>
       ) : (
-        <table className="table table-striped">
+        <table className="table table-striped ">
           <thead className="thead-dark">
             <tr>
               <th scope="col">Serial</th>
@@ -211,7 +217,7 @@ const ProjectList = () => {
                 <td>{project.title}</td>
                 <td>{project.category || "N/A"}</td>
                 <td>{new Date(project.startDate).toLocaleDateString()}</td>
-                <td>
+                <td className="">
                   <Button
                     className="mx-2"
                     variant="info"

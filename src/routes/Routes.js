@@ -12,7 +12,6 @@ import { Routes, Route } from 'react-router-dom';
 import Dashboard from '../Dashboard/Dashboard';
 import UpdateProject from '../Dashboard/UpdateProject';
 import ChangeImage from '../Dashboard/ChangeImage';
-// import ChangeCredentials from './Dashboard/ChangeCredentials';
 import ProjectList from '../Dashboard/ProjectList'; // Import your ProjectList component
 import AddProject from '../Dashboard/AddProject';
 import ProjectListForUpdate from '../Dashboard/ProjectListForUpdate';
@@ -42,6 +41,7 @@ import UpdateContactDetails from '../Dashboard/UpdateContactDetails.js';
 import ApplicationList from '../Dashboard/ApplicationList.js';
 import FAQDashboard from '../Dashboard/FAQDashboard.js';
 import TestimonialDashboard from '../Dashboard/TestimonialDashboard.js';
+import ChangeCredentials from '../Dashboard/ChangeCredentials.js';
 
 
 
@@ -71,7 +71,7 @@ const AppRoutes = () => {
                 <Route path="updateproject/:id" element={<UpdateProject />} />
 
                 <Route path="changeImage" element={<ChangeImage />} />
-                {/* <Route path="changeCredentials" element={<ChangeCredentials />} /> */}
+                <Route path="changeCredentials" element={<ChangeCredentials/>} />
                 <Route path="projects" element={<ProjectList />} /> {/* Add this line */}
                 <Route path="addProject" element={<AddProject />} /> {/* Add this line */}
 

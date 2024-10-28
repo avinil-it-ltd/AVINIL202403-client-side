@@ -14,6 +14,8 @@ const AppList = () => {
   const [showShortlisted, setShowShortlisted] = useState(false); // New state for shortlisted filter
   const [showModal, setShowModal] = useState(false); // State for controlling the resume modal
   const [resumeUrl, setResumeUrl] = useState(''); // State to store the resume URL
+  const [loading, setLoading] = useState(true); // Loading state
+
 
   useEffect(() => {
     fetchApplications();
@@ -24,13 +26,15 @@ const AppList = () => {
 
   const fetchCareers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/careers');
+      const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/careers');
       console.log(response.data);
 
       setCareers(response.data);
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching careers:', error);
       setError('Failed to fetch careers.');
+      setLoading(false);
     }
   };
 
@@ -38,7 +42,7 @@ const AppList = () => {
 
   const handleShortlist = async (id, isShortlisted) => {
     try {
-      await axios.put(`http://localhost:5000/api/applications/shortlist/${id}`, {
+      await axios.put(`https://3pcommunicationsserver.vercel.app/api/applications/shortlist/${id}`, {
         isShortlisted: !isShortlisted,
       });
       fetchApplications(); // Refresh the list after updating shortlist status
@@ -53,7 +57,7 @@ const AppList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this application?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/applications/${id}`);
+        await axios.delete(`https://3pcommunicationsserver.vercel.app/api/applications/${id}`);
         fetchApplications(); // Refresh the list after deleting
       } catch (error) {
         console.error('Error deleting application:', error);
@@ -63,23 +67,6 @@ const AppList = () => {
   };
 
 
-
-  //   const fetchApplications = async () => {
-  //     try {
-  //         const params = {
-  //             careerId: selectedCareer || undefined, 
-  //             searchTerm: searchTerm || undefined,
-  //             showShortlisted: showShortlisted || undefined, 
-  //         };
-
-  //         const response = await axios.get('http://localhost:5000/api/applications/filtered', { params });
-  //         console.log(response.data);
-  //         setApplications(response.data);
-  //     } catch (error) {
-  //         console.error('Error fetching applications:', error);
-  //         setError('Failed to fetch applications. Please try again later.');
-  //     }
-  // };
 
   // Filter applications based on selected career and search term
   const filteredApplications = applications.filter((application) => {
@@ -116,7 +103,7 @@ const AppList = () => {
       };
 
       // Fetch filtered applications
-      const response = await axios.get('http://localhost:5000/api/applications/filtered', { params });
+      const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/applications/filtered', { params });
       console.log(response.data);
 
       setApplications(response.data);
@@ -138,20 +125,36 @@ const AppList = () => {
 
 
 
+    // Custom Loader Component
+  const Loader = () => (
+    <div className="loader-container text-center mt-5">
+      <div className="custom-loader"></div>
+    </div>
+  );
+
+  if (loading) {
+    return <Loader />;
+  }
+
+
+
+
+
 
   return (
-    
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">Applications by Career</h2>
+
+    <div className="container card shadow-lg p-3  mt-3">
+      <h2 className="text-center mb-4" style={{ fontFamily: "Times New Roman" }}>Applications by Career</h2>
 
       {/* Filter Section */}
       <div className="filter-container d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between mb-4 p-3 bg-light rounded shadow-sm">
         {/* Career Dropdown */}
-        <div className="filter-group me-3 mb-2 mb-md-0">
+        <div className="filter-group me-3 mb-2 mb-md-0 w-50">
           <label htmlFor="careerSelect" className="form-label fw-bold">Filter by Career</label>
           <select
             id="careerSelect"
             className="form-select"
+            style={{ outline: "none", boxShadow: "none" }}
             value={selectedCareer}
             onChange={(e) => setSelectedCareer(e.target.value)}
           >
@@ -165,10 +168,11 @@ const AppList = () => {
         </div>
 
         {/* Search Input */}
-        <div className="filter-group me-3 mb-2 mb-md-0">
+        <div className="filter-group me-3 mb-2 mb-md-0 w-50">
           <label htmlFor="searchInput" className="form-label fw-bold">Search</label>
           <input
             id="searchInput"
+            style={{ outline: "none", boxShadow: "none" }}
             type="text"
             className="form-control"
             placeholder="Name or Email"
@@ -179,6 +183,7 @@ const AppList = () => {
 
         {/* Shortlisted Button */}
         <div className="filter-group">
+          <label  className="form-label fw-bold">Shortlist Button</label>
           <button
             className={`btn ${showShortlisted ? "btn-success" : "btn-outline-secondary"} w-100`}
             onClick={() => setShowShortlisted(!showShortlisted)}
@@ -228,7 +233,7 @@ const AppList = () => {
                   <button
                     type="button"
                     download=""
-                    className="btn btn-secondary"
+                    className="btn btn-secondary btn-sm"
                     onClick={() => handleViewResume(application.resume)}
                   >
                     View Resume
@@ -242,7 +247,7 @@ const AppList = () => {
                   />
                 </td>
                 <td>
-                  <button className="btn btn-danger" onClick={() => handleDelete(application._id)}>
+                  <button className="btn btn-danger btn-sm" onClick={() => handleDelete(application._id)}>
                     Delete
                   </button>
                 </td>
@@ -252,7 +257,7 @@ const AppList = () => {
                   </button> */}
                   <td>
                     <button
-                      className="btn btn-primary" // Change color as needed
+                      className="btn btn-primary btn-sm" // Change color as needed
                       data-bs-toggle="modal"
                       data-bs-target={`#applicationDetailsModal-${application._id}`}
                     >

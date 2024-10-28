@@ -3,6 +3,8 @@ import { Form, Button, Table, Alert } from 'react-bootstrap';
 import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 import axios from 'axios';
 
+
+
 const CategoryManagement = () => {
     const [categories, setCategories] = useState([]);
     const [categoryName, setCategoryName] = useState('');
@@ -14,21 +16,24 @@ const CategoryManagement = () => {
     const [message, setMessage] = useState('');
     const [messageType, setMessageType] = useState('');
     const [editingCategoryId, setEditingCategoryId] = useState(null);
+    const [loading, setLoading] = useState(true); // Loading state
 
 
 
-    
+
     useEffect(() => {
         fetchCategories();
     }, []);
 
     const fetchCategories = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/categories');
+            const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/categories');
             setCategories(response.data);
+            setLoading(false);
         } catch (error) {
             setMessage('Error fetching categories');
             setMessageType('danger');
+            setLoading(false);
         }
     };
 
@@ -36,7 +41,7 @@ const CategoryManagement = () => {
     const handleUpdateCategory = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:5000/api/categories/${editingCategoryId}`, { name: editingCategoryName });
+            await axios.put(`https://3pcommunicationsserver.vercel.app/api/categories/${editingCategoryId}`, { name: editingCategoryName });
             setCategories(categories.map(category =>
                 category._id === editingCategoryId ? { ...category, name: editingCategoryName } : category
             ));
@@ -53,7 +58,7 @@ const CategoryManagement = () => {
     const handleAddCategory = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/categories', { name: categoryName });
+            const response = await axios.post('https://3pcommunicationsserver.vercel.app/api/categories', { name: categoryName });
             setCategories([...categories, response.data]);
             setCategoryName(''); // Clear category input
             setMessage('Category added successfully');
@@ -68,7 +73,7 @@ const CategoryManagement = () => {
         e.preventDefault();
         try {
             const subCategoryName = subCategoryNames[categoryId] || ''; // Get the subcategory name for this category
-            const response = await axios.post(`http://localhost:5000/api/categories/${categoryId}/subcategory`, { name: subCategoryName });
+            const response = await axios.post(`https://3pcommunicationsserver.vercel.app/api/categories/${categoryId}/subcategory`, { name: subCategoryName });
 
             // Ensure subcategories array exists and create a new reference to trigger re-render
             setCategories(categories.map(category =>
@@ -104,7 +109,7 @@ const CategoryManagement = () => {
         }
 
         try {
-            await axios.put(`http://localhost:5000/api/categories/${categoryId}/subcategories/${subCategoryId}`, { name: editingSubCategoryName });
+            await axios.put(`https://3pcommunicationsserver.vercel.app/api/categories/${categoryId}/subcategories/${subCategoryId}`, { name: editingSubCategoryName });
             // Update state logic...
         } catch (error) {
             setMessage('Error updating subcategory');
@@ -117,7 +122,7 @@ const CategoryManagement = () => {
 
     const handleDeleteSubCategory = async (categoryId, subCategoryId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/categories/${categoryId}/subcategories/${subCategoryId}`);
+            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/categories/${categoryId}/subcategories/${subCategoryId}`);
             setCategories(categories.map(category =>
                 category._id === categoryId ? { ...category, subcategories: category.subcategories.filter(sub => sub._id !== subCategoryId) } : category
             ));
@@ -131,7 +136,7 @@ const CategoryManagement = () => {
 
     const handleDeleteCategory = async (categoryId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/categories/${categoryId}`);
+            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/categories/${categoryId}`);
             setCategories(categories.filter(category => category._id !== categoryId));
             setMessage('Category deleted successfully');
             setMessageType('success');
@@ -146,9 +151,27 @@ const CategoryManagement = () => {
         setEditingSubCategoryName(subCategoryName); // Set the name for editing
     };
 
+
+
+
+    // Custom Loader Component
+    const Loader = () => (
+        <div className="loader-container text-center mt-5">
+            <div className="custom-loader"></div>
+        </div>
+    );
+
+    if (loading) {
+        return <Loader />;
+    }
+
+
+
+
+
     return (
-        <div className="container my-4">
-            <h2 className="text-center mb-4">Manage Categories</h2>
+        <div className="container my-4 card  p-3 m-3 shadow-lg ">
+            <h2 className="text-center mb-4" style={{ fontFamily: "Times New Roman" }}>Manage Categories</h2>
 
             {message && (
                 <Alert variant={messageType} onClose={() => setMessage('')} dismissible>
@@ -157,24 +180,24 @@ const CategoryManagement = () => {
             )}
 
             <Form onSubmit={handleAddCategory} className="mb-4">
-                <Form.Group controlId="formCategoryName" className="d-flex align-items-center">
-                    <Form.Label className="mr-2">Category Name</Form.Label>
+                <Form.Group controlId="formCategoryName" className="d-flex justify-content-between">
+                    {/* <Form.Label className="mr-2">Category Name</Form.Label> */}
                     <Form.Control
                         type="text"
-                        placeholder="Enter category name"
+                        placeholder="Search By category name Or Add Category"
                         value={categoryName}
                         onChange={(e) => setCategoryName(e.target.value)}
                         required
-                        className="w-75 mx-auto" // Makes the input take up available space
-                        style={{ borderColor: '#003366' }} // Dark blue border color
+                        className="w-75 " // Makes the input take up available space
+                        style={{ borderColor: '#003366', outline: "none", boxShadow: "none" }}// Dark blue border color
                     />
-                    <Button variant="primary" type="submit">Add Category</Button>
+                    <Button className='w-25 ms-2  dashboard_all_button' variant="" type="submit">Add Category</Button>
                 </Form.Group>
             </Form>
 
 
-            <h5>Categories</h5>
-            <Table striped bordered hover>
+            {/* <h5>Categories</h5> */}
+            <Table className='mt-4' striped bordered hover>
                 <thead>
                     <tr>
                         <th>Category</th>

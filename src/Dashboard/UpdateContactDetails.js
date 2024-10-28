@@ -18,7 +18,7 @@ const UpdateContactDetails = () => {
   useEffect(() => {
     const fetchContactDetails = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/myContact');
+        const response = await fetch('https://3pcommunicationsserver.vercel.app/api/myContact');
         const data = await response.json();
         setContactDetails(data);
       } catch (error) {
@@ -36,18 +36,18 @@ const UpdateContactDetails = () => {
 
   const handleConfirmUpdate = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/myContact', {
+      const response = await fetch('https://3pcommunicationsserver.vercel.app/api/myContact', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(contactDetails),
       });
-      
+
       if (response.ok) {
         const updatedContact = await response.json();
         console.log('Contact details updated:', updatedContact);
-        
+
         Swal.fire({
           icon: 'success',
           title: 'Success',
@@ -79,13 +79,13 @@ const UpdateContactDetails = () => {
   };
 
   return (
-    <Container className="my-5 card p-5 shadow-sm">
-      <h2 className="text-center mb-4">Update Contact Details</h2>
+    <Container className="my-5 card p-5 shadow-lg">
+      <h2 className="text-center mb-4" style={{ fontFamily: "Times New Roman" }}>Update Contact Details</h2>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col md={6} className="mb-3">
             <Form.Group controlId="formAddress">
-              <Form.Label>Address</Form.Label>
+              <Form.Label className='fw-bold'>Address</Form.Label>
               <Form.Control
                 type="text"
                 name="address"
@@ -93,12 +93,13 @@ const UpdateContactDetails = () => {
                 onChange={handleInputChange}
                 placeholder="Enter address"
                 required
+                style={{ outline: "none", boxShadow: "none" }}
               />
             </Form.Group>
           </Col>
           <Col md={6} className="mb-3">
             <Form.Group controlId="formMobile">
-              <Form.Label>Mobile</Form.Label>
+              <Form.Label  className='fw-bold'>Mobile</Form.Label>
               <Form.Control
                 type="text"
                 name="mobile"
@@ -106,6 +107,7 @@ const UpdateContactDetails = () => {
                 onChange={handleInputChange}
                 placeholder="Enter mobile number"
                 required
+                style={{ outline: "none", boxShadow: "none" }}
               />
             </Form.Group>
           </Col>
@@ -113,7 +115,7 @@ const UpdateContactDetails = () => {
         <Row>
           <Col md={6} className="mb-3">
             <Form.Group controlId="formEmail">
-              <Form.Label>Email</Form.Label>
+              <Form.Label  className='fw-bold'>Email</Form.Label>
               <Form.Control
                 type="email"
                 name="email"
@@ -121,18 +123,20 @@ const UpdateContactDetails = () => {
                 onChange={handleInputChange}
                 placeholder="Enter email address"
                 required
+                style={{ outline: "none", boxShadow: "none" }}
               />
             </Form.Group>
           </Col>
           <Col md={6} className="mb-3">
             <Form.Group controlId="formFbLink">
-              <Form.Label>Facebook Link</Form.Label>
+              <Form.Label  className='fw-bold'>Facebook Link</Form.Label>
               <Form.Control
                 type="url"
                 name="fbLink"
                 value={contactDetails.fbLink}
                 onChange={handleInputChange}
                 placeholder="Enter Facebook page/profile URL"
+                style={{ outline: "none", boxShadow: "none" }}
               />
             </Form.Group>
           </Col>
@@ -140,32 +144,36 @@ const UpdateContactDetails = () => {
         <Row>
           <Col md={6} className="mb-3">
             <Form.Group controlId="formWhatsappLink">
-              <Form.Label>WhatsApp Link</Form.Label>
+              <Form.Label  className='fw-bold'>WhatsApp Link</Form.Label>
               <Form.Control
                 type="url"
                 name="whatsappLink"
                 value={contactDetails.whatsappLink}
                 onChange={handleInputChange}
                 placeholder="Enter WhatsApp contact link"
+                style={{ outline: "none", boxShadow: "none" }}
               />
             </Form.Group>
           </Col>
           <Col md={6} className="mb-3">
             <Form.Group controlId="formYoutubeLink">
-              <Form.Label>YouTube Link</Form.Label>
+              <Form.Label  className='fw-bold'>YouTube Link</Form.Label>
               <Form.Control
                 type="url"
                 name="youtubeLink"
                 value={contactDetails.youtubeLink}
                 onChange={handleInputChange}
                 placeholder="Enter YouTube channel link"
+                style={{ outline: "none", boxShadow: "none" }}
               />
             </Form.Group>
           </Col>
         </Row>
-        <Button variant="primary" type="submit" className="mt-3">
-          Update Contact Details
-        </Button>
+        <div className='d-flex justify-content-center'>
+          <Button variant="" type="submit" className="mt-3 dashboard_all_button ">
+            Update Contact Details
+          </Button>
+        </div>
       </Form>
 
       <Modal show={showModal} onHide={() => setShowModal(false)} centered className="custom-modal">

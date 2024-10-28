@@ -21,7 +21,7 @@ const CareerApplicationForm = () => {
     useEffect(() => {
         const fetchCareerDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/careers/${careerId}`);
+                const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/careers/${careerId}`);
                 const career = response.data.career;
                 setCareerTitle(career.title);
                 setCareerDetails(career);
@@ -102,7 +102,7 @@ const CareerApplicationForm = () => {
             };
 
             // Send a POST request to the backend API
-            const response = await axios.post('http://localhost:5000/api/applications', formData);
+            const response = await axios.post('https://3pcommunicationsserver.vercel.app/api/applications', formData);
 
             // Set success message and reset form fields
             setMessage('Application submitted successfully!');

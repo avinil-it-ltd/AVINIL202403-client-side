@@ -200,7 +200,7 @@ function ProjectsDetails() {
     useEffect(() => {
         const fetchProjectDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/projects/${id}`); // Replace with your actual API endpoint
+                const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/projects/${id}`); // Replace with your actual API endpoint
                 console.log(response.data.project);
                 setProject(response.data.project);
             } catch (error) {

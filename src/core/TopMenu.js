@@ -23,16 +23,16 @@ const TopMenu = () => {
 
     const topNav = () => (
         <div>
-            <Navbar bg="" expand="lg" variant="dark" fixed="top" style={{ opacity: "0.9" }} className="shadow-lg nav_bar p-0">
+            <Navbar bg="" expand="lg" variant="dark" fixed="top" style={{ opacity: "0.9" }} className="shadow-lg nav_bar  p-0">
                 <Container fluid>
                     <Navbar.Brand href="/" className="">
                         <div className="ms-4" style={{ width: "200px" }}>
                             <img src={logo} className="ms-5" alt="" width="50px" height="40px" />
-                            <p className="fs-6 ms-3">3P Communication</p>
+                            <p className="fs-6 ms-3 navbar_text_color ">3P Communication</p>
                         </div>
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="navbarScroll" className="text-warning me-3 flex-wrap border-0" style={{ fontSize: "0.8em" }} />
-                    <Navbar.Collapse id="navbarScroll">
+                    <Navbar.Toggle aria-controls="navbarScroll" className=" me-3 flex-wrap bg-warning border-0" style={{ fontSize: "0.8em" }} />
+                    <Navbar.Collapse id="navbarScroll" className="ps-4">
                         <Nav className="me-2 mx-auto my-2 my-lg-0 d-flex" style={{ padding: '7px' }} navbarScroll>
                             <Nav.Link href="/" className="text-warning"><p className="navbar_text_color">Home</p></Nav.Link>
                             <Nav.Link href="/interior"><p className="navbar_text_color">Interior</p></Nav.Link>

@@ -10,6 +10,7 @@ const TestimonialDashboard = () => {
     const [testimonials, setTestimonials] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [editTestimonial, setEditTestimonial] = useState(null);
+    const [loading, setLoading] = useState(true); // Loading state
     const [newTestimonial, setNewTestimonial] = useState({
         name: '',
         content: '',
@@ -23,8 +24,9 @@ const TestimonialDashboard = () => {
     }, []);
 
     const fetchTestimonials = async () => {
-        const res = await axios.get('http://localhost:5000/api/testimonials');
+        const res = await axios.get('https://3pcommunicationsserver.vercel.app/api/testimonials');
         setTestimonials(res.data);
+        setLoading(false);
     };
 
     const handleShowModal = (testimonial = null) => {
@@ -42,9 +44,9 @@ const TestimonialDashboard = () => {
             }
 
             if (editTestimonial) {
-                await axios.put(`http://localhost:5000/api/testimonials/${editTestimonial._id}`, newTestimonial);
+                await axios.put(`https://3pcommunicationsserver.vercel.app/api/testimonials/${editTestimonial._id}`, newTestimonial);
             } else {
-                await axios.post('http://localhost:5000/api/testimonials', newTestimonial);
+                await axios.post('https://3pcommunicationsserver.vercel.app/api/testimonials', newTestimonial);
             }
 
             fetchTestimonials();
@@ -58,7 +60,7 @@ const TestimonialDashboard = () => {
     const handleDelete = async (id) => {
         const confirmed = window.confirm('Are you sure you want to delete this testimonial?');
         if (confirmed) {
-            await axios.delete(`http://localhost:5000/api/testimonials/${id}`);
+            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/testimonials/${id}`);
             fetchTestimonials();
         }
     };
@@ -93,11 +95,24 @@ const TestimonialDashboard = () => {
         setImagePreview(null);
     };
 
+
+
+    // Custom Loader Component
+    const Loader = () => (
+        <div className="loader-container text-center mt-5">
+            <div className="custom-loader"></div>
+        </div>
+    );
+
+    if (loading) {
+        return <Loader />;
+    }
+
     return (
-        <div>
-            <h2 className='text-center my-5'>Testimonial Management</h2>
-            <div>
-                <Button onClick={() => handleShowModal()} className="mb-3">
+        <div className='card shadow-lg m-3 p-3 '>
+            <h2 style={{ fontFamily: "Times New Roman" }} className='text-center my-2'>Testimonial Management</h2>
+            <div className='text-end'>
+                <Button variant='' onClick={() => handleShowModal()} className="mb-3 dashboard_all_button">
                     Add New Testimonial
                 </Button>
             </div>
@@ -118,11 +133,11 @@ const TestimonialDashboard = () => {
                             <td>{testimonial.name}</td>
                             <td>{testimonial.content}</td>
                             <td>{testimonial.designation}</td>
-                            <td>
-                                <Button variant="warning" onClick={() => handleShowModal(testimonial)} className="me-2">
+                            <td className='d-flex '>
+                                <Button variant="warning" onClick={() => handleShowModal(testimonial)} className="btn-sm me-2">
                                     <FaEdit />
                                 </Button>
-                                <Button variant="danger" onClick={() => handleDelete(testimonial._id)}>
+                                <Button className=" btn-sm" variant="danger" onClick={() => handleDelete(testimonial._id)}>
                                     <FaTrash />
                                 </Button>
                             </td>
@@ -167,7 +182,7 @@ const TestimonialDashboard = () => {
                             <Form.Label>Image </Form.Label>
                             {imagePreview ? (
                                 <div className="image-preview-container">
-                                    <img src={imagePreview} alt="Preview" className="image-preview"  />
+                                    <img src={imagePreview} alt="Preview" className="image-preview" />
                                     <Button variant="danger" onClick={handleRemoveImage} className="remove-image-btn">
                                         <FaTrash />
                                     </Button>

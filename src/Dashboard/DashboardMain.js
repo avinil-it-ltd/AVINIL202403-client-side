@@ -16,23 +16,25 @@ const DashboardMain = () => {
     const [loading, setLoading] = useState(true);  // Add loading state
 
     // Loader Component
-    const Loader = () => (
-        <div className="loader-container text-center mt-5">
-            <h3>Data Is Loading....</h3>
-        </div>
-    );
+    // const Loader = () => (
+    //     <div className="loader-container text-center mt-5">
+    //         <h3>Data Is Loading....</h3>
+    //     </div>
+    // );
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const projectResponse = await axios.get('http://localhost:5000/api/projects');
+                const projectResponse = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects');
                 const projects = projectResponse.data;
                 setProjectData(projects.projects);
                 setPendingCount(projects.filter(p => p.status === 'Pending').length);
                 setRunningCount(projects.filter(p => p.status === 'Running').length);
                 setCompletedCount(projects.filter(p => p.status === 'Completed').length);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching projects:', error);
+                setLoading(false);
             }
 
             // Fetch counts for other entities
@@ -46,12 +48,12 @@ const DashboardMain = () => {
             for (const { endpoint, setter } of counts) {
                 try {
                     if(endpoint != 'careers'){
-                        const response = await axios.get(`http://localhost:5000/api/${endpoint}`);
+                        const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/${endpoint}`);
                         setter(response.data.length);
                         console.log(response.data);
                     }
                     else{
-                        const response = await axios.get(`http://localhost:5000/api/${endpoint}`);
+                        const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/${endpoint}`);
                         setter(response.data?.length);
                         console.log("career ",response.data?.length);
                     }
@@ -76,10 +78,22 @@ const DashboardMain = () => {
         fetchData();
     }, []);
 
-    // Show loader while data is being fetched
-    if (loading) {
-        return <Loader />;
-    }
+    // // Show loader while data is being fetched
+    // if (loading) {
+    //     return <Loader />;
+    // }
+
+        // Custom Loader Component
+        const Loader = () => (
+            <div className="loader-container text-center mt-5">
+                <div className="custom-loader"></div>
+            </div>
+        );
+    
+        if (loading) {
+            return <Loader />;
+        }
+    
 
     return (
         <div className="dashboard-container">

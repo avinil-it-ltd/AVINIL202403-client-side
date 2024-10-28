@@ -11,7 +11,7 @@ const Footer = () => {
   useEffect(() => {
     const fetchContactDetails = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/myContact'); // Adjust the URL as needed
+        const response = await fetch('https://3pcommunicationsserver.vercel.app/api/myContact'); // Adjust the URL as needed
         if (!response.ok) {
           throw new Error('Failed to fetch contact details');
         }
@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <div>
-      <footer className="footerColor text-white pt-5 pb-3">
+      <footer className="bg-dark text-white pt-5 pb-3">
         <Container>
           <Row>
 
@@ -87,7 +87,7 @@ const Footer = () => {
           </Row>
         </Container>
         <hr />
-        <div className="footerColor text-white text-center fw-bold">
+        <div className="bg-dark text-white text-center fw-bold">
           <div className="text-center mx-5 pt-3">
             <p>&copy; 3p Communication All Rights Reserved</p>
           </div>

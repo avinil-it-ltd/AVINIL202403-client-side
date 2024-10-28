@@ -37,7 +37,7 @@ const UpdateProject = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/projects/${id}`);
+        const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/projects/${id}`);
         const fetchedProject = response.data.project;
         setProject({
           ...fetchedProject,
@@ -55,7 +55,7 @@ const UpdateProject = () => {
 
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/categories');
+        const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/categories');
         setCategories(response.data);
       } catch {
         setError('Failed to load categories.');
@@ -160,7 +160,7 @@ const UpdateProject = () => {
 
       const dataToSubmit = { ...project, mainImage: mainImageUrl, additionalImages: additionalImageUrls };
 
-      await axios.put(`http://localhost:5000/api/projects/${id}`, dataToSubmit);
+      await axios.put(`https://3pcommunicationsserver.vercel.app/api/projects/${id}`, dataToSubmit);
       navigate('/dashboard/projects');
     } catch {
       setError('Error updating project. Please try again.');

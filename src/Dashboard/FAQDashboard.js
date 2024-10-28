@@ -9,14 +9,16 @@ const FAQDashboard = () => {
     const [showModal, setShowModal] = useState(false);
     const [editFaq, setEditFaq] = useState(null);
     const [newFaq, setNewFaq] = useState({ question: '', answer: '' });
+    const [loading, setLoading] = useState(true); // Loading state
 
     useEffect(() => {
         fetchFAQs();
     }, []);
 
     const fetchFAQs = async () => {
-        const res = await axios.get('http://localhost:5000/api/faqs'); // Replace with your backend API
+        const res = await axios.get('https://3pcommunicationsserver.vercel.app/api/faqs'); // Replace with your backend API
         setFaqs(res.data);
+        setLoading(false);
     };
 
     const handleShowModal = (faq = null) => {
@@ -27,9 +29,9 @@ const FAQDashboard = () => {
 
     const handleSave = async () => {
         if (editFaq) {
-            await axios.put(`http://localhost:5000/api/faqs/${editFaq._id}`, newFaq); // Update FAQ
+            await axios.put(`https://3pcommunicationsserver.vercel.app/api/faqs/${editFaq._id}`, newFaq); // Update FAQ
         } else {
-            await axios.post('http://localhost:5000/api/faqs', newFaq); // Create new FAQ
+            await axios.post('https://3pcommunicationsserver.vercel.app/api/faqs', newFaq); // Create new FAQ
         }
         fetchFAQs();
         setShowModal(false);
@@ -38,19 +40,37 @@ const FAQDashboard = () => {
     const handleDelete = async (id) => {
         const confirmed = window.confirm('Are you sure you want to delete this FAQ?');
         if (confirmed) {
-            await axios.delete(`http://localhost:5000/api/faqs/${id}`);
+            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/faqs/${id}`);
             fetchFAQs();
         }
     };
 
+
+
+
+    // Custom Loader Component
+    const Loader = () => (
+        <div className="loader-container text-center mt-5">
+            <div className="custom-loader"></div>
+        </div>
+    );
+
+    if (loading) {
+        return <Loader />;
+    }
+
+
+
     return (
-        <div>
-            <h2 className='text-center my-5'>FAQ Management</h2>
-            <div>
-                <Button onClick={() => handleShowModal()} className="mb-3">
+        <div className='card shadow-lg p-4 m-3 '>
+            <h2 className='text-center my-3' style={{ fontFamily: "Times New Roman" }}>FAQ Management</h2>
+
+            <div className="text-end">
+                <Button variant='' onClick={() => handleShowModal()} className="mb-3 dashboard_all_button px-5">
                     Add New FAQ
                 </Button>
             </div>
+
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -66,12 +86,12 @@ const FAQDashboard = () => {
                             <td>{index + 1}</td>
                             <td>{faq.question}</td>
                             <td>{faq.answer}</td>
-                            <td>
-                                <Button variant="warning" onClick={() => handleShowModal(faq)} className="me-2">
-                                    <FaEdit /> 
+                            <td className='d-flex align-item-center justify-content-center'>
+                                <Button variant="warning" onClick={() => handleShowModal(faq)} className="me-2 btn-sm">
+                                    <FaEdit />
                                 </Button>
-                                <Button variant="danger" onClick={() => handleDelete(faq._id)}>
-                                    <FaTrash /> 
+                                <Button variant="danger" className='btn-sm' onClick={() => handleDelete(faq._id)}>
+                                    <FaTrash />
                                 </Button>
                             </td>
                         </tr>

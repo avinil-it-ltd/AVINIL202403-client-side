@@ -23,7 +23,9 @@ import ideas from '../src/assets/images/idea.png'
 import delivery from '../src/assets/images/delivery.png'
 import meeting from '../src/assets/images/business-meeting.png'
 
-
+import inte from '../src/assets/1.png'
+import india_gate from '../src/assets/india-gate.png'
+import wedding from '../src/assets/wedding-ring.png'
 
 
 import picture1 from '../src/assets/images/clients/Picture1.jpg'
@@ -83,72 +85,6 @@ const IndexHome = (props) => {
 
 
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const sliderWrapperRef = useRef(null);
-  const [slidesPerView, setSlidesPerView] = useState(4);
-  const autoSlideInterval = useRef(null);
-
-  const testimonial = [
-    { name: "Alice", review: "I am beyond thrilled with the transformation of my living room. The design team brought my vision to life and exceeded my expectations. Highly recommend their services!" },
-    { name: "Bob", review: "The designers were professional and attentive to our needs. Our office space is now both functional and aesthetically pleasing. Thank you for your outstanding work!" },
-    { name: "Charlie", review: "We hired the company to redesign our kitchen, and we couldn't be happier with the results. The attention to detail and creativity were exceptional. Our kitchen looks amazing!" },
-    { name: "David", review: "The team did an incredible job with our home renovation. They made sure to incorporate our preferences while adding their unique touch. We love our new space!" },
-    { name: "Eve", review: "From start to finish, the process was seamless and enjoyable. The designers are talented, professional, and easy to work with. Our home feels like a dream come true!" },
-    { name: "Frank", review: "I was impressed by the level of expertise and creativity. The designers turned our outdated space into a modern, stylish home. We receive compliments from everyone who visits!" },
-    { name: "Grace", review: "The team took our small apartment and made it feel spacious and luxurious. Their innovative solutions and attention to detail made all the difference. Highly recommend!" },
-    { name: "Hannah", review: "Working with the company was a fantastic experience. They listened to our ideas and provided valuable insights. Our home is now a perfect blend of comfort and elegance." },
-    { name: "Ivy", review: "The designers were able to capture our style and preferences perfectly. Our renovated home is beautiful and functional. We couldn't be happier with the results!" },
-    { name: "Jack", review: "The company's designers are true professionals. They transformed our home with creativity and precision. The project was completed on time and within budget. Highly satisfied!" },
-    { name: "Kevin", review: "We are thrilled with the design of our new home. The team was attentive, responsive, and incredibly talented. Our home feels like a luxurious retreat thanks to their work!" }
-  ];
-
-
-
-  const updateSlidesPerView = () => {
-    const width = window.innerWidth;
-    if (width >= 1200) {
-      setSlidesPerView(4);
-    } else if (width >= 768) {
-      setSlidesPerView(2);
-    } else {
-      setSlidesPerView(1);
-    }
-  };
-
-  const updateSliderPosition = () => {
-    const slideWidth = sliderWrapperRef.current.clientWidth / slidesPerView;
-    sliderWrapperRef.current.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex(currentIndex > 0 ? currentIndex - 1 : testimonial?.length - slidesPerView);
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex(currentIndex < testimonial?.length - slidesPerView ? currentIndex + 1 : 0);
-  };
-
-  useEffect(() => {
-    updateSlidesPerView();
-    window.addEventListener('resize', updateSlidesPerView);
-    return () => window.removeEventListener('resize', updateSlidesPerView);
-  }, []);
-
-  useEffect(() => {
-    updateSliderPosition();
-  }, [currentIndex, slidesPerView]);
-
-  useEffect(() => {
-    autoSlideInterval.current = setInterval(nextSlide, 3000);
-    return () => clearInterval(autoSlideInterval.current);
-  }, [currentIndex]);
-
-
-
-
-
-
-
   // Faq section functionality code 
 
   const [activeKey, setActiveKey] = useState(null);
@@ -176,8 +112,8 @@ const IndexHome = (props) => {
         <div className="row p-3">
           <div className="col-12 col-md-6 mx-auto ">
 
-            <h1 className=" heading_color my-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>3P Communication Interior & Exterior Design</h1>
-            <p className="fs-5">At 3P Communication, we prioritize collaboration in every project. Our design concepts emerge from close partnerships with our clients, ensuring a deep understanding of their goals and unique positions within the industry. Our talented team actively listens, conducts thorough research, and brings creative visions to life, crafting spaces that are not only visually stunning but also budget-conscious and practical. We are committed to delivering exceptional design solutions that meet the specific needs of each client.</p>
+            <h2 className=" heading_color mt-5 me-2" style={{ fontFamily: "Times New Roman" }}>3P Communication Interior & Exterior Design</h2>
+            <p className="fs-6">At 3P Communication, we prioritize collaboration in every project. Our design concepts emerge from close partnerships with our clients, ensuring a deep understanding of their goals and unique positions within the industry. Our talented team actively listens, conducts thorough research, and brings creative visions to life, crafting spaces that are not only visually stunning but also budget-conscious and practical. We are committed to delivering exceptional design solutions that meet the specific needs of each client.</p>
             <Link to="/interior" ><button className="btn btn-md special_button mt-2">View Interior Projects</button></Link>
           </div>
           <div className="col-10 col-md-4 mx-auto">
@@ -190,8 +126,8 @@ const IndexHome = (props) => {
           <div className="col-10 col-md-4  mx-auto">
             <img src={banner3} className="rounded mt-5 imageBorder" width="100%"></img>
           </div>
-          <div className="col-12 col-md-6 mx-auto text-end mt-5">
-            <h1 className="text-end mt-5 heading_color " style={{ fontFamily: "'Aref Ruqaa', serif" }}>design as the people it serves</h1>
+          <div className="col-12 col-md-6 mx-auto  mt-5">
+            <h2 className=" mt-5 heading_color " style={{ fontFamily: "Times New Roman" }}>Design as the people it serves</h2>
             <p className="fs-5 ">We offer a full range of interior and exterior design services. Our focus on modern systems and detailed documentation allows us to create tailored solutions for each project. With award-winning design talent and solid project management skills, we ensure that every project is completed on time and within budget, all while maintaining high standards and attention to detail.</p>
             <Link to="/exterior" ><button className="btn btn-md special_button ">View Exterior Projects</button></Link>
           </div>
@@ -234,68 +170,37 @@ const IndexHome = (props) => {
     </div>
   )
 
+
   const ourServices = () => (
     <div className="servicebg">
-      {/* style={{ backgroundImage: "url('/images/bg-5.jpg')", }} */}
-      <div className=" py-5 " style={{ opacity: "0.9" }}>
-        {/* body_background */}
-        <div
-          className="text-center h2 heading_color py-5"
-          style={{ fontFamily: "'Aref Ruqaa', serif" }}
-        >
-          <h2>Explore Our Services </h2>
+      <div className="service-content py-5">
+        <div className="text-center h2 text-white py-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+          <h2>Explore Our Services</h2>
         </div>
 
         <div className="row p-4 pb-5">
           <div className="col">
             <div className="text-center ">
-              <img
-                src={eventImage}
-                className="imageBorder"
-                width="350px"
-                height="250px"
-              ></img>
+              <img src={inte} className="imageBorder  p-2 bg-white" width="200px" height="150px" alt="Event" />
             </div>
-            <div
-              className="text-center  h4 text-danger p-2 "
-              style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " " }}
-            >
-              Event
+            <div className="text-center h4 text-white p-2" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+              Interior
             </div>
           </div>
           <div className="col">
-            <div className="text-center ">
-              <img
-                src={exteriorImage}
-                className="imageBorder"
-                width="350px"
-                height="250px"
-              ></img>
+            <div className="text-center">
+              <img src={india_gate} className="imageBorder  p-2 bg-white" width="200px" height="150px" alt="Event" />
             </div>
-            <div
-              className="text-center h4 text-danger p-2"
-              style={{
-                fontFamily: "'Aref Ruqaa', serif",
-                textDecoration: " #ffc107",
-              }}
-            >
+            <div className="text-center h4 text-white p-2" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
               Exterior
             </div>
           </div>
           <div className="col">
-            <div className="text-center ">
-              <img
-                src={InteriordesignPic}
-                className="imageBorder"
-                width="350px"
-                height="250px"
-              ></img>
+            <div className="text-center">
+              <img src={wedding} className="imageBorder  p-2 bg-white" width="200px" height="150px" alt="Event" />
             </div>
-            <div
-              className="text-center h4 text-danger p-2"
-              style={{ fontFamily: "'Aref Ruqaa', serif", textDecoration: " " }}
-            >
-              Interior
+            <div className="text-center h4 text-white p-2" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+              Event
             </div>
           </div>
         </div>
@@ -306,12 +211,42 @@ const IndexHome = (props) => {
 
 
   const callNow = () => (
-    <div className="w-100 nav_bar my-5 py-5">
-      <div className="text-center  text-white fw-bolder px-3 px-md-5 callNow_font mb-3 mb-md-0">
-        <h3 className="moving-text ">CALL NOW FOR YOUR DREAM INTO REALITY</h3>
-      </div>
-      <div className="text-center px-3 px-md-5 callNow_font">
-        <button className="border-0 px-5 btn btn-light p-3">+88015846895</button>
+    <div className="w-100 bg-dark my-5 py-5">
+      <div className="d-flex flex-column flex-md-row justify-content-around align-items-center text-center text-md-start text-black fw-bolder px-3 px-md-5 callNow_font">
+
+        {/* Column 1 - Text */}
+        <div className="col-md-4 mb-3 mb-md-0 text-white">
+          <h3>CONTACT NOW FOR YOUR DREAM INTO REALITY</h3>
+        </div>
+
+        {/* Column 2 - Phone Number with Icon */}
+        <div className="col-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
+          <div className="d-flex align-items-center justify-content-center">
+            <div className="icon-circle">
+              <i className="bi bi-telephone-fill"></i> {/* Bootstrap phone icon */}
+            </div>
+            <div className="px-3 pt-3">
+              <p className="text-warning"> CALL US<br /><span className="text-white"> +88015846895</span> </p>
+              <p className="ms-2 fw-bold"></p>
+            </div>
+          </div>
+        </div>
+
+        {/* Column 3 - Email with Icon */}
+        <div className="col-md-4 d-flex align-items-center justify-content-center">
+          <div>
+
+            <div className="d-flex align-items-center justify-content-center">
+              <div className="icon-circle">
+                <i className="bi bi-envelope-fill"></i> {/* Bootstrap envelope icon */}
+              </div>
+              <div className="px-3 pt-3">
+                <p className="text-warning">PLEASE SEND EMAIL<br /> <span className="fw-bold text-white">info@example.com</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
@@ -319,59 +254,84 @@ const IndexHome = (props) => {
 
 
 
+
+
+
+  // const OurClients = () => (
+  //   <div className="container my-5 py-5">
+  //     <h2 className="text-center mb-2 fs-4 heading_color">Our Clients</h2>
+  //     <h1 className="text-center mb-5 callNow_font" style={{ fontFamily: "Times New Roman" }} >
+  //       We have worked with great people
+  //     </h1>
+
+  //     <div className="row moving-row right-to-left">
+  //       <div className="col-4 col-md-2 text-center mb-4">
+  //         <img src={picture1} alt="Client 1" className="client-image" />
+  //       </div>
+  //       <div className="col-4 col-md-2 text-center mb-4">
+  //         <img src={picture2} alt="Client 2" className="client-image" />
+  //       </div>
+  //       <div className="col-4 col-md-2 text-center mb-4">
+  //         <img src={picture3} alt="Client 3" className="client-image" />
+  //       </div>
+  //       <div className="col-4 col-md-2 text-center mb-4">
+  //         <img src={picture4} alt="Client 4" className="client-image" />
+  //       </div>
+  //       <div className="col-4 col-md-2 text-center mb-4">
+  //         <img src={picture5} alt="Client 5" className="client-image" />
+  //       </div>
+  //       <div className="col-4 col-md-2 text-center mb-4">
+  //         <img src={picture6} alt="Client 6" className="client-image" />
+  //       </div>
+  //     </div>
+
+  //     {/* Row 2 - Moves Left to Right */}
+  //     <div className="row moving-row left-to-right">
+  //       <div className="col-4 col-md-2   text-center mb-4">
+  //         <img src={picture7} alt="Client 7" className="client-image" />
+  //       </div>
+  //       <div className="col-4 col-md-2   text-center mb-4">
+  //         <img src={picture8} alt="Client 8" className="client-image" />
+  //       </div>
+  //       <div className="col-4 col-md-2   text-center mb-4">
+  //         <img src={picture9} alt="Client 9" className="client-image" />
+  //       </div>
+  //       <div className="col-4 col-md-2   text-center mb-4">
+  //         <img src={picture10} alt="Client 10" className="client-image" />
+  //       </div>
+  //       <div className="col-4 col-md-2   text-center mb-4">
+  //         <img src={picture11} alt="Client 11" className="client-image" />
+  //       </div>
+  //       <div className="col-4 col-md-2   text-center mb-4">
+  //         <img src={picture12} alt="Client 12" className="client-image" />
+  //       </div>
+  //     </div>
+
+
+  //   </div>
+  // );
   const OurClients = () => (
-    <div className="container my-5 py-5 ">
+    <div className="container my-5 py-5">
       <h2 className="text-center mb-2 fs-4 heading_color">Our Clients</h2>
-      <h1 className="text-center mb-5 callNow_font heading_color" style={{ fontFamily: "'Aref Ruqaa', serif" }}>We have worked with great people</h1>
-
-      <div className="row">
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture1} alt="Client 1" className=" " />
-        </div>
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture2} alt="Client 2" className=" " />
-        </div>
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture3} alt="Client 3" className=" " />
-        </div>
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture4} alt="Client 4" className=" " />
+      <h1 className="text-center mb-5 callNow_font" style={{ fontFamily: "Times New Roman" }}>
+        We have worked with great people
+      </h1>
+  
+      {/* Scrollable row of clients */}
+      <div className="client-scroll">
+        <div className="client-row ">
+          {[picture1, picture2, picture3, picture4, picture5, picture6,picture7, picture8, picture9, picture10, picture11, picture12].map((pic, index) => (
+            <div key={index} className="client-item">
+              <img src={pic} alt={`Client ${index + 1}`} className="client-image mx-2" />
+            </div>
+          ))}
         </div>
       </div>
-
-      <div className="row">
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture5} alt="Client 1" className=" " />
-        </div>
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture6} alt="Client 2" className=" " />
-        </div>
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture7} alt="Client 3" className=" " />
-        </div>
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture8} alt="Client 4" className=" " />
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture9} alt="Client 1" className=" " />
-        </div>
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture10} alt="Client 2" className=" " />
-        </div>
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture11} alt="Client 3" className=" " />
-        </div>
-        <div className="col-6 col-md-3 text-center mb-4">
-          <img width=" 200px" height="150px " src={picture12} alt="Client 4" className=" " />
-        </div>
-      </div>
-
+  
+     
     </div>
   );
-
+  
 
 
 
@@ -425,13 +385,11 @@ const IndexHome = (props) => {
   )
 
   const [testimonialsData, setTestimonialsData] = useState([]);
-  // const sliderWrapperRef = useRef(null);
-  // const slidesPerView = 3; // Adjust this based on your layout
 
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/testimonials'); // Adjust the endpoint as needed
+        const response = await fetch('https://3pcommunicationsserver.vercel.app/api/testimonials'); // Adjust the endpoint as needed
         const data = await response.json();
         setTestimonialsData(data);
       } catch (error) {
@@ -440,51 +398,81 @@ const IndexHome = (props) => {
     };
     fetchTestimonials();
   }, []);
-  const testimonials = () => (
-    <Container className="my-5 py-5">
-    <h2 style={{ fontFamily: "'Aref Ruqaa', serif" }} className="text-center my-5 fs-3 heading_color">Our Clients Say</h2>
+  
 
-    <div className="slider-container container mx-auto">
-      <div className="slider-wrapper d-flex" ref={sliderWrapperRef}>
-        {testimonialsData.map((t, index) => (
-          <div className="slide" key={index} style={{ flex: `0 0 ${100 / slidesPerView}%` }}>
-            <div className="testimonial-card d-flex flex-column justify-content-between">
-              <div className="text-center">
-              {t.imageUrl && (
-                  <img
-                    src={t.imageUrl}
-                    alt={t.name}
-                    className="testimonial-image"
-                  />
-                )}
-              </div>
-              <div className="testimonial-header ">
-                <div className="my-auto py-auto testimonial-content">
-                  <p className="my-0 fw-bold">{t?.name}</p>
-                  <p className="text-muted">{t?.designation}</p>
-                </div>
-               
-              </div>
-              <p className="mt-0 pt-0 card-description text-justify">"{t?.content}"</p>
-            </div>
+
+  const testimoni = () => (
+    <section className="testimonial-section py-5  bg-white position-relative">
+      <div className="container pb-5 mb-5">
+        <div className="row  mb-5">
+          {/* Left Section with Image and Text */}
+          <div className="col-lg-6" data-aos="zoom-in-left">
+            <img
+              src="https://img.freepik.com/free-photo/mid-century-modern-living-room-interior-design-with-monstera-tree_53876-129805.jpg?t=st=1730136027~exp=1730139627~hmac=9578ad8071dadd765be891efbfd1c43be6ee9eeb34051bddb9a9882f48c76ab5&w=996"
+              alt="Testimonial Section"
+              className="img-fluid rounded-lg"
+            />
           </div>
-        ))}
+  
+          {/* Right Heading, Paragraph, and Button */}
+          <div className="col-lg-6" data-aos="fade-up">
+            <h2 className="display-4 pt-5 font-weight-bold">Discover Client Experiences</h2>
+            <p className="text-muted mb-5">
+              Our clients consistently praise our commitment to quality and service.
+              Join the growing list of satisfied clients who trust us for their meeting needs.
+            </p>
+            <Link to="/interior"><button className="btn dashboard_all_button text-white fw-bold px-5 py-2"> Explore The Projectrs</button></Link> 
+          </div>
+        </div>
+  
+        {/* Testimonial Cards at Bottom Right */}
+        <div className="testimonial-carousel-wrapper">
+          <div className="testimonial-carousel">
+            {testimonialsData.map((testimonial, index) => (
+              <div key={index} className="card bg-white  testimonial-card border-0 mx-3 p-3 shadow-sm">
+                <div className="d-flex align-items-center">
+                  <img
+                    src={testimonial.imageUrl}
+                    alt={testimonial.name}
+                    className="rounded-circle mr-3"
+                    style={{ width: "60px", height: "60px", objectFit: "cover" }}
+                  />
+                  <div>
+                    <h6 className="mb-1">{testimonial.name}</h6>
+                    <small className="text-muted">{testimonial.designation}</small>
+                  </div>
+                </div>
+                <p className="mt-3 text-muted">{testimonial.content}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="slider-controls">
-        {/* Uncomment and implement the controls if needed */}
-        {/* <button className="prev" onClick={prevSlide}>Previous</button> */}
-        {/* <button className="next me-3 special_button" onClick={nextSlide}>Next</button> */}
-      </div>
-    </div>
-  </Container>
-  )
+    </section>
+  );
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
     const fetchFaqs = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/faqs'); // Adjust the endpoint as needed
+        const response = await fetch('https://3pcommunicationsserver.vercel.app/api/faqs'); // Adjust the endpoint as needed
         const data = await response.json();
         setFaqs(data);
       } catch (error) {
@@ -499,46 +487,51 @@ const IndexHome = (props) => {
 
   const faq = () => (
     <Container className="my-5 py-5">
-      <Row className="align-items-center">
-        {/* FAQ Section */}
-        <Col lg={6} className="mb-4">
-          <h2 className=" heading_color mb-4" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Frequently Asked Questions</h2>
-          <Accordion activeKey={activeKey}>
-            {faqs.map((faq, index) => (
-              <Card key={index} className="mb-3">
-                <Card.Header>
-                  <h5 className="mb-0">
-                    <Button
-                      variant="link"
-                      onClick={() => toggleActiveKey(index)}
-                      aria-expanded={activeKey === index}
-                      className={`btn-block text-start  text-decoration-none ${activeKey === index ? 'font-weight-bold' : ''}`}
-                    >
-                      {faq.question}
-                    </Button>
-                  </h5>
-                </Card.Header>
-                <Accordion.Collapse eventKey={index}>
-                  <Card.Body>{faq.answer}</Card.Body>
-                </Accordion.Collapse>
-              </Card>
-            ))}
-          </Accordion>
-        </Col>
+    <Row className="align-items-center">
+      {/* FAQ Section */}
+      <Col lg={6} className="my-5 py-5 px-4">
+        <h2 className="heading_color mb-4" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Frequently Asked Questions</h2>
+        <Accordion activeKey={activeKey}>
+          {faqs.map((faq, index) => (
+            <Card key={index} className="mb-3">
+              <Card.Header
+                onClick={() => toggleActiveKey(index)}
+                className="d-flex align-items-center"
+                style={{ cursor: 'pointer' }}
+              >
+                <h6 className="mb-0 py-2">
+                  <span
+                    style={{
+                      color: activeKey === index ? 'black' : 'black', // Orange when active, default color otherwise
+                      textDecoration: 'none',
+                      fontWeight: activeKey === index ? 'bold' : 'normal'
+                    }}
+                  >
+                    {faq.question}
+                  </span>
+                </h6>
+              </Card.Header>
+              <Accordion.Collapse eventKey={index}>
+                <Card.Body>{faq.answer}</Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          ))}
+        </Accordion>
+      </Col>
 
-        {/* Right Side Image */}
-        <Col lg={6}>
-          <div className="text-center">
-            <img
-              src={right} // Replace with your desired image link
-              alt="FAQ Illustration"
-              className="w-100"
-              style={{ borderRadius: '10px' }}
-            />
-          </div>
-        </Col>
-      </Row>
-    </Container>
+      {/* Right Side Image */}
+      <Col lg={6}>
+        <div className="text-center ">
+          <img
+            src={right} // Replace with your desired image link
+            alt="FAQ Illustration"
+            className="w-100 "
+            style={{ borderRadius: '10px' }}
+          />
+        </div>
+      </Col>
+    </Row>
+  </Container>
   )
 
 
@@ -553,10 +546,11 @@ const IndexHome = (props) => {
         <div>{sec1()}</div>
         <div>{process()}</div>
         <div>{ourServices()}</div>
-        <div>{callNow()}</div>
         <div>{OurClients()}</div>
+        <div>{callNow()}</div>
         <div>{ThreeImgSection()}</div>
-        <div>{testimonials()}</div>
+        {/* <div>{testimonials()}</div> */}
+        <div>{testimoni()}</div>
         <div>{faq()}</div>
         <br /><br />
         <div id="contact"><Footer /></div>

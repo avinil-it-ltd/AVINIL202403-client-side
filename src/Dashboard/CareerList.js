@@ -19,13 +19,14 @@ const CareerRow = ({ career, onDelete, onStatusChange }) => (
         <td>{career.description}</td>
         <td>
             <Button
+                className='btn-sm'
                 variant={career.status ? 'danger' : 'success'}
                 onClick={() => onStatusChange(career._id, !career.status)}
             >
                 {career.status ? 'Deactivate' : 'Activate'}
             </Button>
         </td>
-        <td>
+        <td className='d-flex '>
             <Link to={`/dashboard/updateCareer/${career._id}`} className="btn btn-info btn-sm me-2">
                 Update
             </Link>
@@ -44,7 +45,7 @@ const CareerList = () => {
     const fetchCareers = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:5000/api/careers');
+            const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/careers');
             console.log(response.data); // Log the entire response for debugging
             const careersWithSerial = response.data?.map((career, index) => ({
                 ...career,
@@ -66,7 +67,7 @@ const CareerList = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this career?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/careers/${id}`);
+                await axios.delete(`https://3pcommunicationsserver.vercel.app/api/careers/${id}`);
                 setCareers(prevCareers => prevCareers.filter(career => career._id !== id));
             } catch (err) {
                 setError('Error deleting career. Please try again later.');
@@ -77,7 +78,7 @@ const CareerList = () => {
 
     const handleStatusChange = async (id, status) => {
         try {
-            await axios.patch(`http://localhost:5000/api/careers/status/${id}`, { status });
+            await axios.patch(`https://3pcommunicationsserver.vercel.app/api/careers/status/${id}`, { status });
             fetchCareers(); // Refresh the list after status update
         } catch (err) {
             setError('Failed to update career status. Please try again later.');
@@ -86,14 +87,14 @@ const CareerList = () => {
     };
 
     return (
-        <div className="container my-4">
+        <div className="container card shadow-lg p-4 my-4">
             {loading && <Loader />}
             {error && <Alert variant="danger">{error}</Alert>}
             {!loading && !error && (
                 <>
-                    <h2 className="text-center mb-4">Career List</h2>
+                    <h2 className="text-center mb-4 " style={{ fontFamily: "Times New Roman" }}>Career List</h2>
                     <div className="text-end mb-3">
-                        <Link to="/dashboard/addCareer" className="btn btn-primary">
+                        <Link to="/dashboard/addCareer" className="px-5 btn dashboard_all_button">
                             Add Career
                         </Link>
                     </div>

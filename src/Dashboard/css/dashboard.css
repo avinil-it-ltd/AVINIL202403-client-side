@@ -1,3 +1,35 @@
+.dashboard_all_button{
+    color: black ;
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: #F79735;
+}
+
+.dashboard_all_button:hover{
+    background-color: black;
+    color: white;
+}
+
+
+.sidebar .nav-link.active-link {
+    /* background-color: #F79735;  */
+    background-color: rgb(219 234 254); 
+    color: black;
+    border-radius: 4px;
+}
+
+.sidebar .nav-link.active-link:hover {
+    color: black; /* Keep color on hover */
+}
+
+
+/* style={{ fontFamily: "Times New Roman" }} */
+/* outline: "none", boxShadow: "none" */
+
+
+
+
+
 .sidebar {
     width: 270px;
     /* Set a fixed width for the sidebar */

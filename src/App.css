@@ -113,9 +113,7 @@ body{
   align-items: center; /* Center vertically */
 }
 
-.testimonial-content {
-  /* text-align: left; Align text to the left */
-}
+
 
 .testimonial-image {
   border-radius: 80%; /* Circular image */

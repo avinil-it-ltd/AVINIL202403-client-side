@@ -21,7 +21,7 @@ const Contact = () => {
   useEffect(() => {
     const fetchContactDetails = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/myContact"); // Adjust the URL as needed
+        const response = await fetch("https://3pcommunicationsserver.vercel.app/api/myContact"); // Adjust the URL as needed
         if (!response.ok) {
           throw new Error("Failed to fetch contact details");
         }
@@ -59,7 +59,7 @@ const Contact = () => {
 
     // Submit form data to backend
     try {
-      const response = await axios.post("http://localhost:5000/api/contacts", {
+      const response = await axios.post("https://3pcommunicationsserver.vercel.app/api/contacts", {
         name,
         email,
         phoneNumber,

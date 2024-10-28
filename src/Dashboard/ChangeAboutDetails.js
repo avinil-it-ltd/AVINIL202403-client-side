@@ -29,7 +29,7 @@ const ChangeAboutDetails = () => {
     useEffect(() => {
         const fetchAboutData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/about');
+                const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/about');
                 setFormData(response.data);
             } catch (error) {
                 console.error("Error fetching About Us data:", error);
@@ -78,15 +78,15 @@ const ChangeAboutDetails = () => {
                     }));
                 } else if (type === 'centralImage') {
                     console.log(imageUrl);
-                    
+
                     setFormData(prev => {
                         const updatedData = { ...prev, centralImage: imageUrl };
                         console.log("Updated central image URL:", updatedData.centralImage);
                         return updatedData;
                     });
                     console.log(formData);
-                    
-                    
+
+
                 } else {
                     const updatedWhyChooseUs = [...formData.whyChooseUs];
                     updatedWhyChooseUs[index].imageUrl = imageUrl;
@@ -140,7 +140,7 @@ const ChangeAboutDetails = () => {
         console.log(formData);
 
         try {
-            await axios.put('http://localhost:5000/api/about', formData);
+            await axios.put('https://3pcommunicationsserver.vercel.app/api/about', formData);
             Swal.fire({
                 icon: "success",
                 title: "Updated successfully!",
@@ -162,7 +162,7 @@ const ChangeAboutDetails = () => {
 
     return (
         <div className="container card w-75 shadow-sm p-5">
-            <h2 className="my-4">Dashboard: Update About Us Page</h2>
+            <h2 className="my-4 text-center " style={{ fontFamily: "Times New Roman" }}>Update About Us Page</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group mb-3">
                     <label className='fw-bold'>CEO Name</label>
@@ -199,12 +199,18 @@ const ChangeAboutDetails = () => {
                         onChange={(e) => handleImageUpload(e, null, 'profile')}
                     />
                     {formData.profile.profilePicture && (
-                        <div className='w-25 mt-2'>
-                            <img src={formData.profile.profilePicture} alt="CEO" className="img-fluid" />
+                        <div className="mt-2" style={{ width: "75px", height: "75px" }}>
+                            <img
+                                src={formData.profile.profilePicture}
+                                alt="CEO"
+                                className="img-fluid"
+                                style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "5px" }}
+                            />
                         </div>
                     )}
+
                 </div>
-                <h4 className="my-4">Project Statistics</h4>
+                <h4 className="my-5 text-center ">Project Statistics</h4>
                 {Object.keys(formData.statistics).map((key) => (
                     <div className="form-group mb-3" key={key}>
                         <label className='fw-bold'>{key.replace(/([A-Z])/g, " $1")}</label>
@@ -224,29 +230,19 @@ const ChangeAboutDetails = () => {
                         onChange={(e) => handleImageUpload(e, null, 'centralImage')}
                     />
                     {formData?.centralImage && (
-                        <div className='w-25 mt-2'>
-
-                            <img src={formData?.centralImage} alt="Central" className="img-fluid" />
+                        <div className="mt-2" style={{ width: "75px", height: "75px" }}>
+                            <img
+                                src={formData?.centralImage}
+                                alt="Central"
+                                className="img-fluid"
+                                style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "5px" }}
+                            />
                         </div>
                     )}
+
                 </div>
-                {/* <div>
-                <label className='fw-bold'>Upload Image {index + 1}</label>
-                        <input
-                            type="file"
-                            className="form-control"
-                            onChange={(e) => handleImageUpload(e, index, 'whyChooseUs')}
-                        />
-                        {item.imageUrl && (
-                            <div className='w-25 mt-2'>
-                                <img src={item.imageUrl} alt={`Why Choose Us ${index + 1}`} className="img-fluid" />
-                                <Button variant="danger" onClick={() => handleDeleteImage(index)} className="mt-2">
-                                    <FaTrash />
-                                </Button>
-                            </div>
-                        )}
-                </div> */}
-                <h4 className="my-4">Why Choose Us</h4>
+
+                <h4 className="my-5 text-center ">Why Choose Us</h4>
                 {formData.whyChooseUs.map((item, index) => (
                     <div key={index} className="mb-3">
                         <label className='fw-bold'>Title {index + 1}</label>
@@ -279,9 +275,11 @@ const ChangeAboutDetails = () => {
                         )}
                     </div>
                 ))}
-                <Button type="submit" variant="primary" disabled={uploading}>
-                    {uploading ? 'Updating...' : 'Update'}
-                </Button>
+                <div className='d-flex justify-content-center'>
+                    <Button className='dashboard_all_button px-5  w-50' type="submit" variant="" disabled={uploading}>
+                        {uploading ? 'Updating...' : 'Update'}
+                    </Button>
+                </div>
             </form>
 
             <Modal show={showModal} onHide={() => setShowModal(false)}>
