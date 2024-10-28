@@ -1,107 +1,132 @@
 import React, { useState, useEffect } from "react";
-import emailjs from '@emailjs/browser';
-import { Modal, Button } from "react-bootstrap"
+import Swal from "sweetalert2";
+import "./css/ContactModal.css"; // Import the CSS for styling
 
+function ContactModal({ isOpen, onClose }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
+  const [interest, setInterest] = useState("");
+  const [contactDetails, setContactDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-function ContactModal(props) {
+  useEffect(() => {
+    const fetchContactDetails = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/Contacts"); // Adjust the URL as needed
+        if (!response.ok) {
+          throw new Error("Failed to fetch contact details");
+        }
+        const data = await response.json();
+        setContactDetails(data);
+      } catch (error) {
+        console.error("Error fetching contact details:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const theme = '#191919'
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [phoneNo, setPhoneNo] = useState("")
-  const [interest, setInterest] = useState("")
-  const [success, setSuccess] = useState(false)
+    fetchContactDetails();
+  }, []);
 
-  var templateParams = {
-    name: name,
-    email: email,
-    phoneNo: phoneNo,
-    message: interest
-  };
-
-  const clickSubmit = (event) => {
+  const clickSubmit = async (event) => {
     event.preventDefault();
-    emailjs.send('service_lbmx95i', 'template_5nhl4y6', templateParams, 'dfTY7TgQqsuNivbMT')
-      .then(function (response) {
-        console.log('SUCCESS!', response.status, response.text);
-      }, function (error) {
-        console.log('FAILED...', error);
+    try {
+      const response = await fetch("http://localhost:5000/api/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phoneNo,
+          message: interest,
+        }),
       });
 
-    setSuccess(true)
-    setName("");
-    setEmail("");
-    setPhoneNo("");
-    setInterest("");
-  }
+      if (response.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Message Sent!",
+          text: "Thank you. Our team will contact you soon.",
+          confirmButtonColor: "#28a745",
+        });
+        setName("");
+        setEmail("");
+        setPhoneNo("");
+        setInterest("");
+        onClose(); // Close modal on successful submission
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong. Please try again.",
+        confirmButtonColor: "#d33",
+      });
+    }
+  };
 
-
-  const showSuccess = () => (
-    <div className="alert alert-warning text-dark" style={{ display: success ? "" : "none" }}>
-      Thank You. Soon our team will contact you.
-    </div>
-  )
-
-
-  const contactForm = () => (
-    <div  className="modal_design py-3" > 
-    {/* style={{ backgroundImage: "url('/images/bg-2.jpg')" }} */}
-      <div >
-        <div  className="col-6 col-md-9 mx-auto" style={{  opacity: "0.9" }}>
-
-          <div className="row">
-            {/* <div className="col-12 col-md-6 my-auto p-3">
-              <p className="h1 text-center " style={{ fontFamily: "'Aref Ruqaa', serif" }}>Our Expertise , Your Lifestyle</p>
-              <hr className="text-white d-md-none" />
-
-            </div> */}
-            <div className="">
-              <p className="h2 text-danger text-center" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Contact Us</p>
-              {showSuccess()}
-              <form >
-                <div className="form-group mb-2">
-                  <label className="text-danger">Name:</label>
-                  <input onChange={(e) => { setName(e.target.value) }} type="text" className="form-control col-6" value={name} required></input>
-                </div> 
-                <div className="form-group mb-2">
-                  <label className="text-danger">Email:</label>
-                  <input onChange={(e) => { setEmail(e.target.value) }} type="text" className="form-control col-6" value={email} required></input>
-                </div>
-                <div className="form-group mb-2">
-                  <label className="text-danger">Phone No:</label>
-                  <input onChange={(e) => { setPhoneNo(e.target.value) }} type="text" className="form-control col-6" value={phoneNo} required></input>
-                </div>
-                <div className="form-group mb-2">
-                  <label className="text-danger">Message:</label>
-                  <textarea rows="4" onChange={(e) => { setInterest(e.target.value) }} type="text" className="form-control col-6" value={interest} required></textarea>
-                </div>
-
-                <button onClick={clickSubmit} type="submit" className="mt-3 col-12 btn special_button btn-lg btn-block ">Submit</button>
-              </form>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  )
+  if (!isOpen) return null;
 
   return (
-    <Modal
-  {...props}
-  className="modal_size"
-  size="lg"
-  aria-labelledby="contained-modal-title-vcenter"
-  centered
->
-  <Modal.Header closeButton>
-  </Modal.Header>
-  <Modal.Body>
-    <div>{contactForm()}</div>
-  </Modal.Body>
-</Modal>
-
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <button className="modal-close" onClick={onClose}>
+          &times;
+        </button>
+        <div className="modal-header">
+          <h2>Contact Us</h2>
+        </div>
+        {loading ? (
+          <p>Loading contact details...</p>
+        ) : contactDetails ? (
+          <div className="modal-details">
+            <p><strong>Address:</strong> {contactDetails.address}</p>
+            <p><strong>Phone:</strong> {contactDetails.mobile}</p>
+            <p><strong>Email:</strong> {contactDetails.email}</p>
+          </div>
+        ) : (
+          <p>Contact details not available</p>
+        )}
+        <form onSubmit={clickSubmit} className="modal-form">
+          <label>Name:</label>
+          <input
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            value={name}
+            required
+          />
+          <label>Email:</label>
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            value={email}
+            required
+          />
+          <label>Phone No:</label>
+          <input
+            onChange={(e) => setPhoneNo(e.target.value)}
+            type="text"
+            value={phoneNo}
+            required
+          />
+          <label>Message:</label>
+          <textarea
+            rows="4"
+            onChange={(e) => setInterest(e.target.value)}
+            value={interest}
+            required
+          ></textarea>
+          <button type="submit" className="submit-button">Submit</button>
+        </form>
+      </div>
+    </div>
   );
 }
 
-export default ContactModal
+export default ContactModal;

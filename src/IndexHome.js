@@ -562,10 +562,10 @@ const IndexHome = (props) => {
         <div id="contact"><Footer /></div>
 
 
-        {/* <ContactModal
+        <ContactModal
           show={modalShow}
           onHide={() => setModalShow(false)}
-        /> */}
+        />
 
       </div>
     </div>
