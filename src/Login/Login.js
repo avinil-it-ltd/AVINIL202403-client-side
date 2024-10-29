@@ -87,7 +87,7 @@ const Login = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">Login</button>
+                        <button type="submit" className="btn dashboard_all_button text-white w-100">Login</button>
                     </form>
                 </div>
             </div>

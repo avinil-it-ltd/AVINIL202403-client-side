@@ -14,7 +14,7 @@ import banner1 from '../src/assets/images/banner1.jpg'
 import banner2 from '../src/assets/images/banner2.jpg'
 import banner3 from '../src/assets/images/banner3.jpg'
 
-
+import testimonialImage from "../src/assets/images/testimonialImage.jpg"
 import design from '../src/assets/images/interior-design.png'
 import ideas from '../src/assets/images/idea.png'
 import delivery from '../src/assets/images/delivery.png'
@@ -43,6 +43,7 @@ import ContactModal from "./pages/Contact/ContactModal";
 import left from "../src/assets/images/interiorPage/left.jpg"
 import center from "../src/assets/images/interiorPage/center.jpg"
 import right from "../src/assets/images/interiorPage/right.jpg"
+import PageUpButton from "./PageUpButton/PageUpButton";
 
 
 
@@ -351,7 +352,7 @@ const IndexHome = (props) => {
           {/* Left Section with Image and Text */}
           <div className="col-lg-6" data-aos="zoom-in-left">
             <img
-              src="https://img.freepik.com/free-photo/mid-century-modern-living-room-interior-design-with-monstera-tree_53876-129805.jpg?t=st=1730136027~exp=1730139627~hmac=9578ad8071dadd765be891efbfd1c43be6ee9eeb34051bddb9a9882f48c76ab5&w=996"
+              src={testimonialImage}
               alt="Testimonial Section"
               className="img-fluid rounded-lg"
             />
@@ -380,7 +381,7 @@ const IndexHome = (props) => {
                     className="rounded-circle mr-3"
                     style={{ width: "60px", height: "60px", objectFit: "cover" }}
                   />
-                  <div>
+                  <div className="ps-3">
                     <h6 className="mb-1">{testimonial.name}</h6>
                     <small className="text-muted">{testimonial.designation}</small>
                   </div>
@@ -496,13 +497,14 @@ const IndexHome = (props) => {
         <div>{testimoni()}</div>
         <div>{faq()}</div>
         <br /><br />
+        <div>{PageUpButton}</div>
         <div id="contact"><Footer /></div>
 
 
-        {/* <ContactModal
+        <ContactModal
           show={modalShow}
           onHide={() => setModalShow(false)}
-        /> */}
+        />
 
       </div>
     </div>

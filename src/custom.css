@@ -115,39 +115,10 @@ brown #F9DEBE
   background-color: #EEEEEE;
 }
 
-.modal_size .modal-dialog {
-  max-width: 80%;
-  width: 600px;
+
+.detailsTitle{
+  background-color: gainsboro;
 }
-
-.modal_size .modal-content {
-  height: 600px;
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (max-width: 768px) {
-  .modal_size .modal-dialog {
-    width: 90%;
-  }
-
-  .modal_size .modal-content {
-    height: 400px;
-  }
-}
-
-/* Small devices (phones, 600px and up) */
-@media (max-width: 600px) {
-  .modal_size .modal-dialog {
-    width: 95%;
-    /* Adjust width for even smaller screens */
-  }
-
-  .modal_size .modal-content {
-    height: auto;
-    /* Allow height to adjust based on content */
-  }
-}
-
 
 
 
@@ -368,7 +339,7 @@ brown #F9DEBE
 /* CSS for Background and Overlay */
 .servicebg {
   position: relative;
-  background-image: url('https://img.pikbest.com/ai/illus_our/20230427/a9bb9d70b20dd5c69b24d783447b2db4.jpg!sw800')  ;
+  background-image: url('/src/assets/images/servicesImg.jpeg')  ;
   background-size: cover;
   background-position: center;
   opacity: 1; /* Adjust background transparency */

@@ -70,6 +70,14 @@ const Sidebar = () => {
                 <h5 className="mt-4">Update Management</h5>
                 <Nav.Link
                     as={Link}
+                    to="/dashboard/changePrivacyPolicy"
+                    className={`mb-2 ${isActive('/dashboard/changePrivacyPolicy') ? 'active-link' : ''}`}
+                >
+                    <FaClipboardList /> Change Privacy Policy
+                </Nav.Link>
+
+                <Nav.Link
+                    as={Link}
                     to="/dashboard/UpdateAboutDetails"
                     className={`mb-2 ${isActive('/dashboard/UpdateAboutDetails') ? 'active-link' : ''}`}
                 >

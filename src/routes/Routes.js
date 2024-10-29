@@ -42,6 +42,7 @@ import ApplicationList from '../Dashboard/ApplicationList.js';
 import FAQDashboard from '../Dashboard/FAQDashboard.js';
 import TestimonialDashboard from '../Dashboard/TestimonialDashboard.js';
 import ChangeCredentials from '../Dashboard/ChangeCredentials.js';
+import ChangePrivacyPolicy from '../Dashboard/ChangePrivacyPolicy.js';
 
 
 
@@ -87,6 +88,7 @@ const AppRoutes = () => {
                 <Route path="applications" element={<ApplicationList/>} />
                 <Route path="categories" element={<CategoryManagement/>} />
                 <Route path="UpdateAboutDetails" element={<ChangeAboutDetails/>} />
+                <Route path="changePrivacyPolicy" element={<ChangePrivacyPolicy/>} />
                 <Route path="UpdateContactDetails" element={<UpdateContactDetails/>} />
                 
             </Route>
