@@ -1,4 +1,30 @@
 .circle-section {
+  display: flex;
+  align-items: center;
+}
+
+.circle-img {
+  width: 60px; /* Adjust size */
+  height: 60px;
+  border-radius: 50%;
+}
+
+.center-circle-container {
+  position: relative;
+}
+
+.center-circle {
+  width: 150px;
+  height: 150px;
+  border: 5px solid #ddd; /* Add border */
+  border-radius: 50%;
+}
+
+
+
+
+
+.circle-section {
     display: flex;
     align-items: center;
   }

@@ -29,7 +29,7 @@ const Footer = () => {
 
   return (
     <div>
-      <footer className="bg-dark text-white pt-5 pb-3">
+      <footer className="bg-dark text-white pt-5 px-3 pb-3">
         <Container>
           <Row>
 

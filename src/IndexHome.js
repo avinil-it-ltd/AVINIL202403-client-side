@@ -358,7 +358,7 @@ const IndexHome = (props) => {
           </div>
   
           {/* Right Heading, Paragraph, and Button */}
-          <div className="col-lg-6" data-aos="fade-up">
+          <div className="col-lg-6 p-3" data-aos="fade-up">
             <h2 className="display-4 pt-5 font-weight-bold">Discover Client Experiences</h2>
             <p className="text-muted mb-5">
               Our clients consistently praise our commitment to quality and service.

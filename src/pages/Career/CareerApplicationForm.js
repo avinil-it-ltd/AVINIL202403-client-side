@@ -247,7 +247,7 @@ const CareerApplicationForm = () => {
                             />
                         </div>
 
-                        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+                        <button type="submit" className="btn dashboard_all_button text-white" disabled={isLoading}>
                             {isLoading ? 'Submitting...' : 'Submit Application'}
                         </button>
                     </form>

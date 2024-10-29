@@ -65,18 +65,71 @@ const AboutUs = () => {
     </div>
   );
 
+  // const ChooseMe = () => (
+  //   <div className="container my-5 pt-5">
+  //     <h2 className="heading_color py-5 text-center">Why Choose Us?</h2>
+  //     <div className="row justify-content-center align-items-center">
+  //       {/* Left Circle Sections */}
+  //       <div className="col-4">
+  //         {aboutData?.whyChooseUs?.slice(0, 3).map((item, index) => (
+  //           <div key={index} className="circle-section mb-4">
+  //             <img
+  //               src={item.imageUrl} // Use the image URL from your backend
+  //               alt={`Why Choose Us - ${item.title}`} // Descriptive alt text
+  //               className="circle-img"
+  //             />
+  //             <div className="text-start ps-3">
+  //               <h5 className="fs-6 fw-bold">{item.title}</h5>
+  //               <p className="fs-6">{item.description}</p>
+  //             </div>
+  //           </div>
+  //         ))}
+  //       </div>
+
+  //       {/* Center Circle Image with Border */}
+  //       <div className="col-4 text-center">
+  //         <div className="center-circle-container">
+  //           <img
+  //             src={aboutData?.centralImage} // Assuming you might have a central image in your data
+  //             alt="Center Circle"
+  //             className="center-circle"
+  //           />
+  //         </div>
+  //       </div>
+
+  //       {/* Right Circle Sections */}
+  //       <div className="col-4 text-center">
+  //         {aboutData?.whyChooseUs?.slice(3).map((item, index) => (
+  //           <div key={index} className="circle-section mb-4">
+  //             <img
+  //               src={item.imageUrl} // Use the image URL from your backend
+  //               alt={`Why Choose Us - ${item.title}`} // Descriptive alt text
+  //               className="circle-img"
+  //             />
+  //             <div className="text-start ps-3">
+  //               <h4>{item.title}</h4>
+  //               <p>{item.description}</p>
+  //             </div>
+  //           </div>
+  //         ))}
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
+
   const ChooseMe = () => (
     <div className="container my-5 pt-5">
       <h2 className="heading_color py-5 text-center">Why Choose Us?</h2>
       <div className="row justify-content-center align-items-center">
+        
         {/* Left Circle Sections */}
-        <div className="col-4">
+        <div className="col-12 col-md-4 text-center text-md-start">
           {aboutData?.whyChooseUs?.slice(0, 3).map((item, index) => (
-            <div key={index} className="circle-section mb-4">
+            <div key={index} className="circle-section mb-4 d-flex align-items-center justify-content-center">
               <img
-                src={item.imageUrl} // Use the image URL from your backend
-                alt={`Why Choose Us - ${item.title}`} // Descriptive alt text
-                className="circle-img"
+                src={item.imageUrl}
+                alt={`Why Choose Us - ${item.title}`}
+                className="circle-img img-fluid"
               />
               <div className="text-start ps-3">
                 <h5 className="fs-6 fw-bold">{item.title}</h5>
@@ -85,30 +138,30 @@ const AboutUs = () => {
             </div>
           ))}
         </div>
-
+  
         {/* Center Circle Image with Border */}
-        <div className="col-4 text-center">
+        <div className="col-12 col-md-4 text-center my-4 my-md-0">
           <div className="center-circle-container">
             <img
-              src={aboutData?.centralImage} // Assuming you might have a central image in your data
+              src={aboutData?.centralImage}
               alt="Center Circle"
-              className="center-circle"
+              className="center-circle img-fluid"
             />
           </div>
         </div>
-
+  
         {/* Right Circle Sections */}
-        <div className="col-4 text-center">
+        <div className="col-12 col-md-4 text-center text-md-start">
           {aboutData?.whyChooseUs?.slice(3).map((item, index) => (
-            <div key={index} className="circle-section mb-4">
+            <div key={index} className="circle-section mb-4 d-flex align-items-center justify-content-center">
               <img
-                src={item.imageUrl} // Use the image URL from your backend
-                alt={`Why Choose Us - ${item.title}`} // Descriptive alt text
-                className="circle-img"
+                src={item.imageUrl}
+                alt={`Why Choose Us - ${item.title}`}
+                className="circle-img img-fluid"
               />
               <div className="text-start ps-3">
-                <h4>{item.title}</h4>
-                <p>{item.description}</p>
+                <h5 className="fs-6 fw-bold">{item.title}</h5>
+                <p className="fs-6">{item.description}</p>
               </div>
             </div>
           ))}
@@ -117,6 +170,7 @@ const AboutUs = () => {
     </div>
   );
 
+  
   
 
  

@@ -81,7 +81,7 @@ if (loading) {
 
 
   const BioSection = () => (
-    <Container className="my-5 py-5">
+    <Container className="my-5 py-5 px-2">
       <Row>
         <Col md={6}>
           <img src={bioImg} alt="Example" className="img-fluid" />
@@ -161,7 +161,7 @@ const callNow = () => (
 
 
   const ProjectSection = () => (
-    <div className="container mb-5 pb-5">
+    <div className="container mb-5 px-3 pb-5">
       <h1 className="my-5 py-5"><span className="bigText">Interior</span> <span className="smallText">Projects</span></h1>
 
       <div className="row g-4">

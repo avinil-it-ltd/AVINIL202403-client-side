@@ -175,7 +175,7 @@ const Contact = () => {
           </div>
 
           {/* Right Side: Contact Form */}
-          <div className="col-12 col-md-6 ContactDesign px-5">
+          <div className="col-12 col-md-6 ContactDesign px-3">
             <p
               className="h2 heading_color mt-3 text-center"
               style={{ fontFamily: "'Aref Ruqaa', serif" }}
