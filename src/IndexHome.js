@@ -6,16 +6,13 @@ import styled, { keyframes } from 'styled-components';
 import TopMenu from "./core/TopMenu"
 import Footer from "./core/Footer"
 import Data from "./projects.json"
-import { Accordion, Card, Button } from 'react-bootstrap';
+import { Accordion, Card } from 'react-bootstrap';
 
 
 import { Container, Row, Col } from "react-bootstrap"
-import eventImage from '../src/assets/images/event'
 import banner1 from '../src/assets/images/banner1.jpg'
 import banner2 from '../src/assets/images/banner2.jpg'
 import banner3 from '../src/assets/images/banner3.jpg'
-import exteriorImage from '../src/assets/images/exterior.jpg'
-import InteriordesignPic from '../src/assets/images/interiorp.jpg'
 
 
 import design from '../src/assets/images/interior-design.png'
@@ -256,60 +253,6 @@ const IndexHome = (props) => {
 
 
 
-
-  // const OurClients = () => (
-  //   <div className="container my-5 py-5">
-  //     <h2 className="text-center mb-2 fs-4 heading_color">Our Clients</h2>
-  //     <h1 className="text-center mb-5 callNow_font" style={{ fontFamily: "Times New Roman" }} >
-  //       We have worked with great people
-  //     </h1>
-
-  //     <div className="row moving-row right-to-left">
-  //       <div className="col-4 col-md-2 text-center mb-4">
-  //         <img src={picture1} alt="Client 1" className="client-image" />
-  //       </div>
-  //       <div className="col-4 col-md-2 text-center mb-4">
-  //         <img src={picture2} alt="Client 2" className="client-image" />
-  //       </div>
-  //       <div className="col-4 col-md-2 text-center mb-4">
-  //         <img src={picture3} alt="Client 3" className="client-image" />
-  //       </div>
-  //       <div className="col-4 col-md-2 text-center mb-4">
-  //         <img src={picture4} alt="Client 4" className="client-image" />
-  //       </div>
-  //       <div className="col-4 col-md-2 text-center mb-4">
-  //         <img src={picture5} alt="Client 5" className="client-image" />
-  //       </div>
-  //       <div className="col-4 col-md-2 text-center mb-4">
-  //         <img src={picture6} alt="Client 6" className="client-image" />
-  //       </div>
-  //     </div>
-
-  //     {/* Row 2 - Moves Left to Right */}
-  //     <div className="row moving-row left-to-right">
-  //       <div className="col-4 col-md-2   text-center mb-4">
-  //         <img src={picture7} alt="Client 7" className="client-image" />
-  //       </div>
-  //       <div className="col-4 col-md-2   text-center mb-4">
-  //         <img src={picture8} alt="Client 8" className="client-image" />
-  //       </div>
-  //       <div className="col-4 col-md-2   text-center mb-4">
-  //         <img src={picture9} alt="Client 9" className="client-image" />
-  //       </div>
-  //       <div className="col-4 col-md-2   text-center mb-4">
-  //         <img src={picture10} alt="Client 10" className="client-image" />
-  //       </div>
-  //       <div className="col-4 col-md-2   text-center mb-4">
-  //         <img src={picture11} alt="Client 11" className="client-image" />
-  //       </div>
-  //       <div className="col-4 col-md-2   text-center mb-4">
-  //         <img src={picture12} alt="Client 12" className="client-image" />
-  //       </div>
-  //     </div>
-
-
-  //   </div>
-  // );
   const OurClients = () => (
     <div className="container my-5 py-5">
       <h2 className="text-center mb-2 fs-4 heading_color">Our Clients</h2>

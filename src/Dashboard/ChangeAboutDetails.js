@@ -245,14 +245,14 @@ const ChangeAboutDetails = () => {
                 <h4 className="my-5 text-center ">Why Choose Us</h4>
                 {formData.whyChooseUs.map((item, index) => (
                     <div key={index} className="mb-3">
-                        <label className='fw-bold'>Title {index + 1}</label>
+                        <label className='fw-bold'>Title {index + 1}   </label>
                         <input
                             type="text"
                             className="form-control mb-2"
                             value={item.title}
                             onChange={(e) => handleWhyChooseUsChange(index, "title", e.target.value)}
                         />
-                        <label className='fw-bold'>Description {index + 1}</label>
+                        <label className='fw-bold'>Description {index + 1} (In 12 words) </label>
                         <textarea
                             className="form-control mb-2"
                             rows="3"

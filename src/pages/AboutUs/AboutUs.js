@@ -10,11 +10,12 @@ import projectComplete from '../../assets/images/project.png';
 import award from '../../assets/images/award.png';
 import client from '../../assets/images/happyClient.png';
 import servicespic from '../../assets/images/customer-service.png';
-import centralPic from '../../assets/images/about/central.jpg';
 import './About.css'
 const AboutUs = () => {
   const [aboutData, setAboutData] = useState(null);
   const ZoomIn = styled.div`animation: 3s ${keyframes`${zoomIn}`}`;
+  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchAboutData = async () => {
@@ -22,6 +23,7 @@ const AboutUs = () => {
         const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/about'); // Adjust the API endpoint as necessary
         setAboutData(response.data);
       } catch (error) {
+        setLoading(false);
         console.error("Error fetching about data:", error);
       }
     };
@@ -77,8 +79,8 @@ const AboutUs = () => {
                 className="circle-img"
               />
               <div className="text-start ps-3">
-                <h4>{item.title}</h4>
-                <p>{item.description}</p>
+                <h5 className="fs-6 fw-bold">{item.title}</h5>
+                <p className="fs-6">{item.description}</p>
               </div>
             </div>
           ))}
@@ -115,10 +117,99 @@ const AboutUs = () => {
     </div>
   );
 
+  
 
-  if (!aboutData) {
-    return <div>Loading...</div>; // Loading state
-  }
+ 
+// State to hold contact details, loading, and error
+const [contactDetails, setContactDetails] = useState(null);
+const [error, setError] = useState(null);
+
+useEffect(() => {
+  const fetchContactDetails = async () => {
+    try {
+      const response = await fetch("https://3pcommunicationsserver.vercel.app/api/myContact"); // Adjust the URL as needed
+      if (!response.ok) {
+        throw new Error("Failed to fetch contact details");
+      }
+      const data = await response.json();
+      setContactDetails(data); // Set contact details
+    } catch (error) {
+      console.error("Error fetching contact details:", error);
+      setError("Failed to load contact details.");
+    } finally {
+      setLoading(false); // Set loading to false after fetching
+    }
+  };
+
+  fetchContactDetails();
+}, []); // Empty dependency array to run only once
+
+
+
+const callNow = () => (
+  <div className="w-100 bg-dark my-5 py-5">
+    <div className="d-flex flex-column flex-md-row justify-content-around align-items-center text-center text-md-start text-black fw-bolder px-3 px-md-5 callNow_font">
+
+      {/* Column 1 - Text */}
+      <div className="col-md-4 mb-3 mb-md-0 text-white">
+        <h3>CONTACT NOW FOR YOUR DREAM INTO REALITY</h3>
+      </div>
+
+      {/* Column 2 - Phone Number with Icon */}
+      <div className="col-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
+        <div className="d-flex align-items-center justify-content-center">
+          <div className="icon-circle">
+            <i className="bi bi-telephone-fill"></i> {/* Bootstrap phone icon */}
+          </div>
+          <div className="px-3 pt-3">
+            <p className="text-warning"> CALL US<br />
+              <span className="text-white"> {contactDetails ? contactDetails?.mobile : "+880000000000"}</span>
+            </p>
+            <p className="ms-2 fw-bold"></p>
+          </div>
+        </div>
+      </div>
+
+      {/* Column 3 - Email with Icon */}
+      <div className="col-md-4 d-flex align-items-center justify-content-center">
+        <div>
+          <div className="d-flex align-items-center justify-content-center">
+            <div className="icon-circle">
+              <i className="bi bi-envelope-fill"></i> {/* Bootstrap envelope icon */}
+            </div>
+            <div className="px-3 pt-3">
+              <p className="text-warning">PLEASE SEND EMAIL<br />
+                <span className="fw-bold text-white">{contactDetails ? contactDetails?.email : "info@example.com"}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+);
+
+
+
+ // Custom Loader JSX
+ const Loader = () => (
+  <div className="loader-container">
+      <div className="custom-loader"></div>
+  </div>
+);
+
+
+if (loading) {
+  return <Loader />; // Use your custom loader here
+}
+
+  
+
+
+  // if (!aboutData) {
+  //   return <div>Loading...</div>; // Loading state
+  // }
 
   return (
     <div className="container" style={{ maxWidth: "100vw" }}>
@@ -137,13 +228,13 @@ const AboutUs = () => {
                 className="heading_color mb-0"
                 style={{ fontFamily: "'Aref Ruqaa', serif" }}
               >
-                {aboutData.profile.name}
+                {aboutData?.profile?.name}
               </h4>
               <p
                 className="text-muted"
                 style={{ fontFamily: "'Aref Ruqaa', serif" }}
               >
-                {aboutData.profile.position}
+                {aboutData?.profile?.position}
               </p>
             </div>
           </div>
@@ -158,7 +249,7 @@ const AboutUs = () => {
           </h3>
           <div className="introduction-text my-auto" style={{ maxWidth: "600px", margin: "0 auto" }}>
             <p className="text-black">
-              {aboutData.profile.introduction}
+              {aboutData?.profile?.introduction}
             </p>
           </div>
         </div>
@@ -166,6 +257,7 @@ const AboutUs = () => {
 
 
       <div>{ChooseMe()}</div>
+      <div>{callNow()}</div>
       <div>{process()}</div>
       <div id="contact" className="g-0">
         <Footer />
