@@ -1,6 +1,6 @@
 // src/routes.js
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 // import IndexHome from "./IndexHome";
 
@@ -42,11 +42,20 @@ import ApplicationList from '../Dashboard/ApplicationList.js';
 import FAQDashboard from '../Dashboard/FAQDashboard.js';
 import TestimonialDashboard from '../Dashboard/TestimonialDashboard.js';
 import ChangeCredentials from '../Dashboard/ChangeCredentials.js';
-import ChangePrivacyPolicy from '../Dashboard/ChangePrivacyPolicy.js';
+import ChangePrivacyPolicy from '../Dashboard/PolicyDashboard.js';
+import PolicyDashboard from '../Dashboard/PolicyDashboard.js';
+import SettingsPage from '../Dashboard/SettingsPage.js';
+import { useAuth } from '../context/AuthContext.js';
+import Register from '../Auth/Register/Register.js';
 
 
 
-
+const ProtectedRoute = ({ children }) => {
+    const authContext = useAuth(); // Get auth context
+    console.log(authContext); // Check what you get from useAuth
+    const { token } = useAuth(); // Get token from context
+    return token ? children : <Navigate to="/login" />;
+};
 
 const AppRoutes = () => {
     return (
@@ -66,7 +75,7 @@ const AppRoutes = () => {
 
 
 
-            <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
                 <Route index element={<DashboardMain />} /> 
                 <Route path="updateProject" element={<ProjectListForUpdate />} />
                 <Route path="updateproject/:id" element={<UpdateProject />} />
@@ -88,9 +97,9 @@ const AppRoutes = () => {
                 <Route path="applications" element={<ApplicationList/>} />
                 <Route path="categories" element={<CategoryManagement/>} />
                 <Route path="UpdateAboutDetails" element={<ChangeAboutDetails/>} />
-                <Route path="changePrivacyPolicy" element={<ChangePrivacyPolicy/>} />
+                <Route path="changePrivacyPolicy" element={<PolicyDashboard/>} />
                 <Route path="UpdateContactDetails" element={<UpdateContactDetails/>} />
-                
+                <Route path="settings" element={<SettingsPage />} />
             </Route>
 
 
@@ -98,6 +107,7 @@ const AppRoutes = () => {
             <Route path="careers" element={<CareerPage />} /> {/* List all careers */}
             <Route path="applyCareer/:careerId" element={<CareerApplicationForm />} /> {/* Career application form */}
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             
             {/* <Route path="newpage" element={NewPage} /> */}
           

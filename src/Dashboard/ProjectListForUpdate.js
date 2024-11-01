@@ -10,8 +10,8 @@ const ProjectListForUpdate = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects');
-                // const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects');
+                const response = await axios.get('http://localhost:5000/api/projects');
+                // const response = await axios.get('http://localhost:5000/api/projects');
                 setProjects(response.data);
             } catch (error) {
                 setError('Error fetching projects. Please try again later.');

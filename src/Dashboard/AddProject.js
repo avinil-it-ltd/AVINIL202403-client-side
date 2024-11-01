@@ -30,6 +30,10 @@ const AddProject = () => {
     },
     startDate: "",
     endDate: "",
+    address: "",
+    budget: "",
+    areaSize: "",
+    status: "pending",
   });
 
   // Fetch categories on component mount
@@ -37,7 +41,7 @@ const AddProject = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "https://3pcommunicationsserver.vercel.app/api/categories"
+          "http://localhost:5000/api/categories"
         );
         setCategories(response.data);
       } catch (error) {
@@ -115,7 +119,7 @@ const AddProject = () => {
     } else {
       setProjectData((prevState) => ({
         ...prevState,
-        [name]: value,
+        [name]: name === "budget" ? value : value,
       }));
     }
   };
@@ -180,6 +184,7 @@ const AddProject = () => {
           .map((image) => uploadImageToCloudinary(image))
       );
 
+      
       // Prepare project data
       const dataToSubmit = {
         title: projectData.title,
@@ -192,10 +197,15 @@ const AddProject = () => {
         endDate: formatDate(projectData.endDate), // Format date here
         mainImage: mainImageUrl,
         additionalImages: additionalImageUrls, // Ensure we're sending the URLs
+        address: projectData.address,
+        budget: projectData.budget,
+        areaSize:projectData.areaSize,
+        status: projectData.status || "pending", // Default to 'pending' if not specified
       };
 
+
       const response = await axios.post(
-        "https://3pcommunicationsserver.vercel.app/api/projects",
+        "http://localhost:5000/api/projects",
         dataToSubmit
       );
 
@@ -214,18 +224,15 @@ const AddProject = () => {
         title: "",
         category: "",
         subcategory: "",
-        client: {
-          name: "",
-          email: "",
-          phone: "",
-        },
-        review: {
-          rating: "",
-          comment: "",
-        },
+        description: "",
+        client: { name: "", email: "", phone: "" },
+        review: { rating: "", comment: "" },
         startDate: "",
         endDate: "",
-        description: "",
+        address: "",
+        budget: "",
+        areaSize: "",
+        status: "pending",
       });
       setMainImage(null);
       setAdditionalImages([]);
@@ -362,6 +369,29 @@ const AddProject = () => {
             required
           />
         </div>
+        {/* Additional form fields for address, budget, and status */}
+        <div className="form-group dashboard_form_desing">
+          <label className="fw-bold">Address</label>
+          <input type="text" name="address" value={projectData.address} onChange={handleChange} className="form-control" required />
+        </div>
+        <div className="form-group dashboard_form_desing">
+          <label className="fw-bold">Budget</label>
+          <input type="text" name="budget" value={projectData.budget} onChange={handleChange} className="form-control" min="0" required />
+        </div>
+        <div className="form-group dashboard_form_desing">
+          <label className="fw-bold">Area Size</label>
+          <input type="text" name="areaSize" value={projectData.areaSize} onChange={handleChange}  className="form-control" required />
+        </div>
+        <div className="form-group dashboard_form_desing">
+          <label className="fw-bold">Status</label>
+          <select name="status" value={projectData.status} onChange={handleChange} className="form-control" required>
+            <option value="pending">Pending</option>
+            <option value="running">Running</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+
+
 
         <h3 className="mt-5 pt-5">Client Details</h3>
         <div className="form-group dashboard_form_desing">

@@ -106,13 +106,15 @@ const Sidebar = () => {
                 </Nav.Link>
 
                 <h5 className="mt-4">Settings</h5>
+                
                 <Nav.Link
                     as={Link}
-                    to="/dashboard/changeCredentials"
-                    className={`mb-2 ${isActive('/dashboard/changeCredentials') ? 'active-link' : ''}`}
+                    to="/dashboard/settings" // Link to the combined settings page
+                    className={`mb-2 ${isActive('/dashboard/settings') ? 'active-link' : ''}`}
                 >
-                    <FaUserEdit /> Change Email/Password
+                    <FaUserEdit /> Manage Credentials
                 </Nav.Link>
+
             </Nav>
         </div>
     );

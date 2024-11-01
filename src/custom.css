@@ -117,7 +117,8 @@ brown #F9DEBE
 
 
 .detailsTitle{
-  background-color: gainsboro;
+  border: 2px solid gold;
+  background-color: rgb(250, 249, 249);
 }
 
 

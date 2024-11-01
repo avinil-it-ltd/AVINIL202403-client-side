@@ -1,26 +1,18 @@
 import React, { useState } from "react";
-import emailjs from '@emailjs/browser';
+import axios from "axios";
 import { Modal, Button, Spinner } from "react-bootstrap";
+import Swal from "sweetalert2"; // Import SweetAlert2
 
 function ContactModal(props) {
-  const theme = '#191919';
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [interest, setInterest] = useState("");
-  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const templateParams = {
-    name,
-    email,
-    phoneNo,
-    message: interest,
-  };
 
   const clickSubmit = async (event) => {
     event.preventDefault();
-    
+
     // Form Validation
     if (!name || !email || !phoneNo || !interest) {
       alert("Please fill out all fields.");
@@ -29,30 +21,49 @@ function ContactModal(props) {
 
     setLoading(true);
     try {
-      await emailjs.send('service_lbmx95i', 'template_5nhl4y6', templateParams, 'dfTY7TgQqsuNivbMT');
-      setSuccess(true);
-      setName("");
-      setEmail("");
-      setPhoneNo("");
-      setInterest("");
+      // Submit form data to backend
+      const response = await axios.post("http://localhost:5000/api/contacts", {
+        name,
+        email,
+        phoneNumber: phoneNo,
+        message: interest,
+      });
+
+      if (response.status === 201) {
+        Swal.fire({
+          icon: "success",
+          title: "Message Sent!",
+          text: "Thank you. Our team will contact you soon.",
+          position: "center",
+          showConfirmButton: true,
+          confirmButtonColor: "#28a745",
+        });
+
+        // Reset form fields
+        setName("");
+        setEmail("");
+        setPhoneNo("");
+        setInterest("");
+        props.onHide(); // Close the modal
+      }
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending message:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong. Please try again.",
+        position: "center",
+        showConfirmButton: true,
+        confirmButtonColor: "#d33",
+      });
     } finally {
       setLoading(false);
     }
   };
 
-  const showSuccess = () => (
-    <div className={`alert alert-warning text-dark mt-3 ${success ? 'fade-in' : 'fade-out'}`} style={{ display: success ? "" : "none" }}>
-      Thank You. Soon our team will contact you.
-    </div>
-  );
-
   const contactForm = () => (
     <div className="modal_design px-2 py-3  py-md-4">
       <div className="col-12 col-md-8 mx-auto" style={{ opacity: "0.9" }}>
-        <p className="h3 text-center text-danger" style={{ fontFamily: "'Aref Ruqaa', serif" }}></p>
-        {showSuccess()}
         <form onSubmit={clickSubmit}>
           <div className="form-group mb-3">
             <label className="text-dark">Name:</label>
@@ -95,7 +106,7 @@ function ContactModal(props) {
             />
           </div>
 
-          <Button style={{outline: "none", boxShadow: "none" }} type="submit" className="mt-3 outline-0 text-white col-12 btn dashboard_all_button " disabled={loading}>
+          <Button style={{ outline: "none", boxShadow: "none" }} type="submit" className="mt-3 outline-0 text-white col-12 btn dashboard_all_button" disabled={loading}>
             {loading ? <Spinner animation="border" size="sm" /> : "Submit"}
           </Button>
         </form>
@@ -109,7 +120,6 @@ function ContactModal(props) {
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      className=""
     >
       <Modal.Header closeButton>
         <Modal.Title>Contact Us</Modal.Title>
@@ -122,10 +132,6 @@ function ContactModal(props) {
 }
 
 export default ContactModal;
-
-
-
-
 
 
 // import React, { useState, useEffect } from "react";

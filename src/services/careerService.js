@@ -1,7 +1,7 @@
 // src/services/careerService.js
 import axios from 'axios';
 
-const API_URL = 'https://3pcommunicationsserver.vercel.app/api/careers';
+const API_URL = 'http://localhost:5000/api/careers';
 
 // Get all careers
 export const getAllCareers = async () => {

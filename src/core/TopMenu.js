@@ -42,14 +42,12 @@ const TopMenu = () => {
                             <Nav.Link href="/contactus" className="text-warning"><p className="navbar_text_color">Contact Us</p></Nav.Link>
                             <Nav.Link href="/careers"><p className="navbar_text_color">Career</p></Nav.Link> {/* Added Career Link */}
 
-                            {isLoggedIn ? (
+                            {isLoggedIn && (
                                 <>
                                     <Nav.Link href="/dashboard"><p className="navbar_text_color">Dashboard</p></Nav.Link>
                                     <Nav.Link onClick={handleLogout}><p className="navbar_text_color">Logout</p></Nav.Link>
                                 </>
-                            ) : (
-                                <Nav.Link href="/login"><p className="navbar_text_color">Login</p></Nav.Link>
-                            )}
+                            ) }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

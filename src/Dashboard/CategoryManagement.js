@@ -27,7 +27,7 @@ const CategoryManagement = () => {
 
     const fetchCategories = async () => {
         try {
-            const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/categories');
+            const response = await axios.get('http://localhost:5000/api/categories');
             setCategories(response.data);
             setLoading(false);
         } catch (error) {
@@ -41,7 +41,7 @@ const CategoryManagement = () => {
     const handleUpdateCategory = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`https://3pcommunicationsserver.vercel.app/api/categories/${editingCategoryId}`, { name: editingCategoryName });
+            await axios.put(`http://localhost:5000/api/categories/${editingCategoryId}`, { name: editingCategoryName });
             setCategories(categories.map(category =>
                 category._id === editingCategoryId ? { ...category, name: editingCategoryName } : category
             ));
@@ -58,7 +58,7 @@ const CategoryManagement = () => {
     const handleAddCategory = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://3pcommunicationsserver.vercel.app/api/categories', { name: categoryName });
+            const response = await axios.post('http://localhost:5000/api/categories', { name: categoryName });
             setCategories([...categories, response.data]);
             setCategoryName(''); // Clear category input
             setMessage('Category added successfully');
@@ -73,7 +73,7 @@ const CategoryManagement = () => {
         e.preventDefault();
         try {
             const subCategoryName = subCategoryNames[categoryId] || ''; // Get the subcategory name for this category
-            const response = await axios.post(`https://3pcommunicationsserver.vercel.app/api/categories/${categoryId}/subcategory`, { name: subCategoryName });
+            const response = await axios.post(`http://localhost:5000/api/categories/${categoryId}/subcategory`, { name: subCategoryName });
 
             // Ensure subcategories array exists and create a new reference to trigger re-render
             setCategories(categories.map(category =>
@@ -109,7 +109,7 @@ const CategoryManagement = () => {
         }
 
         try {
-            await axios.put(`https://3pcommunicationsserver.vercel.app/api/categories/${categoryId}/subcategories/${subCategoryId}`, { name: editingSubCategoryName });
+            await axios.put(`http://localhost:5000/api/categories/${categoryId}/subcategories/${subCategoryId}`, { name: editingSubCategoryName });
             // Update state logic...
         } catch (error) {
             setMessage('Error updating subcategory');
@@ -122,7 +122,7 @@ const CategoryManagement = () => {
 
     const handleDeleteSubCategory = async (categoryId, subCategoryId) => {
         try {
-            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/categories/${categoryId}/subcategories/${subCategoryId}`);
+            await axios.delete(`http://localhost:5000/api/categories/${categoryId}/subcategories/${subCategoryId}`);
             setCategories(categories.map(category =>
                 category._id === categoryId ? { ...category, subcategories: category.subcategories.filter(sub => sub._id !== subCategoryId) } : category
             ));
@@ -136,7 +136,7 @@ const CategoryManagement = () => {
 
     const handleDeleteCategory = async (categoryId) => {
         try {
-            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/categories/${categoryId}`);
+            await axios.delete(`http://localhost:5000/api/categories/${categoryId}`);
             setCategories(categories.filter(category => category._id !== categoryId));
             setMessage('Category deleted successfully');
             setMessageType('success');

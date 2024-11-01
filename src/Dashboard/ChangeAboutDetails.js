@@ -29,7 +29,7 @@ const ChangeAboutDetails = () => {
     useEffect(() => {
         const fetchAboutData = async () => {
             try {
-                const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/about');
+                const response = await axios.get('http://localhost:5000/api/about');
                 setFormData(response.data);
             } catch (error) {
                 console.error("Error fetching About Us data:", error);
@@ -140,7 +140,7 @@ const ChangeAboutDetails = () => {
         console.log(formData);
 
         try {
-            await axios.put('https://3pcommunicationsserver.vercel.app/api/about', formData);
+            await axios.put('http://localhost:5000/api/about', formData);
             Swal.fire({
                 icon: "success",
                 title: "Updated successfully!",

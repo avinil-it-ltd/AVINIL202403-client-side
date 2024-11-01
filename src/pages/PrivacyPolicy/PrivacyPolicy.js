@@ -1,31 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import TopMenu from '../../core/TopMenu';
 import Footer from '../../core/Footer';
 
 const PrivacyPolicy = () => {
+    const [policies, setPolicies] = useState([]); // State to hold policies
+    const [loading, setLoading] = useState(true); // Loading state
+
+    // Fetch policies from the backend
+    useEffect(() => {
+        const fetchPolicies = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/policies'); // Replace with your backend API
+                setPolicies(response.data); // Adjusted to set the data directly as an array
+            } catch (error) {
+                console.error('Error fetching policies:', error);
+            } finally {
+                setLoading(false); // Set loading to false after fetching
+            }
+        };
+
+        fetchPolicies();
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>; // Simple loading state
+    }
+
     return (
         <div>
-            <div className=' privacy_design width-100  height-full'>
-                <TopMenu></TopMenu>
+            <div className='privacy_design width-100 height-full'>
+                <TopMenu />
                 <div className='w-75 mx-auto py-5'>
-                    <h2 className='mb-4'>Our Policy</h2>
+                    <h2 className='mb-4'>Our Privacy Policies</h2>
                     <ol className='orderlist'>
-                        <li>We at [Company Name] are committed to protecting your privacy.</li>
-                        <li>We collect personal details, project information, communication records, and website usage data.</li>
-                        <li>We use your information to provide services, communicate, process payments, market our services, and improve our offerings.</li>
-                        <li>We share your information with service providers, for legal requirements, and during business transfers.</li>
-                        <li>We implement measures to protect your personal information from unauthorized access and disclosure.</li>
-                        <li>You can access, correct, opt-out of marketing communications, and request deletion of your personal information.</li>
-                        <li> Our website uses cookies to improve user experience and analyze usage.</li>
-                        <li>We are not responsible for the privacy practices of third-party sites linked on our website.</li>
-                        <li>We may update this policy and will notify you of any changes on our website.</li>
-                        <li>For questions or concerns, please contact us at [Contact Information].</li>
+                        {policies.map((policy) => (
+                            <li key={policy._id}>
+                                <strong>{policy.title}</strong>: 
+                                <span dangerouslySetInnerHTML={{ __html: policy.content }} /> {/* Render HTML content */}
+                            </li>
+                        ))}
                     </ol>
-
-
                 </div>
             </div>
-            <Footer></Footer>
+            <Footer />
         </div>
     );
 };

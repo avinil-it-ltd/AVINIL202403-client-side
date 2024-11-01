@@ -19,7 +19,7 @@ const Interior = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects'); // Assuming your API route is '/api/projects'
+        const response = await axios.get('http://localhost:5000/api/projects'); // Assuming your API route is '/api/projects'
         const interiorProjects = response.data.projects.filter(project => project.category.toLowerCase() === 'interior design');
         
         setProjects(interiorProjects);
@@ -48,7 +48,7 @@ const [error, setError] = useState(null);
 useEffect(() => {
   const fetchContactDetails = async () => {
     try {
-      const response = await fetch("https://3pcommunicationsserver.vercel.app/api/myContact"); // Adjust the URL as needed
+      const response = await fetch("http://localhost:5000/api/myContact"); // Adjust the URL as needed
       if (!response.ok) {
         throw new Error("Failed to fetch contact details");
       }

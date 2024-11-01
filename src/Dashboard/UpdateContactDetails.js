@@ -18,7 +18,7 @@ const UpdateContactDetails = () => {
   useEffect(() => {
     const fetchContactDetails = async () => {
       try {
-        const response = await fetch('https://3pcommunicationsserver.vercel.app/api/myContact');
+        const response = await fetch('http://localhost:5000/api/myContact');
         const data = await response.json();
         setContactDetails(data);
       } catch (error) {
@@ -36,7 +36,7 @@ const UpdateContactDetails = () => {
 
   const handleConfirmUpdate = async () => {
     try {
-      const response = await fetch('https://3pcommunicationsserver.vercel.app/api/myContact', {
+      const response = await fetch('http://localhost:5000/api/myContact', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
