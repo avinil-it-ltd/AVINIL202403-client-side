@@ -16,6 +16,8 @@ const ProjectList = () => {
   // New state variables for filtering
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [categories, setCategories] = useState([]);
+
 
   // Fetch projects from the backend
   useEffect(() => {
@@ -37,7 +39,20 @@ const ProjectList = () => {
         }
       }
     };
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/categories"); // Replace with your categories API endpoint
+        if (isMounted) {
+          setCategories(response.data); // Assuming the response is an array of categories
+        }
+      } catch (err) {
+        console.error("Failed to fetch categories:", err);
+      }
+    };
 
+
+
+    fetchCategories();
     fetchProjects();
 
     return () => {
@@ -174,19 +189,18 @@ const ProjectList = () => {
                 as="select"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className=" border border-dark shadow-sm"
+                className="border border-dark shadow-sm"
                 style={{ borderColor: "#003366" }}
               >
                 <option value="">All Categories</option>
-                {Array.from(
-                  new Set(projects.map((project) => project.category))
-                ).map((category, index) => (
-                  <option key={index} value={category}>
-                    {category}
+                {categories.map((category) => ( // Adjusted to use the correct category object
+                  <option key={category._id} value={category.name}> {/* Use category.name */}
+                    {category.name} {/* Display category name */}
                   </option>
                 ))}
               </Form.Control>
             </Form.Group>
+
 
             <div className="text-end mb-3 ">
               <Link to="/dashboard/addProject" className="btn dashboard_all_button">
@@ -204,6 +218,7 @@ const ProjectList = () => {
           <thead className="thead-dark">
             <tr>
               <th scope="col">Serial</th>
+              <th scope="col">Main Image</th>
               <th scope="col">Title</th>
               <th scope="col">Category</th>
               <th scope="col">Start Date</th>
@@ -214,6 +229,7 @@ const ProjectList = () => {
             {filteredProjects.map((project, index) => (
               <tr key={project._id}>
                 <th scope="row">{index + 1}</th>
+                <td><img src={project.mainImage} alt="" className="img-thumbnail" style={{ maxWidth: '100px' }} /> </td>
                 <td>{project.title}</td>
                 <td>{project.category || "N/A"}</td>
                 <td>{new Date(project.startDate).toLocaleDateString()}</td>

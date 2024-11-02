@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert, Container, Modal } from 'react-bootstrap';
 
 const SettingsPage = () => {
     // States for updating credentials
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState(''); // State for phone number
+    const [phone, setPhone] = useState('');
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
 
@@ -19,6 +19,35 @@ const SettingsPage = () => {
     const [currentPassword, setCurrentPassword] = useState('');
     const [actionType, setActionType] = useState('');
 
+    useEffect(() => {
+        // Fetch current user data
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/user', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    },
+                });
+
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.message);
+                }
+
+                // Set state with fetched user data
+                setName(data.name);
+                setEmail(data.email);
+                setPhone(data.phone);
+            } catch (err) {
+                console.error('Error fetching user data:', err);
+                setError('Failed to load user details');
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
     const handleModalOpen = (type) => {
         setActionType(type);
         setShowModal(true);
@@ -26,7 +55,7 @@ const SettingsPage = () => {
 
     const handleModalClose = () => {
         setShowModal(false);
-        setCurrentPassword(''); // Clear current password input on modal close
+        setCurrentPassword('');
     };
 
     const handleConfirmAction = async () => {
@@ -46,7 +75,7 @@ const SettingsPage = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
-                body: JSON.stringify({ name, email, phone, currentPassword }), // Send phone number
+                body: JSON.stringify({ name, email, phone, currentPassword }),
             });
 
             const data = await response.json();
@@ -70,7 +99,7 @@ const SettingsPage = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
-                body: JSON.stringify({ currentPassword, newPassword }), // Send current and new passwords
+                body: JSON.stringify({ currentPassword, newPassword }),
             });
 
             const data = await response.json();
@@ -80,7 +109,7 @@ const SettingsPage = () => {
 
             setPasswordMessage('Password changed successfully!');
             setPasswordError('');
-            setNewPassword(''); // Clear password input
+            setNewPassword('');
         } catch (err) {
             setPasswordError(err.message);
             setPasswordMessage('');
@@ -89,7 +118,7 @@ const SettingsPage = () => {
 
     return (
         <Container className="settings-page mt-4">
-            <h2 className='text-center mb-4'>Settings</h2>
+            <h2 className="text-center mb-4">Settings</h2>
 
             {/* Update Credentials Form */}
             <Form onSubmit={(e) => { e.preventDefault(); handleModalOpen('updateCredentials'); }} className="mb-5">
@@ -150,17 +179,15 @@ const SettingsPage = () => {
                 </Modal.Header>
                 <Modal.Body>
                     {actionType === 'updateCredentials' ? (
-                        <>
-                            <Form.Group controlId="modalCurrentPassword">
-                                <Form.Label>Please enter your current password:</Form.Label>
-                                <Form.Control
-                                    type="password"
-                                    value={currentPassword}
-                                    onChange={(e) => setCurrentPassword(e.target.value)}
-                                    required
-                                />
-                            </Form.Group>
-                        </>
+                        <Form.Group controlId="modalCurrentPassword">
+                            <Form.Label>Please enter your current password:</Form.Label>
+                            <Form.Control
+                                type="password"
+                                value={currentPassword}
+                                onChange={(e) => setCurrentPassword(e.target.value)}
+                                required
+                            />
+                        </Form.Group>
                     ) : (
                         <p>Are you sure you want to change your password?</p>
                     )}

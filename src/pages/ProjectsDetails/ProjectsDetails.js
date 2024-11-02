@@ -111,6 +111,8 @@ function ProjectsDetails() {
                             <p><strong>Adress:</strong> {project?.address || "N/A"}</p>
                             <p><strong>Budget:</strong> {project?.budget || "N/A"}</p>
                             <p><strong>Area Size:</strong> {project?.areaSize || "N/A"}</p>
+                            <p><strong>Category:</strong> {project?.category || "N/A"}</p>
+                            <p><strong>Sub Category:</strong> {project?.subcategory || "N/A"}</p>
                             <p><strong>Status:</strong> {project?.status || "N/A"}</p>
                         </Col>
                     </Row>

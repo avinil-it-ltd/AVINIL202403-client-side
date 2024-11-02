@@ -74,8 +74,8 @@ const UpdateProject = () => {
       }
     };
 
-    fetchProject();
     fetchCategories();
+    fetchProject();
   }, [id]);
 
 
@@ -179,7 +179,7 @@ const UpdateProject = () => {
     const updatedImages = project.additionalImages.filter((_, idx) => idx !== index);
     setProject(prev => ({ ...prev, additionalImages: updatedImages }));
   };
-  
+
 
 
   // Handle form submission
@@ -230,33 +230,6 @@ const UpdateProject = () => {
           <input type="text" name="title" value={project.title} onChange={handleChange} className="form-control" required />
         </div>
 
-        {/* Main Image */}
-        {/* <div className="form-group mb-3">
-          <label>Main Image</label>
-          <input type="file" onChange={handleMainImageChange} className="form-control" accept="image/*" />
-          {mainImagePreview && (
-            <div className="position-relative d-inline-block mt-2">
-              <img src={mainImagePreview} alt="Main" className="img-thumbnail" style={{ maxWidth: '100px' }} />
-              <button type="button" onClick={() => setMainImage(null)} className="btn btn-danger btn-sm position-absolute top-0 end-0">
-                <FaTrash />
-              </button>
-            </div>
-          )}
-        </div> */}
-
-        {/* Additional Images */}
-        {/* <div className="form-group mb-3">
-          <label>Additional Images</label>
-          <input type="file" onChange={handleAdditionalImagesChange} className="form-control" accept="image/*" multiple />
-          {additionalImagePreviews.map((imgPreview, index) => (
-            <div key={index} className="position-relative d-inline-block me-2 mt-2">
-              <img src={imgPreview} alt={`Additional ${index + 1}`} className="img-thumbnail" style={{ maxWidth: '100px' }} />
-              <button type="button" onClick={() => handleDeleteAdditionalImage(index)} className="btn btn-danger btn-sm position-absolute top-0 end-0">
-                <FaTrash />
-              </button>
-            </div>
-          ))}
-        </div> */}
 
 
 
@@ -275,110 +248,6 @@ const UpdateProject = () => {
           )}
         </div>
 
-        {/* Additional Images
-        <div className="form-group mb-3">
-          <label>Additional Images</label>
-          <input
-            type="file"
-            onChange={handleAdditionalImagesChange}
-            className="form-control"
-            accept="image/*"
-            multiple
-          />
-          {additionalImagePreviews.map((imgPreview, index) => (
-            <div key={index} className="position-relative d-inline-block me-2 mt-2">
-              <img src={imgPreview} alt={`New Additional ${index + 1}`} className="img-thumbnail" style={{ maxWidth: '100px' }} />
-              <button
-                type="button"
-                onClick={() => handleDeleteAdditionalImage(index)}
-                className="btn btn-danger btn-sm position-absolute top-0 end-0"
-              >
-                <FaTrash />
-              </button>
-            </div>
-          ))}
-          {/* Show old additional images */}
-        {/* <div>
-            <h5>Existing Images</h5>
-            {project.additionalImages.map((img, index) => (
-              <div key={`old-${index}`} className="position-relative d-inline-block me-2 mt-2">
-                <img src={img} alt={`Old Additional ${index + 1}`} className="img-thumbnail" style={{ maxWidth: '100px' }} />
-              </div>
-            ))}
-          </div>
-        </div> */}
-
-
-
-        {/* Additional Images */}
-        {/* <div className="form-group mb-3">
-          <label>Additional Images</label>
-          <input
-            type="file"
-            onChange={handleAdditionalImagesChange}
-            className="form-control"
-            accept="image/*"
-            multiple
-          />
-          {additionalImagePreviews.map((imgPreview, index) => (
-            <div key={index} className="position-relative d-inline-block me-2 mt-2">
-              <img src={imgPreview} alt={`New Additional ${index + 1}`} className="img-thumbnail" style={{ maxWidth: '100px' }} />
-              <button
-                type="button"
-                onClick={() => handleDeleteAdditionalImage(index)}
-                className="btn btn-danger btn-sm position-absolute top-0 end-0"
-              >
-                <FaTrash />
-              </button>
-            </div>
-          ))} */}
-        {/* Show old additional images */}
-        {/* <div>
-            <h5>Existing Images</h5>
-            {project.additionalImages.map((img, index) => (
-              <div key={`old-${index}`} className="position-relative d-inline-block me-2 mt-2">
-                <img src={img} alt={`Old Additional ${index + 1}`} className="img-thumbnail" style={{ maxWidth: '100px' }} />
-              </div>
-            ))}
-          </div> */}
-        {/* </div> */}
-        {/* Additional Images */}
-        {/* <div className="form-group mb-3">
-          <label className="fw-bold">Additional Images</label>
-          {additionalImages.map((_, index) => (
-            <div key={index} className="mb-2 position-relative">
-              <input
-                type="file"
-                onChange={(e) => handleAdditionalImageChange(index, e.target.files[0])}
-                className="form-control mb-1"
-                accept="image/*"
-              />
-              {additionalImages[index] && (
-                <div className="mt-2 position-relative">
-                  <img
-                    src={additionalImagePreviews[index] ? additionalImagePreviews[index] : URL.createObjectURL(additionalImages[index])}
-                    alt={`Additional ${index}`}
-                    className="small-image img-fluid mb-1"
-                  />
-                  <button
-                    type="button"
-                    className="btn btn-danger position-absolute top-0 end-0"
-                    onClick={() => removeAdditionalImageField(index)}
-                    title="Delete"
-                  >
-                    <FaTrash className="icon-size" />
-                  </button>
-                </div>
-              )}
-            </div>
-          ))}
-          <button type="button" className="btn btn-secondary mt-2" onClick={addAdditionalImageField}>
-            Add More Images
-          </button>
-        </div> */}
-
-
-        {/* Additional Images */}
         {/* Additional Images */}
         <div className="form-group mb-3">
           <label className="fw-bold">Additional Images</label>
@@ -465,7 +334,15 @@ const UpdateProject = () => {
           <ReactQuill theme="snow" value={project.description} onChange={handleDescriptionChange} />
         </div>
 
-
+        {/* Project Status */}
+        <div className="form-group mb-3">
+          <label>Status</label>
+          <select name="status" value={project.status} onChange={handleChange} className="form-control" required>
+            <option value="pending">Pending</option>
+            <option value="running">Running</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
         {/* Address */}
         <div className="form-group mb-3">
           <label>Address</label>
@@ -475,7 +352,7 @@ const UpdateProject = () => {
         {/* Budget */}
         <div className="form-group mb-3">
           <label>Budget</label>
-          <input type="number" name="budget" value={project.budget} onChange={handleChange} className="form-control" required />
+          <input type="text" name="budget" value={project.budget} onChange={handleChange} className="form-control" required />
         </div>
 
         {/* Area Size */}
