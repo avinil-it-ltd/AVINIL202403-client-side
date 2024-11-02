@@ -20,7 +20,7 @@ const Exterior = () => {
     const fetchProjects = async () => {
       try {
         const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects'); // Assuming your API route is '/api/projects'
-        const exteriorProjects = response.data.projects.filter(project => project.category.toLowerCase() === 'exterior design')
+        const exteriorProjects = response.data.projects.filter(project => project.category.toLowerCase() === 'exterior design')?.reverse();
 
         setProjects(exteriorProjects);
         console.log(exteriorProjects.filter(project => project.category.toLowerCase() === 'exterior design'));
