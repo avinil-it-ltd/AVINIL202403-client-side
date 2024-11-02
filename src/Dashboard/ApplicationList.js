@@ -26,7 +26,7 @@ const AppList = () => {
 
   const fetchCareers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/careers');
+      const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/careers');
       console.log(response.data);
 
       setCareers(response.data);
@@ -42,7 +42,7 @@ const AppList = () => {
 
   const handleShortlist = async (id, isShortlisted) => {
     try {
-      await axios.put(`http://localhost:5000/api/applications/shortlist/${id}`, {
+      await axios.put(`https://3pcommunicationsserver.vercel.app/api/applications/shortlist/${id}`, {
         isShortlisted: !isShortlisted,
       });
       fetchApplications(); // Refresh the list after updating shortlist status
@@ -57,7 +57,7 @@ const AppList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this application?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/applications/${id}`);
+        await axios.delete(`https://3pcommunicationsserver.vercel.app/api/applications/${id}`);
         fetchApplications(); // Refresh the list after deleting
       } catch (error) {
         console.error('Error deleting application:', error);
@@ -103,7 +103,7 @@ const AppList = () => {
       };
 
       // Fetch filtered applications
-      const response = await axios.get('http://localhost:5000/api/applications/filtered', { params });
+      const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/applications/filtered', { params });
       console.log(response.data);
 
       setApplications(response.data);

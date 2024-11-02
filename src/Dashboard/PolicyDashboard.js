@@ -18,7 +18,7 @@ const PolicyDashboard = () => {
     }, []);
 
     const fetchPolicies = async () => {
-        const res = await axios.get('http://localhost:5000/api/policies');
+        const res = await axios.get('https://3pcommunicationsserver.vercel.app/api/policies');
         setPolicies(res.data);
         setLoading(false);
     };
@@ -31,9 +31,9 @@ const PolicyDashboard = () => {
 
     const handleSave = async () => {
         if (editPolicy) {
-            await axios.put(`http://localhost:5000/api/policies/${editPolicy._id}`, newPolicy);
+            await axios.put(`https://3pcommunicationsserver.vercel.app/api/policies/${editPolicy._id}`, newPolicy);
         } else {
-            await axios.post('http://localhost:5000/api/policies', newPolicy);
+            await axios.post('https://3pcommunicationsserver.vercel.app/api/policies', newPolicy);
         }
         fetchPolicies();
         setShowModal(false);
@@ -42,7 +42,7 @@ const PolicyDashboard = () => {
     const handleDelete = async (id) => {
         const confirmed = window.confirm('Are you sure you want to delete this policy?');
         if (confirmed) {
-            await axios.delete(`http://localhost:5000/api/policies/${id}`);
+            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/policies/${id}`);
             fetchPolicies();
         }
     };

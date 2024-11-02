@@ -16,7 +16,7 @@ const FAQDashboard = () => {
     }, []);
 
     const fetchFAQs = async () => {
-        const res = await axios.get('http://localhost:5000/api/faqs'); // Replace with your backend API
+        const res = await axios.get('https://3pcommunicationsserver.vercel.app/api/faqs'); // Replace with your backend API
         setFaqs(res.data);
         setLoading(false);
     };
@@ -29,9 +29,9 @@ const FAQDashboard = () => {
 
     const handleSave = async () => {
         if (editFaq) {
-            await axios.put(`http://localhost:5000/api/faqs/${editFaq._id}`, newFaq); // Update FAQ
+            await axios.put(`https://3pcommunicationsserver.vercel.app/api/faqs/${editFaq._id}`, newFaq); // Update FAQ
         } else {
-            await axios.post('http://localhost:5000/api/faqs', newFaq); // Create new FAQ
+            await axios.post('https://3pcommunicationsserver.vercel.app/api/faqs', newFaq); // Create new FAQ
         }
         fetchFAQs();
         setShowModal(false);
@@ -40,7 +40,7 @@ const FAQDashboard = () => {
     const handleDelete = async (id) => {
         const confirmed = window.confirm('Are you sure you want to delete this FAQ?');
         if (confirmed) {
-            await axios.delete(`http://localhost:5000/api/faqs/${id}`);
+            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/faqs/${id}`);
             fetchFAQs();
         }
     };

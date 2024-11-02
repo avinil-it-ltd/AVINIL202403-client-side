@@ -23,7 +23,7 @@ const SettingsPage = () => {
         // Fetch current user data
         const fetchUserData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/auth/user', {
+                const response = await fetch('https://3pcommunicationsserver.vercel.app/api/auth/user', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -69,7 +69,7 @@ const SettingsPage = () => {
 
     const handleUpdateCredentials = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/auth/update-credentials', {
+            const response = await fetch('https://3pcommunicationsserver.vercel.app/api/auth/update-credentials', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ const SettingsPage = () => {
 
     const handleChangePassword = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/auth/change-password', {
+            const response = await fetch('https://3pcommunicationsserver.vercel.app/api/auth/change-password', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

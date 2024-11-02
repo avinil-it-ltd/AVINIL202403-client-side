@@ -20,7 +20,7 @@ const AboutUs = () => {
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/about'); // Adjust the API endpoint as necessary
+        const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/about'); // Adjust the API endpoint as necessary
         setAboutData(response.data);
       } catch (error) {
         setLoading(false);
@@ -181,7 +181,7 @@ const [error, setError] = useState(null);
 useEffect(() => {
   const fetchContactDetails = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/myContact"); // Adjust the URL as needed
+      const response = await fetch("https://3pcommunicationsserver.vercel.app/api/myContact"); // Adjust the URL as needed
       if (!response.ok) {
         throw new Error("Failed to fetch contact details");
       }

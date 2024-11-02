@@ -24,7 +24,7 @@ const TestimonialDashboard = () => {
     }, []);
 
     const fetchTestimonials = async () => {
-        const res = await axios.get('http://localhost:5000/api/testimonials');
+        const res = await axios.get('https://3pcommunicationsserver.vercel.app/api/testimonials');
         setTestimonials(res.data);
         setLoading(false);
     };
@@ -44,9 +44,9 @@ const TestimonialDashboard = () => {
             }
 
             if (editTestimonial) {
-                await axios.put(`http://localhost:5000/api/testimonials/${editTestimonial._id}`, newTestimonial);
+                await axios.put(`https://3pcommunicationsserver.vercel.app/api/testimonials/${editTestimonial._id}`, newTestimonial);
             } else {
-                await axios.post('http://localhost:5000/api/testimonials', newTestimonial);
+                await axios.post('https://3pcommunicationsserver.vercel.app/api/testimonials', newTestimonial);
             }
 
             fetchTestimonials();
@@ -60,7 +60,7 @@ const TestimonialDashboard = () => {
     const handleDelete = async (id) => {
         const confirmed = window.confirm('Are you sure you want to delete this testimonial?');
         if (confirmed) {
-            await axios.delete(`http://localhost:5000/api/testimonials/${id}`);
+            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/testimonials/${id}`);
             fetchTestimonials();
         }
     };
