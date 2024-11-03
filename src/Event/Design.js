@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import TopMenu from "../core/TopMenu";
-import Footer from "../../src/core/footer";
+import Footer from "../../src/core/Footer";
 import Data from "../projects.json";
 import { Container, Col, Row } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom'; // To navigate between pages
 import '../App.css';
-import '../../src/Exterior/Architecture.css'
+import '../../src/Exterior/Exterior.css'
 import bioImg from "../../src/assets/images/Exterior/bioImg.jpg";
 import img1 from "../../src/assets/images/Exterior/Cantonment School Gate.jpg";
 import img2 from "../../src/assets/images/Exterior/Navana Pipe plactics Factory Gate.jpg";

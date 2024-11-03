@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 import TopMenu from "../core/TopMenu"
-import Footer from "../core/footer"
+import Footer from "../core/Footer"
 import Data from "../projects.json"
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -189,16 +189,19 @@ const AboutUs = (props) => {
       <div><TopMenu /></div>
 
 
-      <div className="row">
-        <div className="col-12 pt-5 mt-5 mt-md-0 overflow-auto " >
+      {/* <div className="row"> */}
+        <div>
           <p className="text-center "> <img className="" src={profile} width="25%" height="25%"></img></p>
           <p className="h4 text-center heading_color mb-0" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Prokash Banik</p>
           <p className="h6 text-center text-black mt-0" style={{ fontFamily: "'Aref Ruqaa', serif" }}>CEO, 3P Communication</p>
+        </div>
+
+        <div className=" pt-5 mt-5 mt-md-0 overflow-auto " >
           <h3 className="text-center heading_color mt-5 mb-3 " style={{ fontFamily: "'Aref Ruqaa', serif" }}>Get To Know Our Director</h3>
           <div className="my-auto col-12  col-xl-9 mx-auto text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet fugit quod iure dolores ad aliquam sequi dicta possimus asperiores? Quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio cumque eum earum
             pariatur dolores accusamus similique cum consectetur sunt doloremque!</div>
         </div>
-      </div>
+      {/* </div> */}
 
 
       <div>{ChooseMe()}</div>

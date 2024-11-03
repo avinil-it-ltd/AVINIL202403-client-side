@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {BrowserRouter,Routes,Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import RoutePages from './RoutePages';
+import { AuthProvider } from './context/AuthContext';
 
 
 
 ReactDOM.render(
   <BrowserRouter>
-    <App/>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </BrowserRouter>
   ,
   document.getElementById('root')

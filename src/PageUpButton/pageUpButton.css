@@ -1,0 +1,11 @@
+/* App.css */
+.scroll-top-btn {
+    z-index: 1000;
+    transition: opacity 0.3s;
+  }
+  
+  .sidebar i:hover {
+    color: black;
+    transition: color 0.3s;
+  }
+  

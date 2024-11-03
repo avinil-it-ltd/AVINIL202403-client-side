@@ -1,119 +1,138 @@
-// import React from 'react';
-// import { Card, Col, Row } from 'react-bootstrap';
-// // import { Bar, Pie } from 'react-chartjs-2';
-// // import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import React, { useEffect, useState } from 'react';
+import { Card, Col, Row } from 'react-bootstrap';
+import axios from 'axios';
+import '../custom.css';  // Ensure the correct path for your CSS
 
-// ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
+const DashboardMain = () => {
+    const [projectData, setProjectData] = useState([]);
+    const [categoryCount, setCategoryCount] = useState(0);
+    const [contactCount, setContactCount] = useState(0);
+    const [careerCount, setCareerCount] = useState(0);
+    const [applicationCount, setApplicationCount] = useState(0);
+    const [pendingCount, setPendingCount] = useState(0);
+    const [runningCount, setRunningCount] = useState(0);
+    const [completedCount, setCompletedCount] = useState(0);
+    const [quote, setQuote] = useState(null);
+    const [loading, setLoading] = useState(true);  // Add loading state
 
-// const DashboardMain = () => {
-//     const barChartData = {
-//         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-//         datasets: [{
-//             label: 'Projects Completed',
-//             data: [65, 59, 80, 81, 56, 55, 40],
-//             backgroundColor: 'rgba(75, 192, 192, 0.2)',
-//             borderColor: 'rgba(75, 192, 192, 1)',
-//             borderWidth: 1
-//         }]
-//     };
+    // Loader Component
+    // const Loader = () => (
+    //     <div className="loader-container text-center mt-5">
+    //         <h3>Data Is Loading....</h3>
+    //     </div>
+    // );
 
-//     const pieChartData = {
-//         labels: ['Total Projects', 'Pending Projects', 'Running Projects', 'Completed Projects'],
-//         datasets: [{
-//             data: [100, 20, 30, 50],
-//             backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
-//         }]
-//     };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const projectResponse = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects');
+                const projects = projectResponse.data;
+                setProjectData(projects.projects);
+                setPendingCount(projects.filter(p => p.status === 'Pending').length);
+                setRunningCount(projects.filter(p => p.status === 'Running').length);
+                setCompletedCount(projects.filter(p => p.status === 'Completed').length);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching projects:', error);
+                setLoading(false);
+            }
 
-//     const barChartOptions = {
-//         responsive: true,
-//         maintainAspectRatio: false,
-//         plugins: {
-//             legend: {
-//                 display: true,
-//             },
-//             title: {
-//                 display: true,
-//                 text: 'Projects Over Time',
-//             },
-//         },
-//     };
+            // Fetch counts for other entities
+            const counts = [
+                { endpoint: 'categories', setter: setCategoryCount },
+                { endpoint: 'contacts', setter: setContactCount },
+                { endpoint: 'careers', setter: setCareerCount },
+                { endpoint: 'applications', setter: setApplicationCount },
+            ];
 
-//     const pieChartOptions = {
-//         responsive: true,
-//         maintainAspectRatio: false,
-//         plugins: {
-//             legend: {
-//                 display: true,
-//             },
-//             title: {
-//                 display: true,
-//                 text: 'Projects Breakdown',
-//             },
-//         },
-//     };
+            for (const { endpoint, setter } of counts) {
+                try {
+                    if(endpoint != 'careers'){
+                        const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/${endpoint}`);
+                        setter(response.data.length);
+                        console.log(response.data);
+                    }
+                    else{
+                        const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/${endpoint}`);
+                        setter(response.data?.length);
+                        console.log("career ",response.data?.length);
+                    }
+                   
+                    
+                } catch (error) {
+                    console.error(`Error fetching ${endpoint}:`, error);
+                }
+            }
 
-//     return (
-//         <div>
-//             <h1>Dashboard</h1>
-//             <Row className="cards-row">
-//                 <Col md={3}>
-//                     <Card>
-//                         <Card.Body>
-//                             <Card.Title>Total Projects</Card.Title>
-//                             <Card.Text>100</Card.Text>
-//                         </Card.Body>
-//                     </Card>
-//                 </Col>
-//                 <Col md={3}>
-//                     <Card>
-//                         <Card.Body>
-//                             <Card.Title>Pending Projects</Card.Title>
-//                             <Card.Text>20</Card.Text>
-//                         </Card.Body>
-//                     </Card>
-//                 </Col>
-//                 <Col md={3}>
-//                     <Card>
-//                         <Card.Body>
-//                             <Card.Title>Running Projects</Card.Title>
-//                             <Card.Text>30</Card.Text>
-//                         </Card.Body>
-//                     </Card>
-//                 </Col>
-//                 <Col md={3}>
-//                     <Card>
-//                         <Card.Body>
-//                             <Card.Title>Completed Projects</Card.Title>
-//                             <Card.Text>50</Card.Text>
-//                         </Card.Body>
-//                     </Card>
-//                 </Col>
-//             </Row>
-//             <Row className="charts-row">
-//                 <Col md={6}>
-//                     <Card>
-//                         <Card.Body>
-//                             <Card.Title>Projects Over Time</Card.Title>
-//                             <div style={{ height: '400px' }}>
-//                                 <Bar data={barChartData} options={barChartOptions} />
-//                             </div>
-//                         </Card.Body>
-//                     </Card>
-//                 </Col>
-//                 <Col md={6}>
-//                     <Card>
-//                         <Card.Body>
-//                             <Card.Title>Projects Breakdown</Card.Title>
-//                             <div style={{ height: '400px' }}>
-//                                 <Pie data={pieChartData} options={pieChartOptions} />
-//                             </div>
-//                         </Card.Body>
-//                     </Card>
-//                 </Col>
-//             </Row>
-//         </div>
-//     );
-// }
+            // Fetch a random quote
+            try {
+                const quoteResponse = await axios.get('https://dummyjson.com/quotes/random');
+                setQuote(quoteResponse.data);
+            } catch (error) {
+                console.error('Error fetching quote:', error);
+            } finally {
+                setLoading(false);  // Ensure loader hides after data is fetched
+            }
+        };
 
-// export default DashboardMain;
+        fetchData();
+    }, []);
+
+    // // Show loader while data is being fetched
+    // if (loading) {
+    //     return <Loader />;
+    // }
+
+        // Custom Loader Component
+        const Loader = () => (
+            <div className="loader-container text-center mt-5">
+                <div className="custom-loader"></div>
+            </div>
+        );
+    
+        if (loading) {
+            return <Loader />;
+        }
+    
+
+    return (
+        <div className="dashboard-container">
+            <h1 className="mt-4">Dashboard</h1>
+            <div className="quote-section mb-4">
+                <Card className="text-white bg-secondary">
+                    <Card.Body>
+                        {quote && (
+                            <blockquote className="blockquote text-center">
+                                <p className="mb-4">{quote.quote}</p>
+                                <footer className="blockquote-footer text-light">— {quote.author}</footer>
+                            </blockquote>
+                        )}
+                    </Card.Body>
+                </Card>
+            </div>
+            <Row className="cards-row">
+                {[ 
+                    { title: "Total Projects", count: projectData.length },
+                    { title: "Pending Projects", count: pendingCount },
+                    { title: "Running Projects", count: runningCount },
+                    { title: "Completed Projects", count: completedCount },
+                    { title: "Total Categories", count: categoryCount },
+                    { title: "Total Contacts", count: contactCount },
+                    { title: "Total Careers", count: careerCount },
+                    { title: "Total Applications", count: applicationCount },
+                ].map((item, index) => (
+                    <Col md={3} key={index}>
+                        <Card className="mb-4 shadow-sm equal-card">
+                            <Card.Body>
+                                <Card.Title>{item.title}</Card.Title>
+                                <Card.Text>{item.count}</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+        </div>
+    );
+};
+
+export default DashboardMain;

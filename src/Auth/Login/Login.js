@@ -1,28 +1,45 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../../core/footer';
+// import Footer from '../core/Footer';
+// import TopMenu from '../core/TopMenu';
+import backgroundImage from '../../assets/images/loginbackground/loginbackground.jpg'
+import { useAuth } from '../../context/AuthContext'; // Import your Auth context
 import TopMenu from '../../core/TopMenu';
-import backgroundImage from '../../assets/images/loginbackground/loginbackground.jpg';
+import Footer from '../../core/Footer';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(''); // State to store error message
     const navigate = useNavigate();
+    const { login } = useAuth(); // Destructure login function from Auth context
 
-    // Admin credentials for simple authentication
-    const adminEmail = 'admin@example.com';
-    const adminPassword = 'admin123';
-
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
+        setErrorMessage(''); // Reset error message
 
-        // Basic authentication check
-        if (email === adminEmail && password === adminPassword) {
-            localStorage.setItem('isLoggedIn', true); // Set login state in localStorage
+        try {
+            // Use fetch to send login request to your backend
+            const response = await fetch('https://3pcommunicationsserver.vercel.app/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+            // If successful, login and navigate to dashboard
+            login(data.user, data.token); // Pass user and token to context
+            localStorage.setItem('isLoggedIn', true); // Optional: set login state in localStorage
             navigate('/dashboard'); // Redirect to the dashboard
-        } else {
-            setErrorMessage('Invalid email or password.'); // Set the error message
+        } catch (error) {
+            setErrorMessage(error.message); // Set error message from backend response
         }
     };
 
@@ -87,7 +104,7 @@ const Login = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">Login</button>
+                        <button type="submit" className="btn dashboard_all_button text-white w-100">Login</button>
                     </form>
                 </div>
             </div>

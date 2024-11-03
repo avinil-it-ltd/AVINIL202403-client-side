@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import TopMenu from '../../components/TopMenu';
-import Footer from '../../components/Footer';
+
 
 const ChangeCredentials = () => {
     const [currentEmail, setCurrentEmail] = useState('');
@@ -38,9 +37,24 @@ const ChangeCredentials = () => {
     };
 
     return (
-        <div className="container-fluid d-flex flex-column min-vh-100 p-0">
-            <TopMenu />
-            <div className="container my-5 p-4 bg-light rounded shadow-sm">
+        <div className="d-flex justify-content-center align-items-center">
+
+            <h1 className='mt-5'>
+                Comming Soon ......!
+            </h1>
+
+
+
+
+
+            {/* এখানে ডিজাইন সম্পূর্ণ রেডি সে আপাতত কোডগুলা কমেন্ট করে দেওয়া হয়েছে যখন দরকার হবে কোড টান কমেন্ট করে নিয়ে কাজ করতে পারবেন *
+            
+            
+            
+            
+            
+            /}
+            {/* <div className=" card w-75  shadow-lg  p-5 bg-light rounded shadow-sm">
                 <h2 className="text-center mb-4">Change Email/Password</h2>
                 <form onSubmit={handleSubmit} className="needs-validation" noValidate>
                     <div className="mb-3">
@@ -101,8 +115,7 @@ const ChangeCredentials = () => {
                     {message && <div className="alert alert-info">{message}</div>}
                     <button type="submit" className="btn btn-primary w-100">Update Credentials</button>
                 </form>
-            </div>
-            <Footer />
+            </div> */}
         </div>
     );
 };

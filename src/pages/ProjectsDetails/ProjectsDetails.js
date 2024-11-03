@@ -1,55 +1,69 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
-import Footer from '../../core/footer';
+import { Container, Row, Col, Card, Spinner, Button } from 'react-bootstrap';
+import Footer from '../../core/Footer';
 import TopMenu from '../../core/TopMenu';
-import '../../pages/Exterior/Architecture.css'
+import '../../pages/Exterior/Exterior.css';
+import axios from 'axios';
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaStar } from 'react-icons/fa';
+import ModalImage from 'react-modal-image'; // Import the ModalImage component
+import Modal from 'react-bootstrap/Modal'; // Import Modal from react-bootstrap
 
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
+
+
+
+
+
+
+
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
 function ProjectsDetails() {
     const { id } = useParams();
     const [project, setProject] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [showModal, setShowModal] = useState(false); // State to control modal visibility
+    const [currentImageIndex, setCurrentImageIndex] = useState(0); // State to track current image index
+
 
     useEffect(() => {
-        const dummyProject = {
-            title: "Sonali Bank Plc Sub Branch , Chittagong ",
-            client: {
-                name: "ABC Corporation",
-                address: "123, Business Park, Dhaka",
-                area: "1200 sq. ft.",
-                projectType: "E-Commerce Platform",
-                logo: "https://via.placeholder.com/150.png?text=Client+Logo" // Dummy clent logo or image
-            },
-            images: [
-                "https://via.placeholder.com/600x400.png?text=Project+Image+1",
-                "https://via.placeholder.com/600x400.png?text=Project+Image+2",
-                "https://via.placeholder.com/600x400.png?text=Project+Image+2",
-                "https://via.placeholder.com/600x400.png?text=Project+Image+2",
-                "https://via.placeholder.com/600x400.png?text=Project+Image+2",
-                "https://via.placeholder.com/600x400.png?text=Project+Image+3"
-            ],
-            review: {
-                clientName: "John Doe",
-                feedback: "The team did a fantastic job delivering a fully functional e-commerce platform. Highly recommended!",
-                position: "Director"
-            },
-            descriptions: [
-                "Initial planning and requirement gathering. Designing the website layout and user experience.Initial planning and requirement gathering. Designing the website layout and user experience.Initial planning and requirement gathering. Designing the website layout and user experience.Initial planning and requirement gathering. Designing the website layout and user experience.Initial planning and requirement gathering. Designing the website layout and user experience. Developing the backend functionality for user management and payments. Implementing frontend features like product search and filtering. Final testing and deployment."
-            ],
-            contactInfo: {
-                phone: "+8801819139975",
-                email: "3pcommunication@gmail.com",
-                address: "1 / 2 Asad Avenue Road, Block-A, Mohammadpur, Dhaka"
+        const fetchProjectDetails = async () => {
+            try {
+                const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/projects/${id}`); // Replace with your actual API endpoint
+                console.log(response.data.project);
+                setProject(response.data.project);
+            } catch (error) {
+                console.error('Error fetching project details:', error);
+                setProject(null);
+            } finally {
+                setLoading(false);
             }
         };
 
-        setTimeout(() => {
-            setProject(dummyProject);
-            setLoading(false);
-        }, 1000);
+        fetchProjectDetails();
     }, [id]);
+
+
+
+
+    const handleShow = (index) => {
+        setCurrentImageIndex(index);
+        setShowModal(true);
+    };
+
+    const handleClose = () => setShowModal(false);
+    const handleNextImage = () => {
+        setCurrentImageIndex((prevIndex) =>
+            prevIndex === project.additionalImages.length - 1 ? 0 : prevIndex + 1
+        );
+    };
+
+    const handlePrevImage = () => {
+        setCurrentImageIndex((prevIndex) =>
+            prevIndex === 0 ? project.additionalImages.length - 1 : prevIndex - 1
+        );
+    };
 
     if (loading) {
         return (
@@ -71,70 +85,200 @@ function ProjectsDetails() {
 
     return (
         <div>
-            <TopMenu></TopMenu>
-            <Container className="project-details ">
-                {/* Project Title */}
-                <Row className="mb-4 detailsTitle ">
-                    <Col >
-                        <h2 className="text-center py-5">{project.title}</h2>
-                        {/* <hr className="divider" /> */}
-                    </Col>
-                </Row>
+            <TopMenu />
+            <Container className="project-details">
+                <div className=''>
+                    {/* Project Title */}
+                    <Row className="mb-4 detailsTitle rounded-pill ">
+                        <Col>
+                            <h2 className="heading_color text-center  py-5">{project.title || "Untitled Project"}</h2>
+                        </Col>
+                    </Row>
 
-                {/* Client Information */}
-                <Row className="align-items-center  mb-4">
-                    <Col md={3} className="text-center">
-                        <Card.Img src={project.client.logo} alt="Client Logo" className="img-fluid rounded" />
-                    </Col>
-                    <Col md={9}>
-                        <h4 className='heading_color'>Client: {project.client.name}</h4>
-                        <p><strong>Address:</strong> {project.client.address}</p>
-                        <p><strong>Area:</strong> {project.client.area}</p>
-                        <p><strong>Project Type:</strong> {project.client.projectType}</p>
-                    </Col>
-                </Row>
+                    {/* Client Information */}
+                    <Row className="align-items-center mb-4">
+                        <Col md={3} className="text-center">
+                            <Card.Img
+                                src={project.mainImage || "https://via.placeholder.com/150.png?text=No+Image"}
+                                alt="Project Main Image"
+                                className="img-fluid rounded"
+                            />
+                        </Col>
+                        <Col md={9}>
+                            {/* <h4 className="heading_color">Client: {project?.client?.name || "Unknown Client"}</h4> */}
+                            {/* <p><strong>Email:</strong> {project?.client?.email || "N/A"}</p> */}
+                            {/* <p><strong>Phone:</strong> {project?.client?.phone || "N/A"}</p> */}
+                            <p><strong>Adress:</strong> {project?.address || "N/A"}</p>
+                            <p><strong>Budget:</strong> {project?.budget || "N/A"}</p>
+                            <p><strong>Area Size:</strong> {project?.areaSize || "N/A"}</p>
+                            <p><strong>Category:</strong> {project?.category || "N/A"}</p>
+                            <p><strong>Sub Category:</strong> {project?.subcategory || "N/A"}</p>
+                            <p><strong>Status:</strong> {project?.status || "N/A"}</p>
+                        </Col>
+                    </Row>
+                </div>
 
-                {/* Relevant Project Images */}
+                {/* Project Images - Thumbnails with Zoom Option */}
                 <Row className="mb-5">
-                    {project.images.map((image, index) => (
+                    {project?.additionalImages?.length > 0 ? (
+                        project.additionalImages.map((image, index) => (
+                            <Col md={4} key={index} className="mb-3">
+                                <Card className="border-0">
+                                    <ModalImage
+                                        small={image} // Thumbnail image
+                                        large={image} // Full-sized image for zooming
+                                        alt={`Project Image ${index + 1}`} // Alt text for the image
+                                        className="img-fluid rounded shadow-sm" // Class for styling
+                                    />
+                                </Card>
+                            </Col>
+                        ))
+                    ) : (
+                        <p>No additional images available</p>
+                    )}
+                </Row>
+                {/* Relevant Project Images
+                <Row className="mb-5">
+                    {project?.additionalImages?.length > 0 ? project.additionalImages.map((image, index) => (
                         <Col md={4} key={index} className="mb-3">
                             <Card className="border-0">
-                                <Card.Img src={image} alt={`Project Image ${index + 1}`} className="img-fluid rounded shadow-sm" />
+                                <Card.Img
+                                    src={image}
+                                    alt={`Project Image ${index + 1}`}
+                                    className="img-fluid rounded shadow-sm"
+                                />
                             </Card>
                         </Col>
-                    ))}
+                    )) : <p>No additional images available</p>}
                 </Row>
 
-                {/* Client Review */}
-                <Row className="mb-5 detailsPageReview py-5 shadow-lg">
-                    {/* <Row className="mb-5 bg-light py-5 shadow-lg"> */}
-                    <Col md={12} >
-                        <h4 className="text-center heading_color mb-3 ">KIND WORDS FROM OUR CLIENT</h4>
-                        <hr className="divider" />
-                        <div className="p-4 text-center ">
-                            <p> {project.review.feedback} </p>
-                            <p> - {project.review.clientName} , {project.review.position}</p>
+                {/* Project Images - Thumbnails with Viewer Option */}
+                {/* <Row className="mb-5">
+                    {project?.additionalImages?.length > 0 ? (
+                        project.additionalImages.map((image, index) => (
+                            <Col md={4} key={index} className="mb-3">
+                                <Card className="border-0">
+                                    <Card.Img
+                                        src={image}
+                                        alt={`Project Image ${index + 1}`}
+                                        className="img-fluid rounded shadow-sm"
+                                        onClick={() => handleShow(index)} // Open viewer on click
+                                        style={{ cursor: 'pointer' }} // Change cursor to pointer
+                                    />
+                                </Card>
+                            </Col>
+                        ))
+                    ) : (
+                        <p>No additional images available</p>
+                    )}
+                </Row> */}
 
+
+                {/* Project Images - Thumbnails with Zoom Option */}
+                {/* Project Images - Thumbnails with Zoom Option */}
+                {/* <Row className="mb-5">
+                    {project?.additionalImages?.length > 0 ? (
+                        project.additionalImages.map((image, index) => (
+                            <Col md={4} key={index} className="mb-3">
+                                <Card className="border-0">
+                                    <ModalImage
+                                        small={image} // Thumbnail image
+                                        large={image} // Full-sized image for zooming
+                                        alt={`Project Image ${index + 1}`} // Alt text for the image
+                                        className="img-fluid rounded shadow-sm" // Class for styling
+                                    />
+                                </Card>
+                            </Col>
+                        ))
+                    ) : (
+                        <p>No additional images available</p>
+                    )}
+                </Row> */}
+
+
+                <div className="w-100 bg-dark my-5 py-5">
+                    <div className="d-flex flex-column flex-md-row justify-content-around align-items-center text-center text-md-start text-black fw-bolder px-3 px-md-5 callNow_font">
+
+                        {/* Column 1 - Text */}
+                        <div className="col-md-4 mb-3 mb-md-0 text-white">
+                            <h3>CONTACT NOW FOR YOUR DREAM INTO REALITY</h3>
+                        </div>
+
+                        {/* Column 2 - Phone Number with Icon */}
+                        <div className="col-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
+                            <div className="d-flex align-items-center justify-content-center">
+                                <div className="icon-circle">
+                                    <i className="bi bi-telephone-fill"></i> {/* Bootstrap phone icon */}
+                                </div>
+                                <div className="px-3 pt-3">
+                                    <p className="text-warning"> CALL US<br /><span className="text-white"> +88015846895</span> </p>
+                                    <p className="ms-2 fw-bold"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Column 3 - Email with Icon */}
+                        <div className="col-md-4 d-flex align-items-center justify-content-center">
+                            <div>
+
+                                <div className="d-flex align-items-center justify-content-center">
+                                    <div className="icon-circle">
+                                        <i className="bi bi-envelope-fill"></i> {/* Bootstrap envelope icon */}
+                                    </div>
+                                    <div className="px-3 pt-3">
+                                        <p className="text-warning">PLEASE SEND EMAIL<br /> <span className="fw-bold text-white">info@example.com</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+                {/* Project Description */}
+                <Row className="my-5 py-5">
+                    <Col>
+                        <h4 className="pt-5 heading_color mb-3">Project Description</h4>
+                        <span
+                            dangerouslySetInnerHTML={{
+                                __html: project?.description || "No description available",
+                            }}
+                        />
+
+                        {/* <p>{project?.description || "No description available"}</p> */}
+                    </Col>
+                </Row>
+
+
+
+                {/* Client Review */}
+                {/* Client Review */}
+                <Row className="mb-5 detailsTitle py-5 shadow-md">
+                    <Col md={12}>
+                        <h4 className="text-center heading_color mb-3">KIND WORDS FROM OUR CLIENT</h4>
+                        <hr className="divider text-dark" />
+                        <div className="p-4 text-left text-dark">
+                            
+                            <p>
+                                Rating:  <span >
+                                    {project?.review?.rating
+                                        ? Array.from({ length: project.review.rating }).map((_, index) => (
+                                            <FaStar key={index} className='heading_color' />
+                                        ))
+                                        : "N/A"}
+                                </span>
+                            </p>
+                            <p>{project?.review?.comment || "No feedback available"}</p>
+
+                            <p className="heading_color">Client: <span className='text-dark'>{project?.client?.name || "Unknown Client"}</span></p>
                         </div>
                     </Col>
                 </Row>
-
-                {/* Project Description (Step by Step) */}
-                <Row className="my-5 py-5 ">
-                    <Col>
-                        <h4 className="pt-5 heading_color mb-3">Project Description </h4>
-
-                        <p>{project.descriptions}</p>
-                    </Col>
-                </Row>
-
-
-
-
-
-
-
-                {/* Contact Information */}
+                {/* Contact Information
                 <Row className="mb-5">
                     <Col md={4} className="text-center">
                         <Card className="p-4 shadow-sm detailsPageReview heading_color shadow-lg h-100">
@@ -143,7 +287,7 @@ function ProjectsDetails() {
                             </div>
                             <Card.Text>
                                 <strong>Phone:</strong><br />
-                                +8801819139975
+                                {project?.client?.phone || "N/A"}
                             </Card.Text>
                         </Card>
                     </Col>
@@ -154,7 +298,7 @@ function ProjectsDetails() {
                             </div>
                             <Card.Text>
                                 <strong>Email:</strong><br />
-                                3pcommunication@gmail.com
+                                {project?.client?.email || "N/A"}
                             </Card.Text>
                         </Card>
                     </Col>
@@ -165,134 +309,30 @@ function ProjectsDetails() {
                             </div>
                             <Card.Text>
                                 <strong>Address:</strong><br />
-                                1 / 2 Asad Avenue Road, Block-A, Mohammadpur, Dhaka
+                                {project?.client?.address || "N/A"}
                             </Card.Text>
                         </Card>
                     </Col>
-                </Row>
-
-
-
-
+                </Row> */}
             </Container>
-            <Footer></Footer>
+
+            {/* Modal for Image Viewing */}
+            <Modal show={showModal} onHide={handleClose} centered>
+                <Modal.Body className="text-center">
+                    <img
+                        src={project?.additionalImages[currentImageIndex]}
+                        alt={`Project Image ${currentImageIndex + 1}`}
+                        className="img-fluid rounded"
+                    />
+                    <div className="d-flex justify-content-between my-3">
+                        <Button variant="light" onClick={handlePrevImage}>&lt; Prev</Button>
+                        <Button variant="light" onClick={handleNextImage}>Next &gt;</Button>
+                    </div>
+                </Modal.Body>
+            </Modal>
+            <Footer />
         </div>
     );
 }
 
 export default ProjectsDetails;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useParams } from 'react-router-dom';
-// import React, { useEffect, useState } from 'react';
-// import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
-// // import './ProjectsDetails.css';
-
-// function ProjectsDetails() {
-//     const { id } = useParams(); // Get the project ID from the URL
-//     const [project, setProject] = useState(null);
-//     const [loading, setLoading] = useState(true);
-
-//     useEffect(() => {
-//         // Fetch project data based on the ID
-//         fetch(`/api/projects/${id}`)
-//             .then((response) => {
-//                 if (!response.ok) {
-//                     throw new Error('Network response was not ok');
-//                 }
-//                 return response.json();
-//             })
-//             .then((data) => {
-//                 setProject(data);
-//                 setLoading(false);
-//             })
-//             .catch((error) => {
-//                 console.error('Error fetching project data:', error);
-//                 setLoading(false);
-//             });
-//     }, [id]);
-
-//     if (loading) {
-//         return (
-//             <Container className="text-center my-5">
-//                 <Spinner animation="border" variant="primary" />
-//                 <p>Loading project details...</p>
-//             </Container>
-//         );
-//     }
-
-//     if (!project) {
-//         return (
-//             <Container className="text-center my-5">
-//                 <h3>Project not found</h3>
-//                 <p>We're sorry, but the project you're looking for does not exist.</p>
-//             </Container>
-//         );
-//     }
-
-//     return (
-//         <Container className="project-details my-5">
-//             <Row className="mb-4">
-//                 <Col>
-//                     <h2 className="text-center">{project.title}</h2>
-//                     <hr className="divider" />
-//                 </Col>
-//             </Row>
-//             <Row>
-//                 <Col md={6}>
-//                     <Card className="border-0">
-//                         <Card.Img
-//                             src={project.image}
-//                             alt={project.title}
-//                             className="img-fluid rounded shadow-sm"
-//                         />
-//                     </Card>
-//                 </Col>
-//                 <Col md={6}>
-//                     <div className="project-info p-4">
-//                         <h4>Project Description</h4>
-//                         <p>{project.description}</p>
-//                         <h5>Key Features:</h5>
-//                         <ul>
-//                             {project.features &&
-//                                 project.features.map((feature, index) => (
-//                                     <li key={index}>{feature}</li>
-//                                 ))}
-//                         </ul>
-//                         <h5>Technologies Used:</h5>
-//                         <p>{project.technologies}</p>
-//                     </div>
-//                 </Col>
-//             </Row>
-//             <Row className="mt-5">
-//                 <Col>
-//                     <h4 className="text-center">Additional Information</h4>
-//                     <p className="text-center">{project.additionalInfo}</p>
-//                 </Col>
-//             </Row>
-//         </Container>
-//     );
-// }
-
-// export default ProjectsDetails;
