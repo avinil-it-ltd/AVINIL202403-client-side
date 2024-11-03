@@ -44,7 +44,7 @@ import left from "../src/assets/images/interiorPage/left.jpg"
 import center from "../src/assets/images/interiorPage/center.jpg"
 import right from "../src/assets/images/interiorPage/right.jpg"
 import PageUpButton from "./PageUpButton/PageUpButton";
-
+import './custom.css'
 
 
 const IndexHome = (props) => {
@@ -93,14 +93,85 @@ const IndexHome = (props) => {
 
 
 
+  // const topCarousel = () => (
+  //   <div className="relative carousel-shadow">
+  //     <img className="img-fluid" src={banner2} alt="Banner" />
+  //     <div className="carousel-caption absolute d-none d-md-block display-1">
+  //     <h3 class="golden-text ">Welcome To 3P Communication</h3>
+  //     <p class="golden-text">Best platform to hire designers in Bangladesh</p>
+  //     </div>
+  //   </div>
+  // );
+  // const topCarousel = () => (
+  //   <div className="relative carousel-shadow">
+  //     <img className="img-fluid w-100" src={banner2} alt="Banner" />
+
+  //     <div className="carousel-caption absolute d-none d-sm-block text-center">
+  //       <h3 className="fw-bold display-4 d-none d-md-block">
+  //         Welcome To 3P Communication
+  //       </h3>
+  //       <h5 className="fw-bold d-block d-md-none">
+  //         Welcome To 3P Communication
+  //       </h5>
+  //       <p className=" display-6 d-none d-md-block">
+  //         One Stop Solutions Interior & Exterior Design for Homes and Offices in Bangladesh
+  //       </p>
+  //       <p className=" d-block d-md-none">
+  //         One Stop Interior Solutions in Bangladesh
+  //       </p>
+  //     </div>
+  //   </div>
+  // );
+  // const topCarousel = () => (
+  //   <div className="carousel-shadow bg-primary">
+  //     <img className="img-fluid w-100" src={banner2} alt="Banner" />
+  
+  //     <div className="carousel-caption text-center w-100" style={{ bottom: '20px' }}>
+  //       {/* Large screen heading */}
+  //       <h3 className="fw-bold display-4 d-none d-md-block">
+  //         Welcome To 3P Communication
+  //       </h3>
+  //       {/* Small screen heading */}
+  //       <h5 className="fw-bold d-md-none">
+  //         Welcome To 3P Communication
+  //       </h5>
+        
+  //       {/* Large screen text */}
+  //       <p className=" text-center display-6 d-none d-md-block">
+  //         One Stop Solutions Interior & Exterior Design for Homes and Offices in Bangladesh
+  //       </p>
+  //       {/* Small screen text */}
+  //       <p className="fs-1 d-md-none">
+  //         One Stop Interior Solutions in Bangladesh
+  //       </p>
+  //     </div>
+  //   </div>
+  // );
+  
   const topCarousel = () => (
-    <div className="relative carousel-shadow">
-      <img className="img-fluid" src={banner2} alt="Banner" />
-      <div className="carousel-caption absolute d-none d-md-block display-1">
-        <h3>Welcome To 3P Communication</h3>
-        <p>Best platform to hire designers in Bangladesh</p>
-      </div>
+    <div className="position-relative carousel-shadow bg-primary">
+    <img className="img-fluid w-100" src={banner2} alt="Banner" />
+
+    <div className="position-absolute top-50 start-50 translate-middle text-center w-100" style={{ bottom: '20px' }}>
+      {/* Large screen heading */}
+      <h3 className=" fw-bold text-white display-4 d-none d-md-block">
+        Welcome To 3P Communication
+      </h3>
+      {/* Small screen heading */}
+      <h5 className="fw-bold text-white d-md-none">
+        Welcome To 3P Communication
+      </h5>
+
+      {/* Large screen text */}
+      <p className="text-white fw-bold text-center display-6 d-none d-md-block">
+        One Stop Solutions Interior & Exterior Design for Homes and Offices in Bangladesh
+      </p>
+      {/* Small screen text */}
+      <p className="text-white fs-1 d-md-none">
+        One Stop Interior Solutions in Bangladesh
+      </p>
     </div>
+  </div>
   );
 
 
@@ -126,7 +197,7 @@ const IndexHome = (props) => {
           </div>
           <div className="col-12 col-md-6 mx-auto  mt-5">
             <h2 className=" mt-5 heading_color " style={{ fontFamily: "Times New Roman" }}>Design as the people it serves</h2>
-            <p className="fs-5 ">We offer a full range of interior and exterior design services. Our focus on modern systems and detailed documentation allows us to create tailored solutions for each project. With award-winning design talent and solid project management skills, we ensure that every project is completed on time and within budget, all while maintaining high standards and attention to detail.</p>
+            <p className="fs-6 ">We offer a full range of interior and exterior design services. Our focus on modern systems and detailed documentation allows us to create tailored solutions for each project. With award-winning design talent and solid project management skills, we ensure that every project is completed on time and within budget, all while maintaining high standards and attention to detail.</p>
             <Link to="/exterior" ><button className="btn btn-md special_button ">View Exterior Projects</button></Link>
           </div>
 
@@ -260,22 +331,22 @@ const IndexHome = (props) => {
       <h1 className="text-center mb-5 callNow_font" style={{ fontFamily: "Times New Roman" }}>
         We have worked with great people
       </h1>
-  
+
       {/* Scrollable row of clients */}
       <div className="client-scroll">
         <div className="client-row ">
-          {[picture1, picture2, picture3, picture4, picture5, picture6,picture7, picture8, picture9, picture10, picture11, picture12].map((pic, index) => (
+          {[picture1, picture2, picture3, picture4, picture5, picture6, picture7, picture8, picture9, picture10, picture11, picture12].map((pic, index) => (
             <div key={index} className="client-item">
               <img src={pic} alt={`Client ${index + 1}`} className="client-image mx-2" />
             </div>
           ))}
         </div>
       </div>
-  
-     
+
+
     </div>
   );
-  
+
 
 
 
@@ -342,7 +413,7 @@ const IndexHome = (props) => {
     };
     fetchTestimonials();
   }, []);
-  
+
 
 
   const testimoni = () => (
@@ -357,7 +428,7 @@ const IndexHome = (props) => {
               className="img-fluid rounded-lg"
             />
           </div>
-  
+
           {/* Right Heading, Paragraph, and Button */}
           <div className="col-lg-6 p-3" data-aos="fade-up">
             <h2 className="display-4 pt-5 font-weight-bold">Discover Client Experiences</h2>
@@ -365,10 +436,10 @@ const IndexHome = (props) => {
               Our clients consistently praise our commitment to quality and service.
               Join the growing list of satisfied clients who trust us for their meeting needs.
             </p>
-            <Link to="/interior"><button className="btn dashboard_all_button text-white fw-bold px-5 py-2"> Explore The Projectrs</button></Link> 
+            <Link to="/interior"><button className="btn dashboard_all_button text-white fw-bold px-5 py-2"> Explore The Projectrs</button></Link>
           </div>
         </div>
-  
+
         {/* Testimonial Cards at Bottom Right */}
         <div className="testimonial-carousel-wrapper">
           <div className="testimonial-carousel">
@@ -394,7 +465,7 @@ const IndexHome = (props) => {
       </div>
     </section>
   );
-  
+
 
 
 
@@ -431,51 +502,51 @@ const IndexHome = (props) => {
 
   const faq = () => (
     <Container className="my-5 py-5">
-    <Row className="align-items-center">
-      {/* FAQ Section */}
-      <Col lg={6} className="my-5 py-5 px-4">
-        <h2 className="heading_color mb-4" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Frequently Asked Questions</h2>
-        <Accordion activeKey={activeKey}>
-          {faqs.map((faq, index) => (
-            <Card key={index} className="mb-3">
-              <Card.Header
-                onClick={() => toggleActiveKey(index)}
-                className="d-flex align-items-center"
-                style={{ cursor: 'pointer' }}
-              >
-                <h6 className="mb-0 py-2">
-                  <span
-                    style={{
-                      color: activeKey === index ? 'black' : 'black', // Orange when active, default color otherwise
-                      textDecoration: 'none',
-                      fontWeight: activeKey === index ? 'bold' : 'normal'
-                    }}
-                  >
-                    {faq.question}
-                  </span>
-                </h6>
-              </Card.Header>
-              <Accordion.Collapse eventKey={index}>
-                <Card.Body>{faq.answer}</Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          ))}
-        </Accordion>
-      </Col>
+      <Row className="align-items-center">
+        {/* FAQ Section */}
+        <Col lg={6} className="my-5 py-5 px-4">
+          <h2 className="heading_color mb-4" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Frequently Asked Questions</h2>
+          <Accordion activeKey={activeKey}>
+            {faqs.map((faq, index) => (
+              <Card key={index} className="mb-3">
+                <Card.Header
+                  onClick={() => toggleActiveKey(index)}
+                  className="d-flex align-items-center"
+                  style={{ cursor: 'pointer' }}
+                >
+                  <h6 className="mb-0 py-2">
+                    <span
+                      style={{
+                        color: activeKey === index ? 'black' : 'black', // Orange when active, default color otherwise
+                        textDecoration: 'none',
+                        fontWeight: activeKey === index ? 'bold' : 'normal'
+                      }}
+                    >
+                      {faq.question}
+                    </span>
+                  </h6>
+                </Card.Header>
+                <Accordion.Collapse eventKey={index}>
+                  <Card.Body>{faq.answer}</Card.Body>
+                </Accordion.Collapse>
+              </Card>
+            ))}
+          </Accordion>
+        </Col>
 
-      {/* Right Side Image */}
-      <Col lg={6}>
-        <div className="text-center ">
-          <img
-            src={right} // Replace with your desired image link
-            alt="FAQ Illustration"
-            className="w-100 "
-            style={{ borderRadius: '10px' }}
-          />
-        </div>
-      </Col>
-    </Row>
-  </Container>
+        {/* Right Side Image */}
+        <Col lg={6}>
+          <div className="text-center ">
+            <img
+              src={right} // Replace with your desired image link
+              alt="FAQ Illustration"
+              className="w-100 "
+              style={{ borderRadius: '10px' }}
+            />
+          </div>
+        </Col>
+      </Row>
+    </Container>
   )
 
 
@@ -501,10 +572,10 @@ const IndexHome = (props) => {
         <div id="contact"><Footer /></div>
 
 
-        <ContactModal
+        {/* <ContactModal
           show={modalShow}
           onHide={() => setModalShow(false)}
-        />
+        /> */}
 
       </div>
     </div>
