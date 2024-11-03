@@ -161,7 +161,7 @@ brown #F9DEBE
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   /* Adjust the color and opacity as needed */
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 .carousel-caption {
@@ -912,6 +912,20 @@ brown #F9DEBE
 .change-credentials .alert {
   margin-top: 15px;
 }
+
+
+
+
+
+/* Add this to your custom.css */
+.force-white {
+  z-index: 1;
+  color: white !important; /* Force text color to white */
+}
+
+
+
+
 
 
 

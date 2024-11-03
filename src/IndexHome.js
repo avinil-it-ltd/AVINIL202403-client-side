@@ -125,7 +125,7 @@ const IndexHome = (props) => {
   // const topCarousel = () => (
   //   <div className="carousel-shadow bg-primary">
   //     <img className="img-fluid w-100" src={banner2} alt="Banner" />
-  
+
   //     <div className="carousel-caption text-center w-100" style={{ bottom: '20px' }}>
   //       {/* Large screen heading */}
   //       <h3 className="fw-bold display-4 d-none d-md-block">
@@ -135,7 +135,7 @@ const IndexHome = (props) => {
   //       <h5 className="fw-bold d-md-none">
   //         Welcome To 3P Communication
   //       </h5>
-        
+
   //       {/* Large screen text */}
   //       <p className=" text-center display-6 d-none d-md-block">
   //         One Stop Solutions Interior & Exterior Design for Homes and Offices in Bangladesh
@@ -147,31 +147,35 @@ const IndexHome = (props) => {
   //     </div>
   //   </div>
   // );
-  
+
   const topCarousel = () => (
-    <div className="position-relative carousel-shadow bg-primary">
-    <img className="img-fluid w-100" src={banner2} alt="Banner" />
+    <div className="position-relative bg-primary">
+      <div className="opacity-50 carousel-shadow">
+      <img className=" img-fluid w-100" src={banner2} alt="Banner" />
+      </div>
+      {/* Overlay for better text visibility */}
+     
 
-    <div className="position-absolute top-50 start-50 translate-middle text-center w-100" style={{ bottom: '20px' }}>
-      {/* Large screen heading */}
-      <h3 className=" fw-bold text-white display-4 d-none d-md-block">
-        Welcome To 3P Communication
-      </h3>
-      {/* Small screen heading */}
-      <h5 className="fw-bold text-white d-md-none">
-        Welcome To 3P Communication
-      </h5>
+      <div className="position-absolute top-50 start-50 translate-middle text-center w-100">
+        {/* Large screen heading */}
+        <h3 className="golden-text fw-bold text-white display-4 mb-3 d-none d-md-block">
+          Welcome To 3P Communication
+        </h3>
+        {/* Small screen heading */}
+        <h5 className="golden-text fw-bold fs-2 text-white mb-3 d-md-none">
+          Welcome To 3P Communication
+        </h5>
 
-      {/* Large screen text */}
-      <p className="text-white fw-bold text-center display-6 d-none d-md-block">
-        One Stop Solutions Interior & Exterior Design for Homes and Offices in Bangladesh
-      </p>
-      {/* Small screen text */}
-      <p className="text-white fs-1 d-md-none">
-        One Stop Interior Solutions in Bangladesh
-      </p>
+        {/* Large screen text */}
+        <p className="golden-text text-white fw-bold text-center display-6 mb-0 d-none d-md-block">
+          One Stop Solutions Interior & Exterior Design for Homes and Offices in Bangladesh
+        </p>
+        {/* Small screen text */}
+        <p className="golden-text text-white fs-5 mb-0 d-md-none">
+          One Stop Interior Solutions in Bangladesh
+        </p>
+      </div>
     </div>
-  </div>
   );
 
 
