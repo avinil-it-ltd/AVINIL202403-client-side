@@ -78,17 +78,29 @@
 }
 
 .more-details-btn {
-    background-color: #42556E;
-    /* background-color: #ff6600; */
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    cursor: pointer;
-    font-size: 1rem;
+    padding: 10px;
+    color: white ;
+    font-weight: bold;
+    outline: none !important;
+    background-color: #F79735;
 }
 
 .more-details-btn:hover {
-    /* background-color: #cc5200; */
+    background-color: black;
+    color: white;
 }
+
+/* 
+.dashboard_all_button{
+    color: black ;
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: #F79735;
+}
+
+.dashboard_all_button:hover{
+    background-color: black;
+    color: white;
+} */
 
 

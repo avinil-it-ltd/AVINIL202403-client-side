@@ -23,31 +23,30 @@ const TopMenu = () => {
 
     const topNav = () => (
         <div>
-            <Navbar bg="" expand="lg" variant="dark" fixed="top" style={{ opacity: "0.9" }} className="shadow-lg nav_bar  p-0">
-                <Container fluid>
-                    <Navbar.Brand href="/" className="">
-                        <div className="ms-4" style={{ width: "200px" }}>
-                            <img src={logo} className="ms-5" alt="" width="50px" height="40px" />
-                            <p className="fs-6 ms-3 navbar_text_color ">3P Communication</p>
+            <Navbar expand="lg" variant="dark" fixed="top" className="shadow-lg py-3 nav_bar p-0">
+                <Container fluid className="px-4"> {/* Use px-4 to reduce horizontal overflow */}
+                    <Navbar.Brand href="/" className="d-flex align-items-center">
+                        <div className="d-flex align-items-center logo-container">
+                            <img src={logo} alt="Logo" width="50px" height="40px" />
+                            <p className="fs-5 ms-3 navbar_text_color mb-0">3P Communication</p>
                         </div>
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="navbarScroll" className=" me-3 flex-wrap bg-warning border-0" style={{ fontSize: "0.8em" }} />
-                    <Navbar.Collapse id="navbarScroll" className="ps-4">
-                        <Nav className="me-2 mx-auto my-2 my-lg-0 d-flex" style={{ padding: '7px' }} navbarScroll>
+                    <Navbar.Toggle aria-controls="navbarScroll" className="me-3 bg-warning border-0" />
+                    <Navbar.Collapse id="navbarScroll" className="justify-content-end">
+                        <Nav className="ms-auto my-2 my-lg-0" navbarScroll>
                             <Nav.Link href="/" className="text-warning"><p className="navbar_text_color">Home</p></Nav.Link>
                             <Nav.Link href="/interior"><p className="navbar_text_color">Interior</p></Nav.Link>
                             <Nav.Link href="/exterior"><p className="navbar_text_color">Exterior</p></Nav.Link>
-                            {/* <Nav.Link href="/event"><p className="navbar_text_color">Event</p></Nav.Link> */}
                             <Nav.Link href="/aboutUs"><p className="navbar_text_color">About Us</p></Nav.Link>
                             <Nav.Link href="/contactus" className="text-warning"><p className="navbar_text_color">Contact Us</p></Nav.Link>
-                            <Nav.Link href="/careers"><p className="navbar_text_color">Career</p></Nav.Link> {/* Added Career Link */}
+                            <Nav.Link href="/careers"><p className="navbar_text_color">Career</p></Nav.Link>
 
                             {isLoggedIn && (
                                 <>
                                     <Nav.Link href="/dashboard"><p className="navbar_text_color">Dashboard</p></Nav.Link>
                                     <Nav.Link onClick={handleLogout}><p className="navbar_text_color">Logout</p></Nav.Link>
                                 </>
-                            ) }
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
@@ -57,10 +56,12 @@ const TopMenu = () => {
 
     return (
         <div>
-            <div>{topNav()}</div>
+            {topNav()}
             <br /><br /><br />
         </div>
     );
 };
 
 export default TopMenu;
+
+

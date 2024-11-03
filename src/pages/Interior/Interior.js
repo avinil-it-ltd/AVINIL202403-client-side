@@ -172,7 +172,7 @@ const callNow = () => (
 
               <div className="overlay">
                 <div className="overlay-text">
-                  <button onClick={() => handleMoreDetails(project._id)} className="more-details-btn">
+                  <button onClick={() => handleMoreDetails(project._id)} className="more-details-btn ">
                     More Details
                   </button>
                 </div>
