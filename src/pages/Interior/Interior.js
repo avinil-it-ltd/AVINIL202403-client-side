@@ -21,12 +21,12 @@ const Interior = () => {
       try {
         const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects'); // Assuming your API route is '/api/projects'
         const interiorProjects = response.data.projects.filter(project => project.category.toLowerCase() === 'interior design')?.reverse();
-        
+
         setProjects(interiorProjects);
         console.log(interiorProjects);
       } catch (error) {
         console.error('Error fetching projects:', error);
-      } finally{
+      } finally {
         setLoading(false)
       }
     };
@@ -40,30 +40,30 @@ const Interior = () => {
 
 
 
-  
-// State to hold contact details, loading, and error
-const [contactDetails, setContactDetails] = useState(null);
-const [error, setError] = useState(null);
 
-useEffect(() => {
-  const fetchContactDetails = async () => {
-    try {
-      const response = await fetch("https://3pcommunicationsserver.vercel.app/api/myContact"); // Adjust the URL as needed
-      if (!response.ok) {
-        throw new Error("Failed to fetch contact details");
+  // State to hold contact details, loading, and error
+  const [contactDetails, setContactDetails] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchContactDetails = async () => {
+      try {
+        const response = await fetch("https://3pcommunicationsserver.vercel.app/api/myContact"); // Adjust the URL as needed
+        if (!response.ok) {
+          throw new Error("Failed to fetch contact details");
+        }
+        const data = await response.json();
+        setContactDetails(data); // Set contact details
+      } catch (error) {
+        console.error("Error fetching contact details:", error);
+        setError("Failed to load contact details.");
+      } finally {
+        setLoading(false); // Set loading to false after fetching
       }
-      const data = await response.json();
-      setContactDetails(data); // Set contact details
-    } catch (error) {
-      console.error("Error fetching contact details:", error);
-      setError("Failed to load contact details.");
-    } finally {
-      setLoading(false); // Set loading to false after fetching
-    }
-  };
+    };
 
-  fetchContactDetails();
-}, []); // Empty dependency array to run only once
+    fetchContactDetails();
+  }, []); // Empty dependency array to run only once
 
 
 
@@ -71,13 +71,13 @@ useEffect(() => {
   // Custom Loader JSX
   const Loader = () => (
     <div className="loader-container">
-        <div className="custom-loader"></div>
+      <div className="custom-loader"></div>
     </div>
-);
+  );
 
-if (loading) {
+  if (loading) {
     return <Loader />; // Use your custom loader here
-}
+  }
 
 
   const BioSection = () => (
@@ -86,28 +86,32 @@ if (loading) {
         <Col md={6}>
           <img src={bioImg} alt="Example" className="img-fluid" />
         </Col>
-        <Col className="ps-5 pt-5" md={6}>
-          <h2
-            className="heading_color"
-            style={{ fontFamily: "'Aref Ruqaa', serif" }}
-          >
-            {" "}
-            Our Interior Projects
-          </h2>
-          <p style={{ fontFamily: "'Aref Ruqaa', serif" }}>
-            Transforming Spaces into Homes
-          </p>
-          <p className="my-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
-            At{" "}
-            <span style={{ color: "#FFB300", fontWeight: "bold" }}>
-              3P Communication
-            </span>
-            , we believe that every space tells a story. Our interior design
-            projects are meticulously crafted to enhance the beauty and
-            functionality of your home or office. From contemporary designs to
-            timeless classics, our team of expert designers works closely with
-            clients to bring their visions to life.
-          </p>
+        <Col className="ps-5 d-flex align-items-center " md={6}>
+          <div>
+
+
+            <h2
+              className="heading_color text-start"
+              style={{ fontFamily: "'Aref Ruqaa', serif" }}
+            >
+              {" "}
+              Our Interior Projects
+            </h2>
+            <p style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+              Transforming Spaces into Homes
+            </p>
+            <p className="my-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
+              At{" "}
+              <span style={{ color: "#FFB300", fontWeight: "bold" }}>
+                3P Communication
+              </span>
+              , we believe that every space tells a story. Our interior design
+              projects are meticulously crafted to enhance the beauty and
+              functionality of your home or office. From contemporary designs to
+              timeless classics, our team of expert designers works closely with
+              clients to bring their visions to life.
+            </p>
+          </div>
         </Col>
       </Row>
     </Container>
@@ -116,12 +120,12 @@ if (loading) {
   const callNow = () => (
     <div className="w-100 bg-dark my-5 py-5">
       <div className="d-flex flex-column flex-md-row justify-content-around align-items-center text-center text-md-start text-black fw-bolder px-3 px-md-5 callNow_font">
-  
+
         {/* Column 1 - Text */}
         <div className="col-md-4 mb-3 mb-md-0 text-white">
           <h3>CONTACT NOW FOR YOUR DREAM INTO REALITY</h3>
         </div>
-  
+
         {/* Column 2 - Phone Number with Icon */}
         <div className="col-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
           <div className="d-flex align-items-center justify-content-center">
@@ -136,7 +140,7 @@ if (loading) {
             </div>
           </div>
         </div>
-  
+
         {/* Column 3 - Email with Icon */}
         <div className="col-md-4 d-flex align-items-center justify-content-center">
           <div>
@@ -152,12 +156,12 @@ if (loading) {
             </div>
           </div>
         </div>
-  
+
       </div>
     </div>
   );
-  
-  
+
+
 
 
   const ProjectSection = () => (
@@ -189,14 +193,17 @@ if (loading) {
   );
 
   return (
-    <div className="g-0 body_background" style={{ maxWidth: "100vw" }}>
+    <div className="g-0 " style={{ maxWidth: "100vw" }}>
       <div><TopMenu /></div>
-      <div className="container-fluid">
-        <div>{BioSection()}</div>
-        <div>{callNow()}</div>
-        <div>{ProjectSection()}</div>
-        <div id="contact"><Footer /></div>
+      <div className="body_background">
+        <div className="container-fluid">
+          <div>{BioSection()}</div>
+          <div>{callNow()}</div>
+          <div>{ProjectSection()}</div>
+
+        </div>
       </div>
+      <div id="contact"><Footer /></div>
     </div>
   );
 };

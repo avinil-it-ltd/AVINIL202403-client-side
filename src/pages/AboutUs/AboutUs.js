@@ -121,7 +121,7 @@ const AboutUs = () => {
     <div className="container my-5 pt-5">
       <h2 className="heading_color py-5 text-center">Why Choose Us?</h2>
       <div className="row justify-content-center align-items-center">
-        
+
         {/* Left Circle Sections */}
         <div className="col-12 col-md-4 text-center text-md-start">
           {aboutData?.whyChooseUs?.slice(0, 3).map((item, index) => (
@@ -138,7 +138,7 @@ const AboutUs = () => {
             </div>
           ))}
         </div>
-  
+
         {/* Center Circle Image with Border */}
         <div className="col-12 col-md-4 text-center my-4 my-md-0">
           <div className="center-circle-container">
@@ -149,7 +149,7 @@ const AboutUs = () => {
             />
           </div>
         </div>
-  
+
         {/* Right Circle Sections */}
         <div className="col-12 col-md-4 text-center text-md-start">
           {aboutData?.whyChooseUs?.slice(3).map((item, index) => (
@@ -170,95 +170,95 @@ const AboutUs = () => {
     </div>
   );
 
-  
-  
 
- 
-// State to hold contact details, loading, and error
-const [contactDetails, setContactDetails] = useState(null);
-const [error, setError] = useState(null);
 
-useEffect(() => {
-  const fetchContactDetails = async () => {
-    try {
-      const response = await fetch("https://3pcommunicationsserver.vercel.app/api/myContact"); // Adjust the URL as needed
-      if (!response.ok) {
-        throw new Error("Failed to fetch contact details");
+
+
+  // State to hold contact details, loading, and error
+  const [contactDetails, setContactDetails] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchContactDetails = async () => {
+      try {
+        const response = await fetch("https://3pcommunicationsserver.vercel.app/api/myContact"); // Adjust the URL as needed
+        if (!response.ok) {
+          throw new Error("Failed to fetch contact details");
+        }
+        const data = await response.json();
+        setContactDetails(data); // Set contact details
+      } catch (error) {
+        console.error("Error fetching contact details:", error);
+        setError("Failed to load contact details.");
+      } finally {
+        setLoading(false); // Set loading to false after fetching
       }
-      const data = await response.json();
-      setContactDetails(data); // Set contact details
-    } catch (error) {
-      console.error("Error fetching contact details:", error);
-      setError("Failed to load contact details.");
-    } finally {
-      setLoading(false); // Set loading to false after fetching
-    }
-  };
+    };
 
-  fetchContactDetails();
-}, []); // Empty dependency array to run only once
+    fetchContactDetails();
+  }, []); // Empty dependency array to run only once
 
 
 
-const callNow = () => (
-  <div className="w-100 bg-dark my-5 py-5">
-    <div className="d-flex flex-column flex-md-row justify-content-around align-items-center text-center text-md-start text-black fw-bolder px-3 px-md-5 callNow_font">
+  const callNow = () => (
+    <div className="w-100 bg-dark my-5 py-5">
+      <div className="d-flex flex-column flex-md-row justify-content-around align-items-center text-center text-md-start text-black fw-bolder px-3 px-md-5 callNow_font">
 
-      {/* Column 1 - Text */}
-      <div className="col-md-4 mb-3 mb-md-0 text-white">
-        <h3>CONTACT NOW FOR YOUR DREAM INTO REALITY</h3>
-      </div>
-
-      {/* Column 2 - Phone Number with Icon */}
-      <div className="col-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
-        <div className="d-flex align-items-center justify-content-center">
-          <div className="icon-circle">
-            <i className="bi bi-telephone-fill"></i> {/* Bootstrap phone icon */}
-          </div>
-          <div className="px-3 pt-3">
-            <p className="text-warning"> CALL US<br />
-              <span className="text-white"> {contactDetails ? contactDetails?.mobile : "+880000000000"}</span>
-            </p>
-            <p className="ms-2 fw-bold"></p>
-          </div>
+        {/* Column 1 - Text */}
+        <div className="col-md-4 mb-3 mb-md-0 text-white">
+          <h3>CONTACT NOW FOR YOUR DREAM INTO REALITY</h3>
         </div>
-      </div>
 
-      {/* Column 3 - Email with Icon */}
-      <div className="col-md-4 d-flex align-items-center justify-content-center">
-        <div>
+        {/* Column 2 - Phone Number with Icon */}
+        <div className="col-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
           <div className="d-flex align-items-center justify-content-center">
             <div className="icon-circle">
-              <i className="bi bi-envelope-fill"></i> {/* Bootstrap envelope icon */}
+              <i className="bi bi-telephone-fill"></i> {/* Bootstrap phone icon */}
             </div>
             <div className="px-3 pt-3">
-              <p className="text-warning">PLEASE SEND EMAIL<br />
-                <span className="fw-bold text-white">{contactDetails ? contactDetails?.email : "info@example.com"}</span>
+              <p className="text-warning"> CALL US<br />
+                <span className="text-white"> {contactDetails ? contactDetails?.mobile : "+880000000000"}</span>
               </p>
+              <p className="ms-2 fw-bold"></p>
             </div>
           </div>
         </div>
+
+        {/* Column 3 - Email with Icon */}
+        <div className="col-md-4 d-flex align-items-center justify-content-center">
+          <div>
+            <div className="d-flex align-items-center justify-content-center">
+              <div className="icon-circle">
+                <i className="bi bi-envelope-fill"></i> {/* Bootstrap envelope icon */}
+              </div>
+              <div className="px-3 pt-3">
+                <p className="text-warning">PLEASE SEND EMAIL<br />
+                  <span className="fw-bold text-white">{contactDetails ? contactDetails?.email : "info@example.com"}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-
     </div>
-  </div>
-);
+  );
 
 
 
- // Custom Loader JSX
- const Loader = () => (
-  <div className="loader-container">
+  // Custom Loader JSX
+  const Loader = () => (
+    <div className="loader-container">
       <div className="custom-loader"></div>
-  </div>
-);
+    </div>
+  );
 
 
-if (loading) {
-  return <Loader />; // Use your custom loader here
-}
+  if (loading) {
+    return <Loader />; // Use your custom loader here
+  }
 
-  
+
 
 
   // if (!aboutData) {
@@ -266,56 +266,61 @@ if (loading) {
   // }
 
   return (
-    <div className="container" style={{ maxWidth: "100vw" }}>
+    <div>
+
       <TopMenu />
-      <div className="row">
-        <div className="col-12 pt-5 mt-5 d-flex justify-content-center">
-          <div className="col-md-4 text-center">
-            <div className="profile-card  rounded bg-light p-4 shadow mx-auto">
-              <img
-                src={profile} // Optionally replace with dynamic profile image from backend
-                alt="Profile"
-                className="img-fluid rounded-circle border border-white mb-3 mt-3"
-                style={{ width: "100%", height: "270px", objectFit: "cover" }}
-              />
-              <h4
-                className="heading_color mb-0"
-                style={{ fontFamily: "'Aref Ruqaa', serif" }}
-              >
-                {aboutData?.profile?.name}
-              </h4>
-              <p
-                className="text-muted"
-                style={{ fontFamily: "'Aref Ruqaa', serif" }}
-              >
-                {aboutData?.profile?.position}
+      <div className="container" style={{ maxWidth: "100vw" }}>
+
+        <div className="row">
+          <div className="col-12 pt-5 mt-5 d-flex justify-content-center">
+            <div className="col-md-4 text-center">
+              <div className="profile-card  rounded bg-light p-4 shadow mx-auto">
+                <img
+                  src={profile} // Optionally replace with dynamic profile image from backend
+                  alt="Profile"
+                  className="img-fluid rounded-circle border border-white mb-3 mt-3"
+                  style={{ width: "100%", height: "270px", objectFit: "cover" }}
+                />
+                <h4
+                  className="heading_color mb-0"
+                  style={{ fontFamily: "'Aref Ruqaa', serif" }}
+                >
+                  {aboutData?.profile?.name}
+                </h4>
+                <p
+                  className="text-muted"
+                  style={{ fontFamily: "'Aref Ruqaa', serif" }}
+                >
+                  {aboutData?.profile?.position}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-12 text-center mt-4">
+            <h3
+              className="heading_color mt-3 mb-3"
+              style={{ fontFamily: "'Aref Ruqaa', serif" }}
+            >
+              Get To Know Our Director
+            </h3>
+            <div className="introduction-text my-auto" style={{ maxWidth: "600px", margin: "0 auto" }}>
+              <p className="text-black">
+                {aboutData?.profile?.introduction}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="col-12 text-center mt-4">
-          <h3
-            className="heading_color mt-3 mb-3"
-            style={{ fontFamily: "'Aref Ruqaa', serif" }}
-          >
-            Get To Know Our Director
-          </h3>
-          <div className="introduction-text my-auto" style={{ maxWidth: "600px", margin: "0 auto" }}>
-            <p className="text-black">
-              {aboutData?.profile?.introduction}
-            </p>
-          </div>
-        </div>
-      </div>
+
+        <div>{ChooseMe()}</div>
+        <div>{callNow()}</div>
+        <div>{process()}</div>
 
 
-      <div>{ChooseMe()}</div>
-      <div>{callNow()}</div>
-      <div>{process()}</div>
-      <div id="contact" className="g-0">
-        <Footer />
+
       </div>
+      <Footer />
     </div>
   );
 }

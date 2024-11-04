@@ -36,7 +36,7 @@ function Testimonial() {
 
             {/* Right Heading, Paragraph, and Button */}
             <Col lg={6} md={12} className="p-3" data-aos="fade-up">
-              <h2 className="display-4 pt-5 font-weight-bold">Discover Client Experiences</h2>
+              <h2 className="display-4 pt-5 text-start font-weight-bold">Discover Client Experiences</h2>
               <p className="text-muted mb-5">
                 Our clients consistently praise our commitment to quality and service. Join the growing list of satisfied clients who trust us for their meeting needs.
               </p>

@@ -12,8 +12,8 @@ function Banner() {
             {/* <TopMenu /> */}
             <div className='banner_section'>
                 <div className='banner_content'>
-                    <h1>Transform Your Space</h1>
-                    <p>Innovative designs for a modern lifestyle</p>
+                    <h1>Transform Your Space With <span className=''>3P Communication</span></h1>
+                    <p>Innovative designs for a modern lifestyle  </p>
                     <Link to="/interior"> <button className='cta_button'>Explore Now</button></Link>
                 </div>
             </div>
