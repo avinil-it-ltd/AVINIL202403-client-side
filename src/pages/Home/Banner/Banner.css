@@ -1,6 +1,6 @@
 /* General Banner Styling */
 .banner_section {
-    background-image: url('https://thestudiobangalore.com/blog/wp-content/uploads/2024/03/Interior-Design-scaled.jpg') !important; 
+    background-image: url('../../../../src/assets/Banner.jpg') !important; 
     /* Replace with actual banner image URL */
     
     background-size: cover;
