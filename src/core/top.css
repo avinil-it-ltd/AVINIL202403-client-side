@@ -1,4 +1,13 @@
 /* General Styling for Navbar */
+/* Highlight the active link */
+.navbar .nav-link.active p {
+    font-weight: bold;
+    color: #ff6600;/* Example active color */
+    /* text-decoration: underline;  */
+}
+
+
+
 .nav_bar {
     background-color: #faf0e7; /* Dark background for the navbar */
 }

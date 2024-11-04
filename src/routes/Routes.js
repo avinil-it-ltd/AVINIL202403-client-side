@@ -48,6 +48,7 @@ import SettingsPage from '../Dashboard/SettingsPage.js';
 import { useAuth } from '../context/AuthContext.js';
 import Register from '../Auth/Register/Register.js';
 import Test from '../Test.js';
+import Event from '../pages/Event/Event.js';
 
 
 
@@ -66,7 +67,7 @@ const AppRoutes = () => {
             <Route path="/test" element={<Test />} />
 
             <Route path="/exterior" element={<Exterior />} />
-            {/* <Route path="/event" element={<Design />} /> */}
+            <Route path="/event" element={<Event />} />
             <Route path="/interior" element={<Interiror />} />
             <Route path="/aboutus" element={<AboutUs />} />
             {/* <Route path="/projects/search/:searchkey" element={<SearchResult />} /> */}

@@ -138,7 +138,7 @@ const Exterior = () => {
             <div className="icon-circle">
               <i className="bi bi-telephone-fill"></i> {/* Bootstrap phone icon */}
             </div>
-            <div className="px-3 pt-3">
+            <div className="px-3 pt-5">
               <p className="text-warning"> CALL US<br />
                 <span className="text-white"> {contactDetails ? contactDetails?.mobile : "+880000000000"}</span>
               </p>
