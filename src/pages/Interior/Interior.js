@@ -113,51 +113,51 @@ if (loading) {
     </Container>
   );
 
-const callNow = () => (
-  <div className="w-100 bg-dark my-5 py-5">
-    <div className="d-flex flex-column flex-md-row justify-content-around align-items-center text-center text-md-start text-black fw-bolder px-3 px-md-5 callNow_font">
-
-      {/* Column 1 - Text */}
-      <div className="col-md-4 mb-3 mb-md-0 text-white">
-        <h3>CONTACT NOW FOR YOUR DREAM INTO REALITY</h3>
-      </div>
-
-      {/* Column 2 - Phone Number with Icon */}
-      <div className="col-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
-        <div className="d-flex align-items-center justify-content-center">
-          <div className="icon-circle">
-            <i className="bi bi-telephone-fill"></i> {/* Bootstrap phone icon */}
-          </div>
-          <div className="px-3 pt-3">
-            <p className="text-warning"> CALL US<br />
-              <span className="text-white"> {contactDetails ? contactDetails?.mobile : "+880000000000"}</span>
-            </p>
-            <p className="ms-2 fw-bold"></p>
-          </div>
+  const callNow = () => (
+    <div className="w-100 bg-dark my-5 py-5">
+      <div className="d-flex flex-column flex-md-row justify-content-around align-items-center text-center text-md-start text-black fw-bolder px-3 px-md-5 callNow_font">
+  
+        {/* Column 1 - Text */}
+        <div className="col-md-4 mb-3 mb-md-0 text-white">
+          <h3>CONTACT NOW FOR YOUR DREAM INTO REALITY</h3>
         </div>
-      </div>
-
-      {/* Column 3 - Email with Icon */}
-      <div className="col-md-4 d-flex align-items-center justify-content-center">
-        <div>
+  
+        {/* Column 2 - Phone Number with Icon */}
+        <div className="col-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
           <div className="d-flex align-items-center justify-content-center">
             <div className="icon-circle">
-              <i className="bi bi-envelope-fill"></i> {/* Bootstrap envelope icon */}
+              <i className="bi bi-telephone-fill"></i> {/* Bootstrap phone icon */}
             </div>
             <div className="px-3 pt-3">
-              <p className="text-warning">PLEASE SEND EMAIL<br />
-                <span className="fw-bold text-white">{contactDetails ? contactDetails?.email : "info@example.com"}</span>
+              <p className="text-warning"> CALL US<br />
+                <span className="text-white"> {contactDetails ? contactDetails?.mobile : "+880000000000"}</span>
               </p>
+              <p className="ms-2 fw-bold"></p>
             </div>
           </div>
         </div>
+  
+        {/* Column 3 - Email with Icon */}
+        <div className="col-md-4 d-flex align-items-center justify-content-center">
+          <div>
+            <div className="d-flex align-items-center justify-content-center">
+              <div className="icon-circle">
+                <i className="bi bi-envelope-fill"></i> {/* Bootstrap envelope icon */}
+              </div>
+              <div className="px-3 pt-3">
+                <p className="text-warning">PLEASE SEND EMAIL<br />
+                  <span className="fw-bold text-white">{contactDetails ? contactDetails?.email : "info@example.com"}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
       </div>
-
     </div>
-  </div>
-);
-
-
+  );
+  
+  
 
 
   const ProjectSection = () => (
@@ -179,8 +179,8 @@ const callNow = () => (
               </div>
             </div>
             <div className="imageTitle">
-              <h3 className="text-capitalize fs-5">{project.title}</h3>
-              <p>Interior Design</p>
+              <h3 className="text-capitalize fs-5 fw-bold">{project.title}</h3>
+              <p>{project.subcategory}, {project.category}</p>
             </div>
           </div>
         ))}

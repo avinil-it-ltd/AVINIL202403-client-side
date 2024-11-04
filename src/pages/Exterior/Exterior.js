@@ -187,8 +187,8 @@ if (loading) {
               </div>
             </div>
             <div className="imageTitle">
-              <h3 className="text-capitalize fs-5">{project.title}</h3>
-              <p>Exterior Design</p>
+              <h3 className="text-capitalize fs-5 fw-bold">{project.title}</h3>
+              <p>{project.subcategory}, {project.category}</p>
             </div>
           </div>
         ))}

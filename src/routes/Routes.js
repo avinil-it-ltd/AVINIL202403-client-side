@@ -47,6 +47,8 @@ import PolicyDashboard from '../Dashboard/PolicyDashboard.js';
 import SettingsPage from '../Dashboard/SettingsPage.js';
 import { useAuth } from '../context/AuthContext.js';
 import Register from '../Auth/Register/Register.js';
+import Test from '../Test.js';
+
 
 
 
@@ -61,6 +63,8 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<IndexHome />} />
+            <Route path="/test" element={<Test />} />
+
             <Route path="/exterior" element={<Exterior />} />
             {/* <Route path="/event" element={<Design />} /> */}
             <Route path="/interior" element={<Interiror />} />
