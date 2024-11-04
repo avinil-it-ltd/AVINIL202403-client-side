@@ -22,7 +22,7 @@ function ContactModal(props) {
     setLoading(true);
     try {
       // Submit form data to backend
-      const response = await axios.post("https://3pcommunicationsserver.vercel.app/api/contacts", {
+      const response = await axios.post("https://3pcommunicationsserver.vercel.app/api/contact", {
         name,
         email,
         phoneNumber: phoneNo,
