@@ -106,7 +106,13 @@ const Sidebar = () => {
                 </Nav.Link>
 
                 <h5 className="mt-4">Settings</h5>
-                
+                <Nav.Link
+                    as={Link}
+                    to="/dashboard/headlineDashboard"  // Link to the Headline Management page
+                    className={`mb-2 ${isActive('/dashboard/headlineDashboard') ? 'active-link' : ''}`}
+                >
+                    <FaClipboardList /> Manage Headlines
+                </Nav.Link>
                 <Nav.Link
                     as={Link}
                     to="/dashboard/settings" // Link to the combined settings page

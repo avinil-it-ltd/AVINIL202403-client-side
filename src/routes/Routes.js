@@ -49,6 +49,7 @@ import { useAuth } from '../context/AuthContext.js';
 import Register from '../Auth/Register/Register.js';
 import Test from '../Test.js';
 import Event from '../pages/Event/Event.js';
+import HeadlineDashboard from '../Dashboard/HeadlineDashboard.js';
 
 
 
@@ -105,6 +106,7 @@ const AppRoutes = () => {
                 <Route path="changePrivacyPolicy" element={<PolicyDashboard/>} />
                 <Route path="UpdateContactDetails" element={<UpdateContactDetails/>} />
                 <Route path="settings" element={<SettingsPage />} />
+                <Route path="headlineDashboard" element={<HeadlineDashboard />} /> {/* New route for Headline Management */}
             </Route>
 
 

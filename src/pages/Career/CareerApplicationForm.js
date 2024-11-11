@@ -58,20 +58,39 @@ const CareerApplicationForm = () => {
     };
 
     // Upload image to Cloudinary and return the secure URL
+    // const uploadImageToCloudinary = async (file) => {
+    //     const formData = new FormData();
+    //     formData.append('file', file);
+    //     formData.append('upload_preset', '3pcommunications'); // Ensure your preset is correctly configured
+
+    //     try {
+    //         const response = await axios.post(`https://api.cloudinary.com/v1_1/avinilit/image/upload`, formData);
+    //         console.log('Uploaded Image URL:', response.data.secure_url);
+    //         return response.data.secure_url; // Return the URL of the uploaded image
+    //     } catch (error) {
+    //         console.error('Error uploading image to Cloudinary:', error);
+    //         throw error; // Propagate the error for handling in the submit function
+    //     }
+    // };
+
+
     const uploadImageToCloudinary = async (file) => {
         const formData = new FormData();
-        formData.append('file', file);
-        formData.append('upload_preset', '3pcommunications'); // Ensure your preset is correctly configured
+        formData.append("file", file);
+        formData.append("upload_preset", "3pcommunications"); // Replace with your Cloudinary upload preset
 
         try {
-            const response = await axios.post(`https://api.cloudinary.com/v1_1/avinilit/image/upload`, formData);
-            console.log('Uploaded Image URL:', response.data.secure_url);
-            return response.data.secure_url; // Return the URL of the uploaded image
+            const response = await axios.post(
+                `https://api.cloudinary.com/v1_1/avinilit/image/upload?transformation=h_1080,c_scale,q_80`,
+                formData
+            );
+            return response.data.secure_url; // Return the uploaded, resized image URL with 80% quality
         } catch (error) {
-            console.error('Error uploading image to Cloudinary:', error);
-            throw error; // Propagate the error for handling in the submit function
+            console.error("Error uploading image to Cloudinary:", error);
+            throw error;
         }
     };
+
 
     // Handle form submission
     const handleSubmit = async (e) => {

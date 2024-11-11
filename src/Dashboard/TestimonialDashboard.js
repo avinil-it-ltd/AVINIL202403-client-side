@@ -82,6 +82,23 @@ const TestimonialDashboard = () => {
         }
     };
 
+    // const uploadImageToCloudinary = async (file) => {
+    //     const formData = new FormData();
+    //     formData.append("file", file);
+    //     formData.append("upload_preset", "3pcommunications"); // Replace with your Cloudinary upload preset
+      
+    //     try {
+    //       const response = await axios.post(
+    //         `https://api.cloudinary.com/v1_1/avinilit/image/upload?transformation=h_1080,c_scale,q_80`,
+    //         formData
+    //       );
+    //       return response.data.secure_url; // Return the uploaded, resized image URL with 80% quality
+    //     } catch (error) {
+    //       console.error("Error uploading image to Cloudinary:", error);
+    //       throw error;
+    //     }
+    //   };
+      
     // Handle image selection and preview display
     const handleImageChange = (e) => {
         const file = e.target.files[0];
