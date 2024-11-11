@@ -83,7 +83,7 @@ const Footer = () => {
                 </div>
               </div>
               <p className="py-3" style={{ fontSize: "12px" }}>
-                System Developed By <a href="https://avinil.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#ff6600" }}>Avinil IT LTD</a>
+                System Developed By <a href="https://avinil.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#ff6600" , textDecoration: "none" }}>Avinil IT LTD</a>
               </p>
 
 
