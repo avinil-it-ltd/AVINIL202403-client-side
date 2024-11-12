@@ -245,7 +245,7 @@ const CategoryManagement = () => {
                                                         required
                                                         className="me-2"
                                                     />
-                                                    <Button variant="success" type="submit" className="me-2">Update {sub._id}</Button>
+                                                    <Button variant="success" type="submit" className="me-2">Update</Button>
                                                     <Button variant="secondary" onClick={() => { setEditingSubCategoryId(null); setEditingSubCategoryName(''); }}>Cancel</Button>
                                                 </Form>
 

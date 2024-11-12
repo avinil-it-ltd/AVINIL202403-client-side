@@ -54,6 +54,7 @@ import ContactInfo from "./pages/Home/ContactInfo/ContactInfo.js";
 import ThreeImg from "./pages/Home/ThreeImg/ThreeImg.js";
 import FAQ from "./pages/Home/FAQ/FAQ.js";
 import Testimonial from "./pages/Home/Testimonial/Testimonial.js";
+import Headline from "./pages/Home/Headline/Headline.js";
 
 
 const IndexHome = (props) => {
@@ -516,33 +517,33 @@ const IndexHome = (props) => {
   return (
     <div className="" >
       <div><TopMenu /></div>
-
+      <Headline />
       <div className="">
         {/* <div>{topCarousel()}</div> */}
-        <Banner/>
-        <Introduction/>
+        <Banner />
+        <Introduction />
         {/* <div>{process()}</div> */}
-        <Process/>
+        <Process />
         {/* <div>{ourServices()}</div> */}
-        <Services/>
+        <Services />
         {/* <div>{OurClients()}</div> */}
-        <Clients/>
+        <Clients />
 
         {/* <div>{callNow()}</div> */}
-        <ContactInfo/>
+        <ContactInfo />
         {/* <div>{ThreeImgSection()}</div> */}
-        <ThreeImg/>
+        <ThreeImg />
         {/* <div>{testimonials()}</div> */}
         {/* <div>{testimoni()}</div> */}
-        <Testimonial/>
+        <Testimonial />
         {/* <div>{faq()}</div> */}
-        <FAQ/>
+        <FAQ />
         <br /><br />
         <div>{PageUpButton}</div>
         <div id="contact"><Footer /></div>
 
 
- {/*
+        {/*
       <ContactModal
           show={modalShow}
           onHide={() => setModalShow(false)}

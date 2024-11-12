@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import TopMenu from "../core/TopMenu";
-import Footer from "../../src/core/Footer";
+import Footer from "../core/Footer";
 import Data from "../projects.json";
 import { Container, Col, Row } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom'; // To navigate between pages
@@ -13,7 +13,7 @@ import img2 from "../../src/assets/images/Exterior/Navana Pipe plactics Factory 
 import img3 from "../../src/assets/images/Exterior/Rajarbahg Gate.jpg";
 import img4 from "../../src/assets/images/Exterior/Soinik Club Gate.jpg";
 
-const Design = (props) => {
+const Event = (props) => {
   const [projects, setProjects] = useState([]);
   const navigate = useNavigate(); // For navigation
 
@@ -97,4 +97,4 @@ const Design = (props) => {
   );
 };
 
-export default Design;
+export default Event;

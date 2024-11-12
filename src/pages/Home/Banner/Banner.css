@@ -37,8 +37,22 @@
     font-weight: 300;
 }
 
-.banner_content span {
+.banner_text {
     color: #ff6600;
+}
+
+.banner-text-1 {
+    color: rgb(21, 185, 250);
+    
+    
+    text-shadow:
+        -2px -2px 0 black,
+        /* Top-left */
+        2px -2px 0 black,
+        /* Top-right */
+        -2px 2px 0 black,
+        /* Bottom-left */
+        2px 2px 0 rgb(255, 255, 255);
 }
 
 .cta_button {

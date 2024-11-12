@@ -97,7 +97,7 @@ const TopMenu = () => {
     const topNav = () => (
         <div>
             <Navbar expand="lg" variant="dark" fixed="top" className="shadow-lg py-3 nav_bar p-0">
-                <Container fluid className="px-5"> {/* Use px-4 to reduce horizontal overflow */}
+                <Container fluid className="px-sm-2 px-md-5"> {/* Use px-4 to reduce horizontal overflow */}
                     <Navbar.Brand href="/" className="d-flex align-items-center">
                         <div className="d-flex align-items-center logo-container">
                             <img src={logo} alt="Logo" width="50px" height="40px" />
