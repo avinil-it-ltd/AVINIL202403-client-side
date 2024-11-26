@@ -26,7 +26,7 @@ const ProjectList = () => {
     const fetchProjects = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/projects"
+          "https://3pcommunicationsserver.vercel.app/api/projects"
         );
         if (isMounted) {
           setProjects(response.data.projects || response.data);
@@ -41,7 +41,7 @@ const ProjectList = () => {
     };
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/categories"); // Replace with your categories API endpoint
+        const response = await axios.get("https://3pcommunicationsserver.vercel.app/api/categories"); // Replace with your categories API endpoint
         if (isMounted) {
           setCategories(response.data); // Assuming the response is an array of categories
         }
@@ -95,7 +95,7 @@ const ProjectList = () => {
   const deleteProject = async (project) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/projects/${project._id}`
+        `https://3pcommunicationsserver.vercel.app/api/projects/${project._id}`
       );
       // Update state after deletion
       setProjects(projects.filter((p) => p._id !== project._id));

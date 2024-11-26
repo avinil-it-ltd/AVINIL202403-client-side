@@ -45,7 +45,7 @@ const CareerList = () => {
     const fetchCareers = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:5000/api/careers');
+            const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/careers');
             console.log(response.data); // Log the entire response for debugging
             const careersWithSerial = response.data?.map((career, index) => ({
                 ...career,
@@ -67,7 +67,7 @@ const CareerList = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this career?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/careers/${id}`);
+                await axios.delete(`https://3pcommunicationsserver.vercel.app/api/careers/${id}`);
                 setCareers(prevCareers => prevCareers.filter(career => career._id !== id));
             } catch (err) {
                 setError('Error deleting career. Please try again later.');
@@ -78,7 +78,7 @@ const CareerList = () => {
 
     const handleStatusChange = async (id, status) => {
         try {
-            await axios.patch(`http://localhost:5000/api/careers/status/${id}`, { status });
+            await axios.patch(`https://3pcommunicationsserver.vercel.app/api/careers/status/${id}`, { status });
             fetchCareers(); // Refresh the list after status update
         } catch (err) {
             setError('Failed to update career status. Please try again later.');

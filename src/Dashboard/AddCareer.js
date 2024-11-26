@@ -52,7 +52,7 @@ const AddCareer = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/api/careers', {
+            const response = await fetch('https://3pcommunicationsserver.vercel.app/api/careers', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

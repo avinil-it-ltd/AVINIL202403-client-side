@@ -41,7 +41,7 @@ const AddProject = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/categories"
+          "https://3pcommunicationsserver.vercel.app/api/categories"
         );
         setCategories(response.data);
       } catch (error) {
@@ -221,7 +221,7 @@ const AddProject = () => {
 
 
       const response = await axios.post(
-        "http://localhost:5000/api/projects",
+        "https://3pcommunicationsserver.vercel.app/api/projects",
         dataToSubmit
       );
 
