@@ -11,7 +11,7 @@
 //   const fetchContacts = async () => {
 //     try {
 //       const response = await axios.get(
-//         "https://3pcommunicationsserver.vercel.app/api/contacts"
+//         "http://localhost:5000/api/contacts"
 //       );
 //       setContacts(response.data);
 //     } catch (err) {
@@ -36,7 +36,7 @@
 //     if (result.isConfirmed) {
 //       try {
 //         await axios.delete(
-//           `https://3pcommunicationsserver.vercel.app/api/contacts/${id}`
+//           `http://localhost:5000/api/contacts/${id}`
 //         );
 //         fetchContacts(); // Refresh contacts after deletion
 //         Swal.fire({
@@ -70,7 +70,7 @@
 //       };
 
 //       await axios.put(
-//         `https://3pcommunicationsserver.vercel.app/api/contacts/${contact._id}/shortlisted`,
+//         `http://localhost:5000/api/contacts/${contact._id}/shortlisted`,
 //         {
 //           shortlisted: updatedContact.shortlisted,
 //         }
@@ -210,7 +210,7 @@ const ContactDashboard = () => {
   const fetchContacts = async () => {
     try {
       const response = await axios.get(
-        "https://3pcommunicationsserver.vercel.app/api/contacts"
+        "http://localhost:5000/api/contacts"
       );
       setContacts(response.data);
     } catch (err) {
@@ -236,7 +236,7 @@ const ContactDashboard = () => {
     if (result.isConfirmed) {
       try {
         await axios.delete(
-          `https://3pcommunicationsserver.vercel.app/api/contacts/${id}`
+          `http://localhost:5000/api/contacts/${id}`
         );
         fetchContacts();
         Swal.fire({
@@ -270,7 +270,7 @@ const ContactDashboard = () => {
       };
 
       await axios.put(
-        `https://3pcommunicationsserver.vercel.app/api/contacts/${contact._id}/shortlisted`,
+        `http://localhost:5000/api/contacts/${contact._id}/shortlisted`,
         {
           shortlisted: updatedContact.shortlisted,
         }

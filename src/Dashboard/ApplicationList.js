@@ -26,7 +26,7 @@ const AppList = () => {
 
   const fetchCareers = async () => {
     try {
-      const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/careers');
+      const response = await axios.get('http://localhost:5000/api/careers');
       console.log(response.data);
 
       setCareers(response.data);
@@ -42,7 +42,7 @@ const AppList = () => {
 
   const handleShortlist = async (id, isShortlisted) => {
     try {
-      await axios.put(`https://3pcommunicationsserver.vercel.app/api/applications/shortlist/${id}`, {
+      await axios.put(`http://localhost:5000/api/applications/shortlist/${id}`, {
         isShortlisted: !isShortlisted,
       });
       fetchApplications(); // Refresh the list after updating shortlist status
@@ -57,7 +57,7 @@ const AppList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this application?')) {
       try {
-        await axios.delete(`https://3pcommunicationsserver.vercel.app/api/applications/${id}`);
+        await axios.delete(`http://localhost:5000/api/applications/${id}`);
         fetchApplications(); // Refresh the list after deleting
       } catch (error) {
         console.error('Error deleting application:', error);
@@ -103,7 +103,7 @@ const AppList = () => {
       };
 
       // Fetch filtered applications
-      const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/applications/filtered', { params });
+      const response = await axios.get('http://localhost:5000/api/applications/filtered', { params });
       console.log(response.data);
 
       setApplications(response.data);
@@ -125,7 +125,7 @@ const AppList = () => {
 
 
 
-    // Custom Loader Component
+  // Custom Loader Component
   const Loader = () => (
     <div className="loader-container text-center mt-5">
       <div className="custom-loader"></div>
@@ -183,7 +183,7 @@ const AppList = () => {
 
         {/* Shortlisted Button */}
         <div className="filter-group">
-          <label  className="form-label fw-bold">Shortlist Button</label>
+          <label className="form-label fw-bold">Shortlist Button</label>
           <button
             className={`btn ${showShortlisted ? "btn-success" : "btn-outline-secondary"} w-100`}
             onClick={() => setShowShortlisted(!showShortlisted)}
@@ -269,70 +269,45 @@ const AppList = () => {
                       className="modal fade"
                       id={`applicationDetailsModal-${application._id}`}
                       tabIndex="-1"
-                      aria-labelledby="applicationDetailsModalLabel"
+                      aria-labelledby={`applicationDetailsModalLabel-${application._id}`}
                       aria-hidden="true"
                     >
-                      <div className="modal-dialog modal-lg modal-dialog-centered">
+                      <div className="modal-dialog">
                         <div className="modal-content">
-                          <div className="modal-header bg-primary text-white">
-                            <h5
-                              className="modal-title ps-4"
-                              id="applicationDetailsModalLabel"
-                            >
+                          <div className="modal-header">
+                            <h5 className="modal-title" id={`applicationDetailsModalLabel-${application._id}`}>
                               Application Details
                             </h5>
                             <button
                               type="button"
-                              className="btn-close btn-close-white"
+                              className="btn-close"
                               data-bs-dismiss="modal"
                               aria-label="Close"
                             ></button>
                           </div>
-                          <div className="modal-body ps-5">
-                            <p>
-                              <strong>Name:</strong> {application.name}
-                            </p>
-                            <p>
-                              <strong>Phone:</strong> {application.phoneNumber}
-                            </p>
-                            <p>
-                              <strong>Email:</strong> {application.email}
-                            </p>
-                            <p>
-                              <strong className="me-2">Resume:</strong>
-                              <button
-                                type="button"
-                                download=""
-                                className="btn btn-secondary"
-                                onClick={() => handleViewResume(application.resume)}
-                              >
-                                View Resume
-                              </button>
-                            </p>
-                            <p>
-                              <strong>Career Position:</strong>{" "}
-                              {application.careerId?.title || "N/A"}
-                            </p>
-                            <p>
-                              <strong>Shortlisted:</strong>
-                              <span
-                                className={`badge ${application.isShortlisted
-                                  ? "bg-success"
-                                  : "bg-secondary"
-                                  }`}
-                              >
-                                {application.isShortlisted ? "Yes" : "No"}
-                              </span>
-                            </p>
-                          </div>
-                          <div className="modal-footer">
-                            <button
-                              type="button"
-                              className="btn btn-primary"
-                              data-bs-dismiss="modal"
-                            >
-                              Close
-                            </button>
+                          <div className="modal-body">
+                            <p><strong>Name:</strong> {application.name}</p>
+                            <p><strong>Email:</strong> {application.email}</p>
+                            <p><strong>Phone:</strong> {application.phoneNumber}</p>
+                            <p><strong>Career Position:</strong> {application.careerId?.title || 'N/A'}</p>
+                            <p><strong>Shortlisted:</strong> {application.isShortlisted ? 'Yes' : 'No'}</p>
+                            <p><strong>Resume:</strong> <a href={`${application.resume}`} target="_blank" rel="noopener noreferrer">View Resume</a></p>
+                            <p><strong>LinkedIn Profile:</strong> <a href={application.linkedinProfile} target="_blank" rel="noopener noreferrer">{application.linkedinProfile || 'N/A'}</a></p>
+                            <p><strong>Resume:</strong> <a href={application.resumePdfLink} target="_blank" rel="noopener noreferrer">{application.resumePdfLink || 'N/A'}</a></p>
+                            <p><strong>Portfolio:</strong> <a href={application.portfolioLink} target="_blank" rel="noopener noreferrer">{application.portfolioLink || 'N/A'}</a></p>
+                            <p><strong>Address:</strong> {application.address || 'N/A'}</p>
+                            <p><strong>Description:</strong> {application.description || 'N/A'}</p>
+                            <p><strong>Photo:</strong></p>
+                            {application.photo ? (
+                              <img
+                                src={application.photo}
+                                alt={`${application.name}'s photo`}
+                                style={{ width: '100px', height: '100px', borderRadius: '50%' }}
+                              />
+                            ) : (
+                              'No Photo Available'
+                            )}
+                            <p><strong>Created At:</strong> {new Date(application.createdAt).toLocaleString()}</p>
                           </div>
                         </div>
                       </div>

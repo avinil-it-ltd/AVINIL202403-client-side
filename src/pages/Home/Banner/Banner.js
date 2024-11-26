@@ -71,7 +71,7 @@
 
 //     const fetchNotices = async () => {
 //         try {
-//             const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/headlines/active');
+//             const response = await axios.get('http://localhost:5000/api/headlines/active');
 //             setNotices(response.data);
 //         } catch (error) {
 //             console.error('Error fetching notices:', error);

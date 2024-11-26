@@ -20,7 +20,7 @@ const CareerPage = () => {
   useEffect(() => {
       const fetchCareers = async () => {
           try {
-              const response = await fetch('https://3pcommunicationsserver.vercel.app/api/careers');
+              const response = await fetch('http://localhost:5000/api/careers');
               const data = await response.json();
 
               if (response.ok) {
@@ -86,7 +86,7 @@ const CareerPage = () => {
                   <div className="card shadow-sm border-0">
                     <div className="card-body shadow-sm p-4 d-flex justify-content-between align-items-center">
                       <div className="w-100">
-                        <h5 className="card-title fs-3 mb-4">{career.title}</h5>
+                        <h5 className="card-title  fs-3 mb-4">{career.title}</h5>
                         <div className="row my-2 w-full">
                           {/* Left Column: Vacancy and Salary */}
                           <div className="col-md-4 mb-2">

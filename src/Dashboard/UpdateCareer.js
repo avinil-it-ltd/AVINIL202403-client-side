@@ -25,7 +25,7 @@ const UpdateCareer = () => {
     useEffect(() => {
         const fetchCareer = async () => {
             try {
-                const response = await fetch(`https://3pcommunicationsserver.vercel.app/api/careers/${id}`);
+                const response = await fetch(`http://localhost:5000/api/careers/${id}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -77,7 +77,7 @@ const UpdateCareer = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`https://3pcommunicationsserver.vercel.app/api/careers/${id}`, {
+            const response = await fetch(`http://localhost:5000/api/careers/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

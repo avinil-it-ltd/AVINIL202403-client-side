@@ -16,7 +16,7 @@ function FAQ() {
     useEffect(() => {
         const fetchFaqs = async () => {
             try {
-                const response = await fetch('https://3pcommunicationsserver.vercel.app/api/faqs'); // Adjust the endpoint as needed
+                const response = await fetch('http://localhost:5000/api/faqs'); // Adjust the endpoint as needed
                 const data = await response.json();
                 setFaqs(data);
             } catch (error) {

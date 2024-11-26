@@ -25,7 +25,7 @@ const DashboardMain = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const projectResponse = await axios.get('https://3pcommunicationsserver.vercel.app/api/projects');
+                const projectResponse = await axios.get('http://localhost:5000/api/projects');
                 const projects = projectResponse.data;
                 setProjectData(projects.projects);
                 setPendingCount(projects.filter(p => p.status === 'Pending').length);
@@ -48,12 +48,12 @@ const DashboardMain = () => {
             for (const { endpoint, setter } of counts) {
                 try {
                     if(endpoint != 'careers'){
-                        const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/${endpoint}`);
+                        const response = await axios.get(`http://localhost:5000/api/${endpoint}`);
                         setter(response.data.length);
                         console.log(response.data);
                     }
                     else{
-                        const response = await axios.get(`https://3pcommunicationsserver.vercel.app/api/${endpoint}`);
+                        const response = await axios.get(`http://localhost:5000/api/${endpoint}`);
                         setter(response.data?.length);
                         console.log("career ",response.data?.length);
                     }

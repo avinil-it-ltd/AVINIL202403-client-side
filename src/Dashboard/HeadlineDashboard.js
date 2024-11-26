@@ -23,7 +23,7 @@ const HeadlineDashboard = () => {
     }, []);
 
     const fetchHeadlines = async () => {
-        const res = await axios.get('https://3pcommunicationsserver.vercel.app/api/headlines/active'); // Replace with your backend API
+        const res = await axios.get('http://localhost:5000/api/headlines/active'); // Replace with your backend API
         setHeadlines(res.data);
         setLoading(false);
     };
@@ -43,9 +43,9 @@ const HeadlineDashboard = () => {
 
     const handleSave = async () => {
         if (editHeadline) {
-            await axios.put(`https://3pcommunicationsserver.vercel.app/api/headlines/${editHeadline._id}`, newHeadline); // Update headline
+            await axios.put(`http://localhost:5000/api/headlines/${editHeadline._id}`, newHeadline); // Update headline
         } else {
-            await axios.post('https://3pcommunicationsserver.vercel.app/api/headlines', newHeadline); // Create new headline
+            await axios.post('http://localhost:5000/api/headlines', newHeadline); // Create new headline
         }
         fetchHeadlines();
         setShowModal(false);
@@ -54,7 +54,7 @@ const HeadlineDashboard = () => {
     const handleDelete = async (id) => {
         const confirmed = window.confirm('Are you sure you want to delete this headline?');
         if (confirmed) {
-            await axios.delete(`https://3pcommunicationsserver.vercel.app/api/headlines/${id}`);
+            await axios.delete(`http://localhost:5000/api/headlines/${id}`);
             fetchHeadlines();
         }
     };

@@ -17,7 +17,7 @@ const AppList = () => {
 
     // const fetchApplications = async () => {
     //     try {
-    //         const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/applications/filter', {
+    //         const response = await axios.get('http://localhost:5000/api/applications/filter', {
     //             params: { careerId: selectedCareer, search: searchTerm, isShortlisted: showShortlisted }
     //         });
     //         setApplications(response.data);
@@ -29,7 +29,7 @@ const AppList = () => {
 
     // const fetchApplications = async () => {
     //     try {
-    //         const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/applications', {
+    //         const response = await axios.get('http://localhost:5000/api/applications', {
     //             params: {
     //                 careerId: selectedCareer || undefined, // Handle empty selection
     //                 search: searchTerm || undefined,
@@ -47,7 +47,7 @@ const AppList = () => {
 
     const fetchCareers = async () => {
         try {
-            const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/careers');
+            const response = await axios.get('http://localhost:5000/api/careers');
             console.log(response.data);
 
             setCareers(response.data);
@@ -61,7 +61,7 @@ const AppList = () => {
 
     const handleShortlist = async (id, isShortlisted) => {
         try {
-            await axios.put(`https://3pcommunicationsserver.vercel.app/api/applications/shortlist/${id}`, {
+            await axios.put(`http://localhost:5000/api/applications/shortlist/${id}`, {
                 isShortlisted: !isShortlisted,
             });
             fetchApplications(); // Refresh the list after updating shortlist status
@@ -74,7 +74,7 @@ const AppList = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this application?')) {
             try {
-                await axios.delete(`https://3pcommunicationsserver.vercel.app/api/applications/${id}`);
+                await axios.delete(`http://localhost:5000/api/applications/${id}`);
                 fetchApplications(); // Refresh the list after deleting
             } catch (error) {
                 console.error('Error deleting application:', error);
@@ -111,7 +111,7 @@ const AppList = () => {
             };
 
             // Fetch filtered applications
-            const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/applications/filtered', { params });
+            const response = await axios.get('http://localhost:5000/api/applications/filtered', { params });
             setApplications(response.data);
         } catch (error) {
             console.error('Error fetching applications:', error);
@@ -224,7 +224,7 @@ const AppList = () => {
                                 <td>{application.email}</td>
                                 <td>
 
-                                    <a href={`https://3pcommunicationsserver.vercel.app/${application.resume.replace(/\\/g, '/').replace('src/app/', '')}`} target="_blank" rel="noopener noreferrer">View Resume</a>
+                                    <a href={`http://localhost:5000/${application.resume.replace(/\\/g, '/').replace('src/app/', '')}`} target="_blank" rel="noopener noreferrer">View Resume</a>
                                     {/* Modal to display the PDF */}
 
                                 </td>
@@ -258,13 +258,15 @@ const AppList = () => {
                                         className="modal fade"
                                         id={`applicationDetailsModal-${application._id}`}
                                         tabIndex="-1"
-                                        aria-labelledby="applicationDetailsModalLabel"
+                                        aria-labelledby={`applicationDetailsModalLabel-${application._id}`}
                                         aria-hidden="true"
                                     >
                                         <div className="modal-dialog">
                                             <div className="modal-content">
                                                 <div className="modal-header">
-                                                    <h5 className="modal-title">Application Details</h5>
+                                                    <h5 className="modal-title" id={`applicationDetailsModalLabel-${application._id}`}>
+                                                        Application Details
+                                                    </h5>
                                                     <button
                                                         type="button"
                                                         className="btn-close"
@@ -274,11 +276,26 @@ const AppList = () => {
                                                 </div>
                                                 <div className="modal-body">
                                                     <p><strong>Name:</strong> {application.name}</p>
-                                                    <p><strong>Phone:</strong> {application.phoneNumber}</p>
                                                     <p><strong>Email:</strong> {application.email}</p>
-                                                    <p><strong>Resume:</strong> <a href={`https://3pcommunicationsserver.vercel.app/${application.resume.replace(/\\/g, '/').replace('src/app/', '')}`} target="_blank" rel="noopener noreferrer">View Resume</a></p>
+                                                    <p><strong>Phone:</strong> {application.phoneNumber}</p>
                                                     <p><strong>Career Position:</strong> {application.careerId?.title || 'N/A'}</p>
                                                     <p><strong>Shortlisted:</strong> {application.isShortlisted ? 'Yes' : 'No'}</p>
+                                                    <p><strong>Resume:</strong> <a href={`http://localhost:5000/${application.resume.replace(/\\/g, '/').replace('src/app/', '')}`} target="_blank" rel="noopener noreferrer">View Resume</a></p>
+                                                    <p><strong>LinkedIn Profile:</strong> <a href={application.linkedinProfile} target="_blank" rel="noopener noreferrer">{application.linkedinProfile || 'N/A'}</a></p>
+                                                    <p><strong>Portfolio:</strong> <a href={application.portfolioLink} target="_blank" rel="noopener noreferrer">{application.portfolioLink || 'N/A'}</a></p>
+                                                    <p><strong>Address:</strong> {application.address || 'N/A'}</p>
+                                                    <p><strong>Description:</strong> {application.description || 'N/A'}</p>
+                                                    <p><strong>Photo:</strong></p>
+                                                    {application.photo ? (
+                                                        <img
+                                                            src={application.photo}
+                                                            alt={`${application.name}'s photo`}
+                                                            style={{ width: '100px', height: '100px', borderRadius: '50%' }}
+                                                        />
+                                                    ) : (
+                                                        'No Photo Available'
+                                                    )}
+                                                    <p><strong>Created At:</strong> {new Date(application.createdAt).toLocaleString()}</p>
                                                 </div>
                                             </div>
                                         </div>

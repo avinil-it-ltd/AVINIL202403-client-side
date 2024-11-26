@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
     useEffect(() => {
         const fetchPolicies = async () => {
             try {
-                const response = await axios.get('https://3pcommunicationsserver.vercel.app/api/policies'); // Replace with your backend API
+                const response = await axios.get('http://localhost:5000/api/policies'); // Replace with your backend API
                 setPolicies(response.data); // Adjusted to set the data directly as an array
             } catch (error) {
                 console.error('Error fetching policies:', error);
