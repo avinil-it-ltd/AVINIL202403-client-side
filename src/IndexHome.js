@@ -10,38 +10,14 @@ import { Accordion, Card } from 'react-bootstrap';
 
 
 import { Container, Row, Col } from "react-bootstrap"
-import banner1 from '../src/assets/images/banner1.jpg'
-import banner2 from '../src/assets/images/banner2.jpg'
-import banner3 from '../src/assets/images/banner3.jpg'
+
 
 import testimonialImage from "../src/assets/images/testimonialImage.jpg"
-import design from '../src/assets/images/interior-design.png'
-import ideas from '../src/assets/images/idea.png'
-import delivery from '../src/assets/images/delivery.png'
-import meeting from '../src/assets/images/business-meeting.png'
 
-import inte from '../src/assets/1.png'
-import india_gate from '../src/assets/india-gate.png'
-import wedding from '../src/assets/wedding-ring.png'
-
-
-import picture1 from '../src/assets/images/clients/Picture1.jpg'
-import picture2 from '../src/assets/images/clients/Picture2.jpg'
-import picture3 from '../src/assets/images/clients/Picture3.png'
-import picture4 from '../src/assets/images/clients/Picture4.jpg'
-import picture5 from '../src/assets/images/clients/Picture5.jpg'
-import picture6 from '../src/assets/images/clients/Picture6.jpg'
-import picture7 from '../src/assets/images/clients/Picture7.jpg'
-import picture8 from '../src/assets/images/clients/Picture8.jpg'
-import picture9 from '../src/assets/images/clients/Picture9.jpg'
-import picture10 from '../src/assets/images/clients/Picture10.jpg'
-import picture11 from '../src/assets/images/clients/Picture11.jpg'
-import picture12 from '../src/assets/images/clients/Picture12.png'
 
 // import './App.css';
 import ContactModal from "./pages/Contact/ContactModal";
-import left from "../src/assets/images/interiorPage/left.jpg"
-import center from "../src/assets/images/interiorPage/center.jpg"
+
 import right from "../src/assets/images/interiorPage/right.jpg"
 import PageUpButton from "./PageUpButton/PageUpButton";
 // import './custom.css'
@@ -102,262 +78,6 @@ const IndexHome = (props) => {
   };
 
 
-  // const topCarousel = () => (
-  //   <div className="position-relative bg-primary">
-  //     <div className="opacity-50 carousel-shadow">
-  //       <img className=" img-fluid w-100" src={banner2} alt="Banner" />
-  //     </div>
-  //     {/* Overlay for better text visibility */}
-
-
-  //     <div className="position-absolute top-50 start-50 translate-middle text-center w-100">
-  //       {/* Large screen heading */}
-  //       <h3 className="golden-text fw-bold text-white display-4 mb-3 d-none d-md-block">
-  //         Welcome To 3P Communication
-  //       </h3>
-  //       {/* Small screen heading */}
-  //       <h5 className="golden-text fw-bold fs-2 text-white mb-3 d-md-none">
-  //         Welcome To 3P Communication
-  //       </h5>
-
-  //       {/* Large screen text */}
-  //       <p className="golden-text text-white fw-bold text-center display-6 mb-0 d-none d-md-block">
-  //         One Stop Solutions Interior & Exterior Design for Homes and Offices in Bangladesh
-  //       </p>
-  //       {/* Small screen text */}
-  //       <p className="golden-text text-white fs-5 mb-0 d-md-none">
-  //         One Stop Interior Solutions in Bangladesh
-  //       </p>
-  //     </div>
-  //   </div>
-  // );
-
-
-  // const sec1 = () => (
-  //   <div className="" style={{ backgroundImage: "url('/images/bg-1.jpg')", height: "auto" }}>
-  //     <div className="body_background" style={{ opacity: "0.95", height: "auto" }}>
-  //       <div className="row p-3">
-  //         <div className="col-12 col-md-6 mx-auto ">
-
-  //           <h2 className=" heading_color mt-5 me-2" style={{ fontFamily: "Times New Roman" }}>3P Communication Interior & Exterior Design</h2>
-  //           <p className="fs-6">At 3P Communication, we prioritize collaboration in every project. Our design concepts emerge from close partnerships with our clients, ensuring a deep understanding of their goals and unique positions within the industry. Our talented team actively listens, conducts thorough research, and brings creative visions to life, crafting spaces that are not only visually stunning but also budget-conscious and practical. We are committed to delivering exceptional design solutions that meet the specific needs of each client.</p>
-  //           <Link to="/interior" ><button className="btn btn-md special_button mt-2">View Interior Projects</button></Link>
-  //         </div>
-  //         <div className="col-10 col-md-4 mx-auto">
-  //           <img src={banner1} className="rounded mt-5  imageBorder " width="100%"></img>
-  //         </div>
-
-
-
-
-  //         <div className="col-10 col-md-4  mx-auto">
-  //           <img src={banner3} className="rounded mt-5 imageBorder" width="100%"></img>
-  //         </div>
-  //         <div className="col-12 col-md-6 mx-auto  mt-5">
-  //           <h2 className=" mt-5 heading_color " style={{ fontFamily: "Times New Roman" }}>Design as the people it serves</h2>
-  //           <p className="fs-6 ">We offer a full range of interior and exterior design services. Our focus on modern systems and detailed documentation allows us to create tailored solutions for each project. With award-winning design talent and solid project management skills, we ensure that every project is completed on time and within budget, all while maintaining high standards and attention to detail.</p>
-  //           <Link to="/exterior" ><button className="btn btn-md special_button ">View Exterior Projects</button></Link>
-  //         </div>
-
-  //       </div>
-  //       <br />
-  //       <br />
-  //     </div>
-  //   </div>
-  // )
-
-  // const process = () => (
-  //   <div className="mt-0 mb-5" >
-  //     {/* style={{ backgroundImage: "url('/images/bg-2.jpg')", height: "auto" }} */}
-  //     <div className="" style={{ opacity: "0.9", height: "auto" }}>
-  //       <h1 className="text-center mt-0 p-5  heading_color" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Our Process</h1>
-  //       <div className="row p-5 " >
-  //         <div className="col-12 col-md-3 text-center p-2">
-  //           <div className=" mx-auto   row align-items-center" style={{ height: "150px", width: "150px" }}> <img src={ideas} alt="" /> </div>
-  //           <div className="h2  text-center" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Idea & Concept</div>
-  //         </div>
-  //         <div className="col-12 col-md-3 text-center p-2">
-  //           <div className=" mx-auto  row align-items-center" style={{ height: "150px", width: "150px" }}> <img src={design} alt="" /> </div>
-  //           <div className="h2 text-center" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Design & Create</div>
-
-  //         </div>
-  //         <div className="col-12 col-md-3 text-center p-2">
-  //           <div className=" mx-auto  row align-items-center" style={{ height: "150px", width: "150px" }}><img src={meeting} alt="" /></div>
-  //           <div className="h2  text-center" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Meet & Agree</div>
-
-
-  //         </div>
-  //         <div className="col-12 col-md-3 text-center p-2">
-  //           <div className=" mx-auto  row align-items-center" style={{ height: "150px", width: "150px" }}><img src={delivery} alt="" /></div>
-  //           <div className="h2  text-center" style={{ fontFamily: "'Aref Ruqaa', serif" }}>Deliver & Install</div>
-
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // )
-
-
-  // const ourServices = () => (
-  //   <div className="servicebg">
-  //     <div className="service-content py-5">
-  //       <div className="text-center h2 text-white py-5" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
-  //         <h2>Explore Our Services</h2>
-  //       </div>
-
-  //       <div className="row p-4 pb-5">
-  //         <div className="col">
-  //           <div className="text-center ">
-  //             <img src={inte} className="imageBorder  p-2 bg-white" width="200px" height="150px" alt="Event" />
-  //           </div>
-  //           <div className="text-center h4 text-white p-2" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
-  //             Interior
-  //           </div>
-  //         </div>
-  //         <div className="col">
-  //           <div className="text-center">
-  //             <img src={india_gate} className="imageBorder  p-2 bg-white" width="200px" height="150px" alt="Event" />
-  //           </div>
-  //           <div className="text-center h4 text-white p-2" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
-  //             Exterior
-  //           </div>
-  //         </div>
-  //         <div className="col">
-  //           <div className="text-center">
-  //             <img src={wedding} className="imageBorder  p-2 bg-white" width="200px" height="150px" alt="Event" />
-  //           </div>
-  //           <div className="text-center h4 text-white p-2" style={{ fontFamily: "'Aref Ruqaa', serif" }}>
-  //             Event
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
-
-
-
-  // const callNow = () => (
-  //   <div className="w-100 bg-dark my-5 py-5">
-  //     <div className="d-flex flex-column flex-md-row justify-content-around align-items-center text-center text-md-start text-black fw-bolder px-3 px-md-5 callNow_font">
-
-  //       {/* Column 1 - Text */}
-  //       <div className="col-md-4 mb-3 mb-md-0 text-white">
-  //         <h3>CONTACT NOW FOR YOUR DREAM INTO REALITY</h3>
-  //       </div>
-
-  //       {/* Column 2 - Phone Number with Icon */}
-  //       <div className="col-md-4 mb-3 mb-md-0 d-flex align-items-center justify-content-center">
-  //         <div className="d-flex align-items-center justify-content-center">
-  //           <div className="icon-circle">
-  //             <i className="bi bi-telephone-fill"></i> {/* Bootstrap phone icon */}
-  //           </div>
-  //           <div className="px-3 pt-3">
-  //             <p className="text-warning"> CALL US<br /><span className="text-white"> +88015846895</span> </p>
-  //             <p className="ms-2 fw-bold"></p>
-  //           </div>
-  //         </div>
-  //       </div>
-
-  //       {/* Column 3 - Email with Icon */}
-  //       <div className="col-md-4 d-flex align-items-center justify-content-center">
-  //         <div>
-
-  //           <div className="d-flex align-items-center justify-content-center">
-  //             <div className="icon-circle">
-  //               <i className="bi bi-envelope-fill"></i> {/* Bootstrap envelope icon */}
-  //             </div>
-  //             <div className="px-3 pt-3">
-  //               <p className="text-warning">PLEASE SEND EMAIL<br /> <span className="fw-bold text-white">info@example.com</span></p>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-
-  //     </div>
-  //   </div>
-  // );
-
-
-
-
-
-
-  // const OurClients = () => (
-  //   <Container>
-  //     <div className="container my-5 py-5">
-  //       <h2 className="text-center mb-2 fs-4 heading_color">Our Clients</h2>
-  //       <h1 className="text-center mb-5 callNow_font" style={{ fontFamily: "Times New Roman" }}>
-  //         We have worked with great people
-  //       </h1>
-
-  //       {/* Scrollable row of clients */}
-  //       <div className="client-scroll">
-  //         <div className="client-row ">
-  //           {[picture1, picture2, picture3, picture4, picture5, picture6, picture7, picture8, picture9, picture10, picture11, picture12].map((pic, index) => (
-  //             <div key={index} className="client-item">
-  //               <img src={pic} alt={`Client ${index + 1}`} className="client-image mx-2" />
-  //             </div>
-  //           ))}
-  //         </div>
-  //       </div>
-
-
-  //     </div>
-  //   </Container>
-  // );
-
-
-
-
-  // const ThreeImgSection = () => (
-
-  //   <Container className="my-5 py-5">
-  //     <Row>
-  //       <Col md={4} className="mb-4">
-  //         <div className="image-container">
-  //           <img
-  //             src={left}
-  //             alt="Example 1"
-  //             className="img-fluid"
-  //           />
-  //           <div className="overlay-text">
-  //             <h2 style={{ fontFamily: "'Aref Ruqaa', serif" }}>Interior Design For The Future</h2>
-  //           </div>
-  //         </div>
-  //       </Col>
-
-
-  //       <Col md={4} className="mb-4">
-  //         <div className="image-container">
-  //           <img
-  //             src={center}
-  //             alt="Example 2"
-  //             className="img-fluid"
-  //           />
-  //           <div className="overlay-text ms-4 ps-4">
-  //             <h2 style={{ fontFamily: "'Aref Ruqaa', serif" }}>Lots Of Flexible Functionalities </h2>
-  //           </div>
-  //         </div>
-  //       </Col>
-
-
-  //       <Col md={4} className="mb-4">
-  //         <div className="image-container">
-  //           <img
-  //             src={right}
-  //             alt="Example 3"
-  //             className="img-fluid"
-  //           />
-  //           <div className="overlay-text">
-  //             <h2 style={{ fontFamily: "'Aref Ruqaa', serif" }}>Introduce Vision To Your Space</h2>
-  //           </div>
-  //         </div>
-  //       </Col>
-  //     </Row>
-  //   </Container>
-
-  // )
 
   const [testimonialsData, setTestimonialsData] = useState([]);
 
@@ -543,12 +263,12 @@ const IndexHome = (props) => {
         <div id="contact"><Footer /></div>
 
 
-        {/*
+        
       <ContactModal
           show={modalShow}
           onHide={() => setModalShow(false)}
         />
-*/}
+ 
       </div>
     </div>
   )
