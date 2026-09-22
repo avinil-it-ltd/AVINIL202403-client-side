@@ -71,6 +71,7 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from '../assets/images/logo.png';
 
 import '../custom.css';
+import './top.css';
 
 const TopMenu = () => {
     const navigate = useNavigate(); // Initialize useNavigate for programmatic navigation
