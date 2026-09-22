@@ -367,14 +367,14 @@ const UpdateProject = () => {
 
         {/* Budget */}
         <div className="form-group mb-3">
-          <label>Budget</label>
-          <input type="text" name="budget" value={project.budget} onChange={handleChange} className="form-control" required />
+          <label>Budget <span className="text-muted fw-normal">(Optional)</span></label>
+          <input type="text" name="budget" value={project.budget || ''} onChange={handleChange} className="form-control" placeholder="e.g. 50,000" />
         </div>
 
         {/* Area Size */}
         <div className="form-group mb-3">
           <label>Area Size</label>
-          <input type="text" name="areaSize" value={project.areaSize} onChange={handleChange} className="form-control" required />
+          <input type="text" name="areaSize" value={project.areaSize || ''} onChange={handleChange} className="form-control" required />
         </div>
 
 
@@ -385,18 +385,18 @@ const UpdateProject = () => {
 
         {/* Client and Review Details */}
         {/* Client Details */}
-        <h3 className="mt-4">Client Details</h3>
+        <h3 className="mt-4">Client Details <span className="text-muted fs-6 fw-normal">(Optional)</span></h3>
         <div className="form-group mb-3">
-          <label>Client Name</label>
-          <input type="text" name="client.name" value={project.client.name} onChange={handleChange} className="form-control" required />
+          <label>Client Name <span className="text-muted fw-normal">(Optional)</span></label>
+          <input type="text" name="client.name" value={project.client?.name || ''} onChange={handleChange} className="form-control" placeholder="Client or Company Name" />
         </div>
         <div className="form-group mb-3">
-          <label>Client Email</label>
-          <input type="email" name="client.email" value={project.client.email} onChange={handleChange} className="form-control" required />
+          <label>Client Email <span className="text-muted fw-normal">(Optional)</span></label>
+          <input type="email" name="client.email" value={project.client?.email || ''} onChange={handleChange} className="form-control" placeholder="client@example.com" />
         </div>
         <div className="form-group mb-3">
-          <label>Client Phone</label>
-          <input type="tel" name="client.phone" value={project.client.phone} onChange={handleChange} className="form-control" required />
+          <label>Client Phone <span className="text-muted fw-normal">(Optional)</span></label>
+          <input type="tel" name="client.phone" value={project.client?.phone || ''} onChange={handleChange} className="form-control" placeholder="Phone Number" />
         </div>
 
         {/* Review Details */}

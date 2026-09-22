@@ -258,8 +258,7 @@ const IndexHome = (props) => {
         <Testimonial />
         {/* <div>{faq()}</div> */}
         <FAQ />
-        <br /><br />
-        <div>{PageUpButton}</div>
+        <PageUpButton />
         <div id="contact"><Footer /></div>
 
 

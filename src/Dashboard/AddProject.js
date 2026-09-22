@@ -391,8 +391,8 @@ const AddProject = () => {
           <input type="text" name="address" value={projectData.address} onChange={handleChange} className="form-control" required />
         </div>
         <div className="form-group dashboard_form_desing">
-          <label className="fw-bold">Budget</label>
-          <input type="text" name="budget" value={projectData.budget} onChange={handleChange} className="form-control" min="0" required />
+          <label className="fw-bold">Budget <span className="text-muted fw-normal">(Optional)</span></label>
+          <input type="text" name="budget" value={projectData.budget} onChange={handleChange} className="form-control" placeholder="e.g. 50,000" />
         </div>
         <div className="form-group dashboard_form_desing">
           <label className="fw-bold">Area Size</label>
@@ -409,44 +409,44 @@ const AddProject = () => {
 
 
 
-        <h3 className="mt-5 pt-5">Client Details</h3>
+        <h3 className="mt-5 pt-5">Client Details <span className="text-muted fs-6 fw-normal">(Optional)</span></h3>
         <div className="form-group dashboard_form_desing">
-          <label className="fw-bold">Client Name</label>
+          <label className="fw-bold">Client Name <span className="text-muted fw-normal">(Optional)</span></label>
           <input
             type="text"
             name="client.name"
             value={projectData.client.name}
             onChange={handleChange}
             className="form-control"
-            required
+            placeholder="Client or Company Name"
           />
         </div>
         <div className="form-group dashboard_form_desing">
-          <label className="fw-bold">Client Email</label>
+          <label className="fw-bold">Client Email <span className="text-muted fw-normal">(Optional)</span></label>
           <input
             type="email"
             name="client.email"
             value={projectData.client.email}
             onChange={handleChange}
             className="form-control"
-            required
+            placeholder="client@example.com"
           />
         </div>
         <div className="form-group dashboard_form_desing">
-          <label className="fw-bold">Client Phone</label>
+          <label className="fw-bold">Client Phone <span className="text-muted fw-normal">(Optional)</span></label>
           <input
             type="text"
             name="client.phone"
             value={projectData.client.phone}
             onChange={handleChange}
             className="form-control"
-            required
+            placeholder="Phone Number"
           />
         </div>
 
-        <h3 className="mt-5 pt-5">Review</h3>
+        <h3 className="mt-5 pt-5">Review <span className="text-muted fs-6 fw-normal">(Optional)</span></h3>
         <div className="form-group dashboard_form_desing">
-          <label className="fw-bold">Rating</label>
+          <label className="fw-bold">Rating <span className="text-muted fw-normal">(Optional)</span></label>
           <input
             type="number"
             name="review.rating"
@@ -455,18 +455,18 @@ const AddProject = () => {
             min="1"
             max="5"
             className="form-control"
-            required
+            placeholder="1-5"
           />
         </div>
         <div className="form-group dashboard_form_desing">
-          <label className="fw-bold">Comment</label>
+          <label className="fw-bold">Comment <span className="text-muted fw-normal">(Optional)</span></label>
           <textarea
             name="review.comment"
             value={projectData.review.comment}
             onChange={handleChange}
             className="form-control"
             rows="3"
-            required
+            placeholder="Client review / feedback"
           />
         </div>
 
